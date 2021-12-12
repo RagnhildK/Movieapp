@@ -1,8 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Router, Route, Link } from './react-router';
-import SignUp from "./Components/Signup/Signup";
-import SignIn from "./Components/Signin/Signin";
+import SignUp from "./Pages/Signup/Signup";
+import SignIn from "./Pages/Signin/Signin";
+import Rating from './Pages/Rating';
 
 const App = () => (
   <Router>
@@ -14,10 +15,15 @@ const App = () => (
         <Link to="/signup">
           <Text>Sign up</Text>
         </Link>
+        <Link to="/rating"> 
+          <Text> Rating </Text>
+        </Link>
       </View>
       <Route exact path="/" component={SignIn} />
       <Route path="/signup" component={SignUp} />
       <Route path="/signin" component={SignIn} />
+      <Route path="/rating" component={Rating} />
+
     </View>
   </Router>
 );
