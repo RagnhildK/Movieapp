@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { Router, Route, Link } from './react-router';
 import SignUp from "./Pages/Signup/Signup";
 import SignIn from "./Pages/Signin/Signin";
-import Rating from './Pages/Rating';
+import Rating from './Pages/Rating/Rating';
 
 const App = () => (
   <Router>
