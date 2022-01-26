@@ -1,35 +1,36 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Router, Route, Link } from './react-router';
-import SignUp from "./Components/Signup/Signup";
-import SignIn from "./Components/Signin/Signin";
+import React from "react";
+import SignUp from "./Screens/Signup/Signup";
+import SignIn from "./Screens/SignIn/Signin";
+import { StyleSheet, Text, View } from "react-native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { NavigationContainer } from "@react-navigation/native";
+import "react-native-gesture-handler";
+
+const Stack = createStackNavigator();
+const Home = () => <Text style={styles.header}>Home screen</Text>;
 
 const App = () => (
-  <Router>
-    <View style={styles.container}>
-      <View style={styles.nav}>
-        <Link to="/">
-          <Text>Sign in</Text>
-        </Link>
-        <Link to="/signup">
-          <Text>Sign up</Text>
-        </Link>
-      </View>
-      <Route exact path="/" component={SignIn} />
-      <Route path="/signup" component={SignUp} />
-      <Route path="/signin" component={SignIn} />
-    </View>
-  </Router>
+  <NavigationContainer>
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Home"
+        component={SignIn}
+        options={{ title: "Home" }}
+      />
+      <Stack.Screen name="Sign in" component={SignIn} />
+      <Stack.Screen name="Sign up" component={SignUp} />
+    </Stack.Navigator>
+  </NavigationContainer>
 );
 
 const styles = StyleSheet.create({
   container: {
     marginTop: 25,
-    padding: 10
+    padding: 10,
   },
-  nav:{
-    flexDirection: 'row',
-    justifyContent: 'space-around',
+  nav: {
+    flexDirection: "row",
+    justifyContent: "space-around",
   },
 });
 
