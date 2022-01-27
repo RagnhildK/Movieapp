@@ -1,6 +1,7 @@
 import React from "react";
 import SignUp from "./Screens/Signup/Signup";
 import SignIn from "./Screens/SignIn/Signin";
+import Rating from "./Screens/Rating";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -14,7 +15,7 @@ const App = () => (
     <Stack.Navigator>
       <Stack.Screen
         name="Home"
-        component={SignIn}
+        component={Rating}
         options={{ title: "Home" }}
       />
       <Stack.Screen name="Sign in" component={SignIn} />
