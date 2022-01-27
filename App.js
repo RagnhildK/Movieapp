@@ -2,6 +2,7 @@ import React from "react";
 import SignUp from "./Screens/Signup/Signup";
 import SignIn from "./Screens/SignIn/Signin";
 import Rating from "./Screens/Rating";
+import Result from "./Screens/Results";
 import store from "./redux/store";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -23,6 +24,7 @@ const App = () => (
         />
         <Stack.Screen name="Sign in" component={SignIn} />
         <Stack.Screen name="Sign up" component={SignUp} />
+        <Stack.Screen name="Result" component={Result} />
       </Stack.Navigator>
     </NavigationContainer>
   </Provider>
