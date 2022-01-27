@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 
 function ResultMovie(id) {
   const { movies } = useSelector((state) => state.movieRatings);
-  const m = movies[id];
-  //console.log(m);
+  const m = movies[id.id];
   let url = "https://image.tmdb.org/t/p/w500/" + m.posterPath;
   return (
     <View className="MovieItem">
