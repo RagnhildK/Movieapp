@@ -5,7 +5,7 @@ import RatingButtons from "./RatingButtons";
 
 function Movie({ title, poster_path, overview, id }) {
   // Renders the movie that is passed as function input
-  let url = 'https://image.tmdb.org/t/p/w500/' + posterPath
+  let url = 'https://image.tmdb.org/t/p/w500/' + poster_path
   return (
     <View className="MovieItem">
       <Text>{title}</Text>

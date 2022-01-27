@@ -1,24 +1,17 @@
 import React from "react";
 import { View, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { addRatedMovie } from "../../redux/movie";
+import { rateMovie } from "../../redux/movie";
 
 function RatingButtons({ title, poster_path, id }) {
   // Renders the movie that is passed as function input
-  const { ratedMovies } = useSelector((state) => state.movieRatings);
+  const { movies } = useSelector((state) => state.movieRatings);
   const dispatch = useDispatch();
 
   const handlePress = (rating) => {
-    const movie = {
-      id: id,
-      title: title,
-      poster_path: poster_path,
-      rating: rating,
-    };
-
-    dispatch(addRatedMovie(movie));
+    // dispatch(rateMovie(["rating));
   };
-  console.log(ratedMovies);
+
   return (
     <View className="MovieItem">
       <Button onPress={() => handlePress(0)} title="0" />

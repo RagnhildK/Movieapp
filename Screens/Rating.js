@@ -1,9 +1,13 @@
 import React, { useState } from "react";
 import { View, Button } from "react-native";
+import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
+import {addFetchedMovies} from "../redux/movie"
 
 const Rating = () => {
-  const [movies, setMovies] = useState([]);
+  const { movies } = useSelector((state) => state.movieRatings);
+
+  const dispatch = useDispatch();
 
   const baseURL =
     "https://api.themoviedb.org/3/movie/popular?api_key=72c828341c35299683ab545ba90e7f50&language=en-US&page=1";
@@ -18,13 +22,13 @@ const Rating = () => {
   };
 
   const handleResponse = (response) => {
-    setMovies(response);
+    dispatch(addFetchedMovies(response));
   };
 
   const handlePress = () => {
     getMovie();
   };
- 
+
   return (
     <View>
       <Button onPress={handlePress} title="Hent filmer" />
@@ -32,7 +36,13 @@ const Rating = () => {
         <View className="MoviesListed">
           <View>
             {movies.results.map((m) => (
-              <Movie key={m.id} id={m.id} title={m.title} overview={m.overview} poster_path={m.poster_path} />
+              <Movie
+                key={m.id}
+                id={m.id}
+                title={m.title}
+                overview={m.overview}
+                poster_path={m.poster_path}
+              />
             ))}
           </View>
         </View>
