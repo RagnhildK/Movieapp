@@ -14,12 +14,12 @@ export const movieRatingSlice = createSlice({
         title: action.payload.title,
         posterPath: action.payload.poster_path,
         overview: action.payload.overview,
-        rating: null
+        rating: null,
       };
     },
     rateMovie: (state, action) => {
       const id = action.payload.id;
-      state.movies.id.rating = action.payload.rating;
+      state.movies[id].rating = action.payload.rating;
     },
   },
 });
