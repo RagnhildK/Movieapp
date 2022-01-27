@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
 import { addFetchedMovie } from "../redux/movieSlicer";
 
-const Rating = ({navigation}) => {
+const Rating = ({ navigation }) => {
   const { movies } = useSelector((state) => state.movieRatings);
 
   const dispatch = useDispatch();
@@ -39,12 +39,9 @@ const Rating = ({navigation}) => {
       {!!movies && (
         <View className="MoviesListed">
           <View>
-            {Object.entries(movies).map((m) =>
-              <Movie
-                key={m[0]}
-                id={m[0]}
-              />
-            )}
+            {Object.entries(movies).map((m) => (
+              <Movie key={m[0]} id={m[0]} />
+            ))}
           </View>
         </View>
       )}

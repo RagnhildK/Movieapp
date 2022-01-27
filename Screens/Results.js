@@ -1,13 +1,21 @@
 import React from "react";
 import { View } from "react-native";
 import ResultMovie from "../components/Movie/ResultMovie";
+import { useSelector } from "react-redux";
 
 export default function Result() {
-
-    return (
-       <View>
-           {/* Map fra redux til ResultMovie objekter */}
-          <ResultMovie title={'Spider-Man: No Way Home'} posterPath={'/1g0dhYtq4irTY1GPXvft6k4YLjm.jpg'}/> 
-       </View> 
-    )    
+  const { movies } = useSelector((state) => state.movieRatings);
+  return (
+    <View>
+      {!!movies && (
+        <View className="MoviesListed">
+          <View>
+            {Object.entries(movies).map((m) => (
+              <ResultMovie key={m[0]} id={m[0]} />
+            ))}
+          </View>
+        </View>
+      )}
+    </View>
+  );
 }
