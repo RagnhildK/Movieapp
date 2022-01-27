@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Button } from "react-native";
 import Movie from "../components/Movie/Movie";
 
-const Rating = () => {
+const Rating = ({navigation}) => {
   const [movies, setMovies] = useState([]);
 
   const baseURL =
@@ -27,6 +27,10 @@ const Rating = () => {
  
   return (
     <View>
+      <Button
+        title="Go to results"
+        onPress={() => navigation.navigate("Result")}
+      />
       <Button onPress={handlePress} title="Hent filmer" />
       {!!movies.results && (
         <View className="MoviesListed">
