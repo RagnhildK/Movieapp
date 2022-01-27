@@ -1,24 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  likedMovies: [],
-  dislikedMovies: [],
+  ratedMovies: [],
 };
 
 export const movieSlice = createSlice({
   name: "movieResults",
   initialState,
   reducers: {
-    addLikedMovie: (state, action) => {
-      state.likedMovie += action.payload;
-    },
-    addDislikedMovie: (state, action) => {
-      state.dislikedMovie += action.payload;
+    addRatedMovie: (state, action) => {
+      state.ratedMovies += action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addLikedMovie, addDislikedMovie } = movieSlice.actions;
+export const { addRatedMovie } = movieSlice.actions;
 
 export default movieSlice.reducer;
