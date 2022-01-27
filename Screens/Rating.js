@@ -32,7 +32,7 @@ const Rating = () => {
         <View className="MoviesListed">
           <View>
             {movies.results.map((m) => (
-              <Movie key={m.id} title={m.title} overview={m.overview} />
+              <Movie key={m.id} id={m.id} title={m.title} overview={m.overview} poster_path={m.poster_path} />
             ))}
           </View>
         </View>
