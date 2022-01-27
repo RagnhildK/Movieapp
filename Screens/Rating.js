@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
-import {addFetchedMovies} from "../redux/movie"
+import { addFetchedMovie } from "../redux/movieSlicer";
 
 const Rating = () => {
   const { movies } = useSelector((state) => state.movieRatings);
@@ -22,7 +22,7 @@ const Rating = () => {
   };
 
   const handleResponse = (response) => {
-    dispatch(addFetchedMovies(response));
+    response.results.map((m) => dispatch(addFetchedMovie(m)));
   };
 
   const handlePress = () => {
@@ -32,18 +32,15 @@ const Rating = () => {
   return (
     <View>
       <Button onPress={handlePress} title="Hent filmer" />
-      {!!movies.results && (
+      {!!movies && (
         <View className="MoviesListed">
           <View>
-            {movies.results.map((m) => (
+            {Object.entries(movies).map((m) =>
               <Movie
-                key={m.id}
-                id={m.id}
-                title={m.title}
-                overview={m.overview}
-                poster_path={m.poster_path}
+                key={m[0]}
+                id={m[0]}
               />
-            ))}
+            )}
           </View>
         </View>
       )}

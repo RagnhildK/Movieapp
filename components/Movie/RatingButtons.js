@@ -1,15 +1,15 @@
 import React from "react";
 import { View, Button } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { rateMovie } from "../../redux/movie";
+import { rateMovie } from "../../redux/movieSlicer";
 
-function RatingButtons({ title, poster_path, id }) {
+function RatingButtons({ id }) {
   // Renders the movie that is passed as function input
   const { movies } = useSelector((state) => state.movieRatings);
   const dispatch = useDispatch();
 
   const handlePress = (rating) => {
-    // dispatch(rateMovie(["rating));
+    dispatch(rateMovie({rating: rating, id: id}));
   };
 
   return (
