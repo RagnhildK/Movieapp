@@ -25,7 +25,6 @@ const Rating = () => {
     getMovie();
   };
  
-  console.log(movies.results)
   return (
     <View>
       <Button onPress={handlePress} title="Hent filmer" />
@@ -33,7 +32,7 @@ const Rating = () => {
         <View className="MoviesListed">
           <View>
             {movies.results.map((m) => (
-              <Movie key={m.id} title={m.title} abstract={m.abstract} />
+              <Movie key={m.id} title={m.title} overview={m.overview} />
             ))}
           </View>
         </View>
