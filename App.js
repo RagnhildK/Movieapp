@@ -1,7 +1,7 @@
 import React from "react";
 import SignUp from "./Screens/Signup/Signup";
 import SignIn from "./Screens/SignIn/Signin";
-import Rating from "./Pages/Rating";
+import Rating from "./Screens/Rating";
 import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
