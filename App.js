@@ -7,27 +7,38 @@ import store from "./redux/store";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
 import { StyleSheet, Text } from "react-native";
-import { Provider } from "react-redux";
+import { Provider as PaperProvider } from "react-native-paper";
+import { Provider as StoreProvider } from "react-redux";
 import "react-native-gesture-handler";
 
 const Stack = createStackNavigator();
 const Home = () => <Text style={styles.header}>Home screen</Text>;
 
 const App = () => (
-  <Provider store={store}>
+  <StoreProvider store={store}>
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator
+        screenOptions={{
+          headerStyle: {
+            backgroundColor: "#99ccff",
+          },
+          headerTintColor: "#fff",
+          headerTitleAlign: 'center',
+        }}
+      >
         <Stack.Screen
           name="Home"
           component={Rating}
-          options={{ title: "Home" }}
+          options={{
+            title: "Home",
+          }}
         />
         <Stack.Screen name="Sign in" component={SignIn} />
         <Stack.Screen name="Sign up" component={SignUp} />
         <Stack.Screen name="Result" component={Result} />
       </Stack.Navigator>
     </NavigationContainer>
-  </Provider>
+  </StoreProvider>
 );
 
 const styles = StyleSheet.create({
