@@ -1,11 +1,10 @@
 import React from "react";
 import { View, Button, StyleSheet } from "react-native";
 import { setCreator } from "../redux/movieSlicer";
-import { useSelector, useDispatch } from "react-redux";
+import {useDispatch } from "react-redux";
 import { setSessionID } from "../redux/movieSlicer";
 
 export default function CreateOrJoinScreen({ navigation }) {
-  const { creator } = useSelector((state) => state.movieRatings);
 
   const dispatch = useDispatch();
 
@@ -19,12 +18,12 @@ export default function CreateOrJoinScreen({ navigation }) {
     <View style={styles.container}>
       <Button
         style={styles.button}
-        title="This page should go to create screen"
+        title="Create a session"
         onPress={() => handlePress("Create")}
       />
       <Button
         style={styles.button}
-        title="This page should go to join screen"
+        title="Join a session"
         onPress={() => handlePress("Join")}
       />
     </View>

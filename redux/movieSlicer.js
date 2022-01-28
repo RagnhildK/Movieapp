@@ -3,6 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   creator: false,
   sessionID: "",
+  username: "",
+  nmbMovies: 0,
+  loading: false,
   movies: {},
 };
 
@@ -17,6 +20,15 @@ export const movieRatingSlice = createSlice({
     },
     setSessionID: (state, action) => {
       state.sessionID = action.payload;
+    },
+    setUsername: (state, action) => {
+      state.username = action.payload;
+    },
+    setNmbMovies: (state, action) => {
+      state.nmbMovies = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
     },
     addFetchedMovie: (state, action) => {
       const id = action.payload.id;
@@ -35,7 +47,14 @@ export const movieRatingSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setCreator, setSessionID, addFetchedMovie, rateMovie } =
-  movieRatingSlice.actions;
+export const {
+  setCreator,
+  setSessionID,
+  setUsername,
+  setNmbMovies,
+  setLoading,
+  addFetchedMovie,
+  rateMovie,
+} = movieRatingSlice.actions;
 
 export default movieRatingSlice.reducer;

@@ -1,13 +1,52 @@
-import React from "react";
-import { View, Button } from "react-native";
+import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { View, Button, TextInput, StyleSheet } from "react-native";
+import { setUsername, setNmbMovies, setLoading } from "../../redux/movieSlicer";
 
 export default function CreateSessionScreen({ navigation }) {
+  const [username, setLocalUsername] = useState("");
+  const [nmbMovies, setLocalNmbMovies] = useState("");
+
+  const dispatch = useDispatch();
+
+  const createSession = () => {
+    dispatch(setUsername(username));
+    dispatch(setNmbMovies(nmbMovies));
+    // TODO ask backend to create a session with the number of movies, and get the sessionid back from the backend
+    // dispatch(setSessionID(resultfrombackend));
+    navigation.navigate("RatingScreen");
+    dispatch(setLoading(true));
+  };
+
   return (
     <View>
+      <TextInput
+        styles={styles.input}
+        onChangeText={(val) => setLocalUsername(val)}
+        value={username}
+        placeholder="Enter a username for the session..."
+      />
+      {/* TODO: check that it is only numbers */}
+      <TextInput
+        styles={styles.input}
+        onChangeText={(val) => setLocalNmbMovies(val)}
+        value={nmbMovies}
+        keyboardType="numeric"
+        placeholder="How many movies do you want to rank?..."
+      />
       <Button
-        title="This page should go to rating screen"
-        onPress={() => navigation.navigate("RatingScreen")}
+        title="Start rating"
+        onPress={() => createSession()}
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+  },
+});

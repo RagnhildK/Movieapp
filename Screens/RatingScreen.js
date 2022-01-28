@@ -1,25 +1,30 @@
-import React, { useState } from "react";
-import { View, Button, ScrollView, Text } from "react-native";
+import React, { useEffect } from "react";
+import {
+  View,
+  Button,
+  ScrollView,
+  ActivityIndicator,
+  StyleSheet,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
-import { addFetchedMovie } from "../redux/movieSlicer";
-import { getMovie } from "../.expo/utils/fetch";
+import { addFetchedMovie, setLoading } from "../redux/movieSlicer";
+import { getMovie } from "../utils/fetch";
 
 const RatingScreen = ({ navigation }) => {
-  const { movies, creator } = useSelector((state) => state.movieRatings);
+  const { movies, creator, loading } = useSelector(
+    (state) => state.movieRatings
+  );
 
   const dispatch = useDispatch();
 
   const handleResponse = (response) => {
     response.results.map((m) => dispatch(addFetchedMovie(m)));
-  };
-
-  const handlePress = () => {
-    getMovie(handleResponse);
+    dispatch(setLoading(false));
   };
 
   const handleSubmit = () => {
-    // TODO send logged info to the backend
+    // TODO send rating info to the backend
 
     if (creator) {
       navigation.navigate("WaitingScreen");
@@ -28,11 +33,20 @@ const RatingScreen = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    getMovie(handleResponse);
+  }, []);
+
   return (
-    <View>
-      <Button onPress={handlePress} title="Hent filmer" />
-      {!!movies && (
-        <ScrollView className="MoviesListed">
+    <View style={styles.container}>
+      {loading ? (
+        <ActivityIndicator
+          style={styles.loading}
+          size="large"
+          color="#0000ff"
+        />
+      ) : (
+        <ScrollView>
           <View>
             {Object.entries(movies).map((m) => (
               <Movie key={m[0]} id={m[0]} />
@@ -40,9 +54,26 @@ const RatingScreen = ({ navigation }) => {
           </View>
         </ScrollView>
       )}
-      <Button title="Submit ratings" onPress={() => handleSubmit()} />
+      <View style={styles.bottom}>
+        <Button title="Submit ratings" onPress={() => handleSubmit()} />
+      </View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  loading: {
+    flex: 8,
+  },
+  bottom: {
+    flex: 1,
+    justifyContent: "flex-end",
+    marginBottom: 36,
+  },
+});
 
 export default RatingScreen;
