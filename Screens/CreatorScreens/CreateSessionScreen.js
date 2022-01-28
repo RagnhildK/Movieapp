@@ -15,7 +15,7 @@ export default function CreateSessionScreen({ navigation }) {
     // TODO
     //ask backend if the username is free, if free gets true back:
     // diplay error message if false
-    // ask backend to create a session with the number of movies if true
+    // ask backend to create a session with the ids of the movies to rate
     // dispatch(setSessionID(username));
     navigation.navigate("RatingScreen");
     dispatch(setLoading(true));
