@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   creator: false,
+  sessionID: "",
   movies: {},
 };
 
@@ -12,8 +13,10 @@ export const movieRatingSlice = createSlice({
     setCreator: (state, action) => {
       if (action.payload == "Create") {
         state.creator = true;
-        console.log(action.payload);
       } else state.creator = false;
+    },
+    setSessionID: (state, action) => {
+      state.sessionID = action.payload;
     },
     addFetchedMovie: (state, action) => {
       const id = action.payload.id;
@@ -32,7 +35,7 @@ export const movieRatingSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { setCreator, addFetchedMovie, rateMovie } =
+export const { setCreator, setSessionID, addFetchedMovie, rateMovie } =
   movieRatingSlice.actions;
 
 export default movieRatingSlice.reducer;
