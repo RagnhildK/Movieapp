@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Button } from "react-native";
+import { View, Button, ScrollView, Text } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
 import { addFetchedMovie } from "../redux/movieSlicer";
@@ -28,7 +28,7 @@ const Rating = ({ navigation }) => {
   const handlePress = () => {
     getMovie();
   };
-
+  
   return (
     <View>
       <Button
@@ -37,13 +37,13 @@ const Rating = ({ navigation }) => {
       />
       <Button onPress={handlePress} title="Hent filmer" />
       {!!movies && (
-        <View className="MoviesListed">
+        <ScrollView className="MoviesListed">
           <View>
             {Object.entries(movies).map((m) => (
               <Movie key={m[0]} id={m[0]} />
             ))}
           </View>
-        </View>
+        </ScrollView>
       )}
     </View>
   );
