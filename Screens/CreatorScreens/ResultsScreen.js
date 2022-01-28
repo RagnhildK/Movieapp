@@ -1,9 +1,9 @@
 import React from "react";
-import { View } from "react-native";
-import ResultMovie from "../components/Movie/ResultMovie";
+import { View, Button } from "react-native";
+import ResultMovie from "../../components/Movie/ResultMovie";
 import { useSelector } from "react-redux";
 
-export default function Result() {
+export default function ResultScreen({navigation}) {
   const { movies } = useSelector((state) => state.movieRatings);
   return (
     <View>
@@ -16,6 +16,10 @@ export default function Result() {
           </View>
         </View>
       )}
+      <Button
+        title="This page should go to the start screen"
+        onPress={() => navigation.navigate("CreateOrJoinScreen")}
+      />
     </View>
   );
 }

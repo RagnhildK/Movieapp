@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+  creator: false,
   movies: {},
 };
 
@@ -8,6 +9,12 @@ export const movieRatingSlice = createSlice({
   name: "movieRatings",
   initialState,
   reducers: {
+    setCreator: (state, action) => {
+      if (action.payload == "Create") {
+        state.creator = true;
+        console.log(action.payload);
+      } else state.creator = false;
+    },
     addFetchedMovie: (state, action) => {
       const id = action.payload.id;
       state.movies[id] = {
@@ -25,6 +32,7 @@ export const movieRatingSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { addFetchedMovie, rateMovie } = movieRatingSlice.actions;
+export const { setCreator, addFetchedMovie, rateMovie } =
+  movieRatingSlice.actions;
 
 export default movieRatingSlice.reducer;
