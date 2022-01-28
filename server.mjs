@@ -51,17 +51,22 @@ users: [{username: "Ozan"}, {username: "Ragnhild"}, {username: "Hanna"}]
 `;
 
 //TODO: store username in asyncstorage as well
-//
 
+//when create session screen & join session screen
+//returnerer false hvis det ikke går
+//returnerer true hvis det funker å sette ønsket brukernavn
 export const registerUser = async (username) => {
   if ((await userCollection.count({ username })) > 0) {
     console.log(username + " username is used");
+    return false;
   } else {
     console.log(username + " username is avaliable");
     await userCollection.insertOne({ username });
+    return true;
   }
 };
 
+//when users clicks create session
 export const createASession = async (ownerUsername, moviesTBRated) => {
   // Insert a document with the owners username
   await deleteASession(ownerUsername);
@@ -115,7 +120,7 @@ export const getRatings = async (myUsername, ofUsername) => {
   }
 };
 
-//should be called when owener of session clickes "end session" on results screen
+//should be called when owner of session clickes "end session" on results screen
 export const deleteASession = async (ownerUsername) => {
   await sessionCollection.deleteMany({
     ownerUsername,
