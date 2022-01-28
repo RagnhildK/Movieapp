@@ -12,8 +12,11 @@ export default function CreateSessionScreen({ navigation }) {
   const createSession = () => {
     dispatch(setUsername(username));
     dispatch(setNmbMovies(nmbMovies));
-    // TODO ask backend to create a session with the number of movies, and get the sessionid back from the backend
-    // dispatch(setSessionID(resultfrombackend));
+    // TODO
+    //ask backend if the username is free, if free gets true back:
+    // diplay error message if false
+    // ask backend to create a session with the ids of the movies to rate
+    // dispatch(setSessionID(username));
     navigation.navigate("RatingScreen");
     dispatch(setLoading(true));
   };

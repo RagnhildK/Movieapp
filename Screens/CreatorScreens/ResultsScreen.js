@@ -3,7 +3,7 @@ import { View, Button } from "react-native";
 import ResultMovie from "../../components/Movie/ResultMovie";
 import { useSelector } from "react-redux";
 
-export default function ResultScreen({navigation}) {
+export default function ResultScreen({ navigation }) {
   const { movies } = useSelector((state) => state.movieRatings);
   return (
     <View>
@@ -17,7 +17,8 @@ export default function ResultScreen({navigation}) {
         </View>
       )}
       <Button
-        title="This page should go to the start screen"
+        // denne knappen skal kalle deleteASession fra backend
+        title="Go to start screen"
         onPress={() => navigation.navigate("CreateOrJoinScreen")}
       />
     </View>

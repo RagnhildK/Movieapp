@@ -25,7 +25,7 @@ const RatingScreen = ({ navigation }) => {
 
   const handleSubmit = () => {
     // TODO send rating info to the backend
-
+    // kaller updateRatings(username, sessionId, ratings)
     if (creator) {
       navigation.navigate("WaitingScreen");
     } else {
