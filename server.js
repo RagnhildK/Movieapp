@@ -1,4 +1,5 @@
 import { MongoClient } from "mongodb";
+
 const uri =
   "mongodb+srv://RagnhildK:RaggenHanna@cluster0.uidau.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
@@ -81,15 +82,21 @@ export const createASession = async (ownerUsername, moviesTBRated) => {
 export const joinASession = async (myUsername, ofUsername) => {
   // Check the existance of the session
   // Add a username to the session document ofUsername
-  const key = `partipicants.${myUsername}`;
-  const set = {};
-  set[key] = null;
-  const updateDocument = {
-    $set: set,
-  };
-  const filterDocument = { ownerUsername: ofUsername };
-  console.log(filterDocument, updateDocument);
-  await sessionCollection.updateOne(filterDocument, updateDocument);
+  if ((await sessionCollection.count({ ownerUsername: ofUsername })) <= 0) {
+    console.log("There is no session made by " + ofUsername);
+    return false;
+  } else {
+    const key = `partipicants.${myUsername}`;
+    const set = {};
+    set[key] = null;
+    const updateDocument = {
+      $set: set,
+    };
+    const filterDocument = { ownerUsername: ofUsername };
+    console.log(filterDocument, updateDocument);
+    await sessionCollection.updateOne(filterDocument, updateDocument);
+    return true;
+  }
 };
 
 //should be called when a user submits their ratings
@@ -127,11 +134,15 @@ export const deleteASession = async (ownerUsername) => {
   });
 };
 
-await registerUser("Ozan");
-await registerUser("Raggen");
-await registerUser("Ozan");
+//await registerUser("Ozan");
+//await registerUser("Raggen");
+// //await registerUser("Ozan");
 // await createASession("Ozan", [1, 2, 3]);
 // await joinASession("Ragnhild", "Ozan");
+// await joinASession("Ragnhild", "Maia");
+// await createASession("Maia", [4, 2, 3]);
+// await joinASession("Ragnhild", "Maia");
+
 // await updateRatings("Ragnhild", "Ozan", { 1: 5, 2: 2, 3: 1 });
 // await createASession("Hanna", [3, 4, 5]);
 // await updateRatings("Hanna", "Hanna", { 3: 2, 4: 5, 5: 4 });
