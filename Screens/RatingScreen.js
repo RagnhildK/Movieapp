@@ -12,7 +12,7 @@ import { addFetchedMovie, setLoading } from "../redux/movieSlicer";
 import { getMovie } from "../utils/fetch";
 
 const RatingScreen = ({ navigation }) => {
-  const { movies, creator, loading } = useSelector(
+  const { movies, creator, loading, username, sessionID, ratings } = useSelector(
     (state) => state.movieRatings
   );
 
@@ -24,8 +24,7 @@ const RatingScreen = ({ navigation }) => {
   };
 
   const handleSubmit = () => {
-    // TODO send rating info to the backend
-    // kaller updateRatings(username, sessionId, ratings)
+    // updateRatings(username, sessionId, ratings)
     if (creator) {
       navigation.navigate("WaitingScreen");
     } else {
