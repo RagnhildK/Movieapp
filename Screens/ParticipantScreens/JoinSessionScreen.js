@@ -7,7 +7,7 @@ import * as Colors from "../../styles/colors";
 import { addParticipant } from "../../firebase";
 
 export default function JoinSessionScreen({ navigation }) {
-  const [input, setInput] = useState("");
+  const [owner, setowner] = useState("");
   const [username, setLocalUsername] = useState("");
   const [userError, setUserError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
@@ -30,9 +30,9 @@ export default function JoinSessionScreen({ navigation }) {
         setSessionError(true);
       } else {
         dispatch(setUsername(username));
-        dispatch(setSessionID(username));
+        dispatch(setSessionID(owner));
         dispatch(setLoading(true));
-        addParticipant(username, input);
+        addParticipant(username, owner);
         navigation.navigate("RatingScreen");
       }
     }
@@ -41,7 +41,7 @@ export default function JoinSessionScreen({ navigation }) {
   // // if (registerUser(username)) {
   // if (true) {
   //   dispatch(setUsername(username));
-  //   // if (joinASession(username, input){ TODO make the function return true or false
+  //   // if (joinASession(username, owner){ TODO make the function return true or false
   //   if (true) {
   //     dispatch(setSessionID(username));
   //     dispatch(setLoading(true));
@@ -69,7 +69,7 @@ export default function JoinSessionScreen({ navigation }) {
         label="Username of session creator"
         error={sessionError}
         onChangeText={(val) => setInput(val)}
-        value={input}
+        value={owner}
         placeholder="username of session creator..."
       />
       <Button
