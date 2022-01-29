@@ -1,12 +1,13 @@
 import React from "react";
-import { View, Button } from "react-native";
+import { View, Button, StyleSheet } from "react-native";
 import ResultMovie from "../../components/Movie/ResultMovie";
 import { useSelector } from "react-redux";
+import * as Colors from "../../styles/colors";
 
 export default function ResultScreen({ navigation }) {
   const { movies } = useSelector((state) => state.movieRatings);
   return (
-    <View>
+    <View style={styles.container}>
       {!!movies && (
         <View className="MoviesListed">
           <View>
@@ -18,9 +19,20 @@ export default function ResultScreen({ navigation }) {
       )}
       <Button
         // denne knappen skal kalle deleteASession fra backend
+        color={Colors.BROWN_RED}
         title="Go to start screen"
         onPress={() => navigation.navigate("CreateOrJoinScreen")}
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: Colors.BEIGE,
+    marginLeft: "20px",
+    marginRight: "20px",
+  },
+});

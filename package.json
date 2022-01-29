@@ -39,6 +39,5 @@
     "eject": "expo eject",
     "script": "nodeman server.js"
   },
-  "private": true,
-  "type": "module"
+  "private": true
 }

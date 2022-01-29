@@ -3,6 +3,7 @@ import { View, Button, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
 import { TextInput } from "react-native-paper";
+import * as Colors from "../../styles/colors";
 
 // import { registerUser, joinASession } from "../../server";
 
@@ -55,7 +56,7 @@ export default function JoinSessionScreen({ navigation }) {
   // }
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         mode="outlined"
         label="Username"
@@ -72,7 +73,19 @@ export default function JoinSessionScreen({ navigation }) {
         value={input}
         placeholder="username of session creator..."
       />
-      <Button title="Start rating" onPress={() => enterSession()} />
+      <Button
+        color={Colors.BROWN_RED}
+        title="Start rating"
+        onPress={() => enterSession()}
+      />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: Colors.BEIGE,
+  },
+});

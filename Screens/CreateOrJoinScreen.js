@@ -3,6 +3,7 @@ import { View, Button, StyleSheet } from "react-native";
 import { setCreator } from "../redux/movieSlicer";
 import { useDispatch } from "react-redux";
 import { setSessionID } from "../redux/movieSlicer";
+import * as Colors from "../styles/colors";
 
 export default function CreateOrJoinScreen({ navigation }) {
   const dispatch = useDispatch();
@@ -16,12 +17,12 @@ export default function CreateOrJoinScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Button
-        style={styles.button}
+        color={Colors.BROWN_RED}
         title="Create a session"
         onPress={() => handlePress("Create")}
       />
       <Button
-        style={styles.button}
+        color={Colors.BROWN_RED}
         title="Join a session"
         onPress={() => handlePress("Join")}
       />
@@ -30,6 +31,11 @@ export default function CreateOrJoinScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, justifyContent: "center" },
-  button: { alignItems: "center", padding: "1rem" },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: Colors.BEIGE,
+    marginLeft: "20px",
+    marginRight: "20px",
+  },
 });

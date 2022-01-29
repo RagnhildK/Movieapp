@@ -8,7 +8,8 @@ import {
   setLoading,
   setSessionID,
 } from "../../redux/movieSlicer";
-//import { registerUser } from "../../server.js";
+import * as Colors from "../../styles/colors";
+import { registerUser } from "../../server.js";
 
 export default function CreateSessionScreen({ navigation }) {
   const [username, setLocalUsername] = useState("");
@@ -19,8 +20,8 @@ export default function CreateSessionScreen({ navigation }) {
 
   const createSession = () => {
     dispatch(setNmbMovies(nmbMovies));
-    // registerUser(username)
-    if (true) {
+    //registerUser(username)
+    if (registerUser(username)) {
       dispatch(setUsername(username));
       // createASession(username,)
       dispatch(setSessionID(username));
@@ -36,7 +37,7 @@ export default function CreateSessionScreen({ navigation }) {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <TextInput
         mode="outlined"
         label="Username"
@@ -54,7 +55,21 @@ export default function CreateSessionScreen({ navigation }) {
         keyboardType="numeric"
         placeholder="How many movies do you want to choose between?"
       />
-      <Button title="Start rating" onPress={() => createSession()} />
+      <Button
+        color={Colors.BROWN_RED}
+        title="Start rating"
+        onPress={() => createSession()}
+      />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    backgroundColor: Colors.BEIGE,
+    marginLeft: "20px",
+    marginRight: "20px",
+  },
+});

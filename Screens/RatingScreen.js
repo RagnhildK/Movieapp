@@ -10,10 +10,11 @@ import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
 import { addFetchedMovie, setLoading } from "../redux/movieSlicer";
 import { getMovie } from "../utils/fetch";
+import * as Colors from "../styles/colors";
 
 const RatingScreen = ({ navigation }) => {
   const { movies, creator, loading } = useSelector(
-    (state) => state.movieRatings
+    (state) => state.movieRatings,
   );
 
   const dispatch = useDispatch();
@@ -55,7 +56,11 @@ const RatingScreen = ({ navigation }) => {
         </ScrollView>
       )}
       <View style={styles.bottom}>
-        <Button title="Submit ratings" onPress={() => handleSubmit()} />
+        <Button
+          color={Colors.BROWN_RED}
+          title="Submit ratings"
+          onPress={() => handleSubmit()}
+        />
       </View>
     </View>
   );
@@ -65,6 +70,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    backgroundColor: Colors.BEIGE,
+    marginLeft: "20px",
+    marginRight: "20px",
   },
   loading: {
     flex: 8,
