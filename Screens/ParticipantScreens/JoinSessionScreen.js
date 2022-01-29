@@ -13,21 +13,21 @@ export default function JoinSessionScreen({ navigation }) {
   const enterSession = () => {
     // const validUserName = registerUser(username);
     // const validSession = joinASession(username, input);
-    if (validUserName) {
-      if (validSession) {
+    if (!validUserName) {
+      if (!validSession) {
+        //TODO: error message that username is not available
+        //TODO: error message that there is no session for that username
+      } else {
+        // TODO: error message that username is not available
+      }
+    } else {
+      if (!validSession) {
+        //TODO: error message that there is no session for that username
+      } else {
         dispatch(setUsername(username));
         dispatch(setSessionID(username));
         dispatch(setLoading(true));
         navigation.navigate("RatingScreen");
-      } else {
-        //TODO: error message that there is no session for that username
-      }
-    } else {
-      if (validSession) {
-        // TODO: error message that username is not available
-      } else {
-        //TODO: error message that username is not available
-        //TODO: error message that there is no session for that username
       }
     }
   };
