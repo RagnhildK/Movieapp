@@ -7,7 +7,7 @@ import * as Colors from "../../styles/colors";
 import { addParticipant } from "../../firebase";
 
 export default function JoinSessionScreen({ navigation }) {
-  const [owner, setowner] = useState("");
+  const [owner, setOwner] = useState("");
   const [username, setLocalUsername] = useState("");
   const [userError, setUserError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
@@ -68,7 +68,7 @@ export default function JoinSessionScreen({ navigation }) {
         mode="outlined"
         label="Username of session creator"
         error={sessionError}
-        onChangeText={(val) => setInput(val)}
+        onChangeText={(val) => setOwner(val)}
         value={owner}
         placeholder="username of session creator..."
       />

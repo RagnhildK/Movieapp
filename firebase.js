@@ -59,7 +59,7 @@ export async function getRatings(owner) {
     ratings.push(doc.data().participants);
     console.log(ratings[0]);
   });
-  return ratings;
+  return ratings[0];
 }
 
 export async function addSession(name, movies) {

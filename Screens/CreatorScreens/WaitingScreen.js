@@ -14,16 +14,22 @@ import { useSelector } from "react-redux";
 export default function WaitingScreen({ navigation }) {
   const { sessionID } = useSelector((state) => state.movieRatings);
   console.log("hei");
-  getRatings(sessionID);
+
+  const handlePress = () => {
+    getRatings(sessionID);
+    //TODO: store ratings in redux ?
+    //lage en funskjon som kalkulerer ratingsene
+    navigation.navigate("ResultScreen");
+  };
+
   return (
     <View style={styles.container}>
-      <Text>number/number participants have finished their ratings</Text>
       <Text>Wait for other members or end session.</Text>
       <Button
         color={Colors.BROWN_RED}
         // denne buttonen skal ha businesslogikk som plusser og sorterer ratingsene. ratingsene er da allerede lagret i redux, fra når den kaller getratings
         title="End session and view results"
-        onPress={() => navigation.navigate("ResultScreen")}
+        onPress={() => handlePress()}
       />
     </View>
   );
