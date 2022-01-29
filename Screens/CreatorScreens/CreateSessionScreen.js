@@ -6,7 +6,7 @@ import {
   setUsername,
   setNmbMovies,
   setLoading,
-  setSessionI,
+  setSessionID,
 } from "../../redux/movieSlicer";
 //import { registerUser } from "../../server.js";
 
@@ -14,13 +14,12 @@ export default function CreateSessionScreen({ navigation }) {
   const [username, setLocalUsername] = useState("");
   const [nmbMovies, setLocalNmbMovies] = useState("");
   const [userError, setUserError] = useState(false);
-  const [sessionError, setSessionError] = useState(true);
 
   const dispatch = useDispatch();
 
   const createSession = () => {
     dispatch(setNmbMovies(nmbMovies));
-    // if (registerUser(username)) {
+    // registerUser(username)
     if (true) {
       dispatch(setUsername(username));
       // createASession(username,)
@@ -28,8 +27,12 @@ export default function CreateSessionScreen({ navigation }) {
       navigation.navigate("RatingScreen");
       dispatch(setLoading(true));
     } else {
-      // TODO: error message that username is not available
+      setUserError(true);
     }
+  };
+  const updateUsernameInput = (val) => {
+    setUserError(false);
+    setLocalUsername(val);
   };
 
   return (
@@ -38,8 +41,7 @@ export default function CreateSessionScreen({ navigation }) {
         mode="outlined"
         label="Username"
         error={userError}
-        styles={styles.input}
-        onChangeText={(val) => setLocalUsername(val)}
+        onChangeText={(val) => updateUsernameInput(val)}
         value={username}
         placeholder="Enter a username for the session..."
       />
@@ -47,8 +49,6 @@ export default function CreateSessionScreen({ navigation }) {
       <TextInput
         mode="outlined"
         label="Number of movies"
-        error={sessionError}
-        styles={styles.input}
         onChangeText={(val) => setLocalNmbMovies(val)}
         value={nmbMovies}
         keyboardType="numeric"
@@ -58,12 +58,3 @@ export default function CreateSessionScreen({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  input: {
-    height: 700,
-    margin: 20,
-    borderWidth: 1,
-    padding: 10,
-  },
-});

@@ -1,11 +1,10 @@
 import React from "react";
 import { View, Button, StyleSheet } from "react-native";
 import { setCreator } from "../redux/movieSlicer";
-import {useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setSessionID } from "../redux/movieSlicer";
 
 export default function CreateOrJoinScreen({ navigation }) {
-
   const dispatch = useDispatch();
 
   const handlePress = (user) => {
@@ -32,5 +31,5 @@ export default function CreateOrJoinScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   container: { flex: 1, justifyContent: "center" },
-  button: {alignItems: "center", padding: "1rem"},
+  button: { alignItems: "center", padding: "1rem" },
 });

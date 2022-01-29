@@ -1,28 +1,34 @@
 import React, { useState } from "react";
-import { View, Button, TextInput, StyleSheet } from "react-native";
+import { View, Button, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
+import { TextInput } from "react-native-paper";
+
 // import { registerUser, joinASession } from "../../server";
 
 export default function JoinSessionScreen({ navigation }) {
   const [input, setInput] = useState("");
   const [username, setLocalUsername] = useState("");
+  const [userError, setUserError] = useState(false);
+  const [sessionError, setSessionError] = useState(false);
 
   const dispatch = useDispatch();
 
   const enterSession = () => {
     // const validUserName = registerUser(username);
     // const validSession = joinASession(username, input);
+    const validUserName = true;
+    const validSession = true;
     if (!validUserName) {
       if (!validSession) {
-        //TODO: error message that username is not available
-        //TODO: error message that there is no session for that username
+        setUserError(true);
+        setSessionError(true);
       } else {
-        // TODO: error message that username is not available
+        setUserError(true);
       }
     } else {
       if (!validSession) {
-        //TODO: error message that there is no session for that username
+        setSessionError(true);
       } else {
         dispatch(setUsername(username));
         dispatch(setSessionID(username));
@@ -51,30 +57,22 @@ export default function JoinSessionScreen({ navigation }) {
   return (
     <View>
       <TextInput
-        styles={styles.input}
+        mode="outlined"
+        label="Username"
+        error={userError}
         onChangeText={(val) => setLocalUsername(val)}
         value={username}
         placeholder="Enter a username for the session..."
       />
       <TextInput
-        styles={styles.input}
+        mode="outlined"
+        label="Username of session creator"
+        error={sessionError}
         onChangeText={(val) => setInput(val)}
         value={input}
         placeholder="username of session creator..."
       />
-      <Button
-        title="This page should go to rating screen"
-        onPress={() => enterSession()}
-      />
+      <Button title="Start rating" onPress={() => enterSession()} />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-  },
-});
