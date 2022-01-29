@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { View, Button, TextInput, StyleSheet } from "react-native";
-import { setUsername, setNmbMovies, setLoading } from "../../redux/movieSlicer";
+import { setUsername, setNmbMovies, setLoading, setSessionID } from "../../redux/movieSlicer";
+// import { registerUser } from "../../server.js";
 
 export default function CreateSessionScreen({ navigation }) {
   const [username, setLocalUsername] = useState("");
@@ -10,15 +11,17 @@ export default function CreateSessionScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const createSession = () => {
-    dispatch(setUsername(username));
     dispatch(setNmbMovies(nmbMovies));
-    // TODO
-    //ask backend if the username is free, if free gets true back:
-    // diplay error message if false
-    // ask backend to create a session with the ids of the movies to rate
-    // dispatch(setSessionID(username));
-    navigation.navigate("RatingScreen");
-    dispatch(setLoading(true));
+    // if (registerUser(username)) {
+    if (true) {
+      dispatch(setUsername(username));
+      // createASession(username,)
+      dispatch(setSessionID(username));
+      navigation.navigate("RatingScreen");
+      dispatch(setLoading(true));
+    } else {
+      // TODO: error message that username is not available
+    }
   };
 
   return (
@@ -37,10 +40,7 @@ export default function CreateSessionScreen({ navigation }) {
         keyboardType="numeric"
         placeholder="How many movies do you want to rank?..."
       />
-      <Button
-        title="Start rating"
-        onPress={() => createSession()}
-      />
+      <Button title="Start rating" onPress={() => createSession()} />
     </View>
   );
 }

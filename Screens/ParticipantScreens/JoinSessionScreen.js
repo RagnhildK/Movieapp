@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Button, TextInput, StyleSheet } from "react-native";
 import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
+// import { registerUser, joinASession } from "../../server";
 
 export default function JoinSessionScreen({ navigation }) {
   const [input, setInput] = useState("");
@@ -10,12 +11,42 @@ export default function JoinSessionScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const enterSession = () => {
-    dispatch(setUsername(username));
-    dispatch(setSessionID(input));
-    // TODO only navigate to this one if there is a session with that sessionId, if not show error
-    navigation.navigate("RatingScreen");
-    dispatch(setLoading(true));
+    // const validUserName = registerUser(username);
+    // const validSession = joinASession(username, input);
+    if (validUserName) {
+      if (validSession) {
+        dispatch(setUsername(username));
+        dispatch(setSessionID(username));
+        dispatch(setLoading(true));
+        navigation.navigate("RatingScreen");
+      } else {
+        //TODO: error message that there is no session for that username
+      }
+    } else {
+      if (validSession) {
+        // TODO: error message that username is not available
+      } else {
+        //TODO: error message that username is not available
+        //TODO: error message that there is no session for that username
+      }
+    }
   };
+
+  // // if (registerUser(username)) {
+  // if (true) {
+  //   dispatch(setUsername(username));
+  //   // if (joinASession(username, input){ TODO make the function return true or false
+  //   if (true) {
+  //     dispatch(setSessionID(username));
+  //     dispatch(setLoading(true));
+  //     navigation.navigate("RatingScreen");
+  //   }
+  //   else{
+  //     // TODO: error message that there is no session for that username
+  //   }
+  // } else {
+  //   // TODO: error message that username is not available
+  // }
 
   return (
     <View>
