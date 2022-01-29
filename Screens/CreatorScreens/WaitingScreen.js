@@ -1,6 +1,8 @@
 import React from "react";
 import { View, Button, Text, StyleSheet } from "react-native";
 import * as Colors from "../../styles/colors";
+import { getRatings } from "../../firebase";
+import { useSelector } from "react-redux";
 
 // dispatch
 // denne skjer i en loop så lenge personen er på denne siden
@@ -10,6 +12,9 @@ import * as Colors from "../../styles/colors";
 // dispatch slutt
 
 export default function WaitingScreen({ navigation }) {
+  const { sessionID } = useSelector((state) => state.movieRatings);
+  console.log("hei");
+  getRatings(sessionID);
   return (
     <View style={styles.container}>
       <Text>number/number participants have finished their ratings</Text>

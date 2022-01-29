@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getFirestore } from "firebase/firestore";
 import {
+  getFirestore,
   doc,
   setDoc,
   collection,
@@ -12,6 +12,7 @@ import {
   getDoc,
   getDocs,
   updateDoc,
+  onSnapshot,
 } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -51,6 +52,16 @@ export async function checkIfUserExists(user) {
   return a.size != 0;
 }
 
+export async function getRatings(owner) {
+  const a = doc(db, "sessions", owner);
+  let ratings = [];
+  await getDoc(a).then((doc) => {
+    ratings.push(doc.data().participants);
+    console.log(ratings[0]);
+  });
+  return ratings;
+}
+
 export async function addSession(name, movies) {
   const data = {
     moviesTBR: movies,
@@ -70,6 +81,19 @@ export async function addParticipant(username, owner) {
   await setDoc(doc(db, "sessions", owner), data, { merge: true });
   // await db.collection("sessions").doc(owner).update(data);
 }
+
+export async function updateRatings(username, ratings, owner) {
+  const data = {
+    participants: {
+      [username]: [ratings],
+    },
+  };
+  await setDoc(doc(db, "sessions", owner), data, { merge: true });
+}
+
+// export async function getRatings(owner) {
+//    const a = await getDocs(doc(db, "sessions", owner));
+// }
 
 // export async function checkIfUserExists() {
 //   const docRef = doc(db, "Users", "");

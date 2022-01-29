@@ -30,7 +30,7 @@ export default function JoinSessionScreen({ navigation }) {
         setSessionError(true);
       } else {
         dispatch(setUsername(username));
-        dispatch(setSessionID(username));
+        dispatch(setSessionID(input));
         dispatch(setLoading(true));
         addParticipant(username, input);
         navigation.navigate("RatingScreen");

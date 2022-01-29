@@ -11,6 +11,7 @@ import Movie from "../components/Movie/Movie";
 import { addFetchedMovie, setLoading } from "../redux/movieSlicer";
 import { getMovie } from "../utils/fetch";
 import * as Colors from "../styles/colors";
+import { updateRatings } from "../firebase";
 
 const RatingScreen = ({ navigation }) => {
   const { movies, creator, loading, username, sessionID, ratings } =
@@ -24,7 +25,7 @@ const RatingScreen = ({ navigation }) => {
   };
 
   const handleSubmit = () => {
-    // updateRatings(username, sessionId, ratings)
+    updateRatings(username, ratings, sessionID);
     if (creator) {
       navigation.navigate("WaitingScreen");
     } else {
