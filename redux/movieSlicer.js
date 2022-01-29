@@ -7,6 +7,7 @@ const initialState = {
   nmbMovies: 0,
   loading: false,
   movies: {},
+  ratings: {},
 };
 
 export const movieRatingSlice = createSlice({
@@ -36,12 +37,12 @@ export const movieRatingSlice = createSlice({
         title: action.payload.title,
         posterPath: action.payload.poster_path,
         overview: action.payload.overview,
-        rating: null,
       };
+      state.ratings[id] = 0;
     },
     rateMovie: (state, action) => {
       const id = action.payload.id;
-      state.movies[id].rating = action.payload.rating;
+      state.ratings[id]=  action.payload.rating;
     },
   },
 });

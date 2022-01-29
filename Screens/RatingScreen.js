@@ -13,9 +13,8 @@ import { getMovie } from "../utils/fetch";
 import * as Colors from "../styles/colors";
 
 const RatingScreen = ({ navigation }) => {
-  const { movies, creator, loading } = useSelector(
-    (state) => state.movieRatings,
-  );
+  const { movies, creator, loading, username, sessionID, ratings } =
+    useSelector((state) => state.movieRatings);
 
   const dispatch = useDispatch();
 
@@ -25,8 +24,7 @@ const RatingScreen = ({ navigation }) => {
   };
 
   const handleSubmit = () => {
-    // TODO send rating info to the backend
-    // kaller updateRatings(username, sessionId, ratings)
+    // updateRatings(username, sessionId, ratings)
     if (creator) {
       navigation.navigate("WaitingScreen");
     } else {
