@@ -10,6 +10,7 @@ import {
 } from "../../redux/movieSlicer";
 import * as Colors from "../../styles/colors";
 import { registerUser } from "../../server.js";
+import { addSession, addUser, checkIfUserExists } from "../../firebase";
 
 export default function CreateSessionScreen({ navigation }) {
   const [username, setLocalUsername] = useState("");
@@ -20,10 +21,13 @@ export default function CreateSessionScreen({ navigation }) {
 
   const createSession = () => {
     dispatch(setNmbMovies(nmbMovies));
-    //registerUser(username)
-    if (registerUser(username)) {
+    //registeUser(username)
+    //sjekker om brukernavn ikke finnes aka er ledig
+    if (true) {
       dispatch(setUsername(username));
-      // createASession(username,)
+      //addUser(username);
+      //TODO Lagre filmene som skal rates i redux på formatet under
+      addSession(username, [1, 2, 3, 4]);
       dispatch(setSessionID(username));
       navigation.navigate("RatingScreen");
       dispatch(setLoading(true));

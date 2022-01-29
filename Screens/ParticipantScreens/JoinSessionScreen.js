@@ -4,8 +4,7 @@ import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
 import { TextInput } from "react-native-paper";
 import * as Colors from "../../styles/colors";
-
-// import { registerUser, joinASession } from "../../server";
+import { addParticipant } from "../../firebase";
 
 export default function JoinSessionScreen({ navigation }) {
   const [input, setInput] = useState("");
@@ -16,8 +15,7 @@ export default function JoinSessionScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const enterSession = () => {
-    // const validUserName = registerUser(username);
-    // const validSession = joinASession(username, input);
+    //TODO deal med å lage sjekk for valid session
     const validUserName = true;
     const validSession = true;
     if (!validUserName) {
@@ -34,6 +32,7 @@ export default function JoinSessionScreen({ navigation }) {
         dispatch(setUsername(username));
         dispatch(setSessionID(username));
         dispatch(setLoading(true));
+        addParticipant(username, input);
         navigation.navigate("RatingScreen");
       }
     }

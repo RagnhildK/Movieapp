@@ -4,10 +4,12 @@ import { setCreator } from "../redux/movieSlicer";
 import { useDispatch } from "react-redux";
 import { setSessionID } from "../redux/movieSlicer";
 import * as Colors from "../styles/colors";
+import { addUser, checkIfUserExists } from "../firebase";
 
 export default function CreateOrJoinScreen({ navigation }) {
   const dispatch = useDispatch();
 
+  //checkIfUserExists("Anna");
   const handlePress = (user) => {
     navigation.navigate(user + "SessionScreen");
     dispatch(setCreator(user));
