@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Button, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable, Text } from "react-native";
 import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
 import { TextInput } from "react-native-paper";
@@ -72,11 +72,9 @@ export default function JoinSessionScreen({ navigation }) {
         value={owner}
         placeholder="username of session creator..."
       />
-      <Button
-        color={Colors.BROWN_RED}
-        title="Start rating"
-        onPress={() => enterSession()}
-      />
+      <Pressable style={styles.button} onPress={() => enterSession()}>
+        <Text style={styles.buttonText}> Go to start page</Text>
+      </Pressable>
     </View>
   );
 }
@@ -86,5 +84,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: Colors.BEIGE,
+  },
+  button: {
+    backgroundColor: Colors.BROWN_RED,
+    margin: 10,
+    padding: 10,
+    maxWidth: 300,
+    borderRadius: 15,
+  },
+  buttonText: {
+    color: Colors.WHITE,
+    textAlign: "center",
   },
 });

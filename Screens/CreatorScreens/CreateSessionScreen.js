@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { View, Button, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable, Text } from "react-native";
 import { TextInput } from "react-native-paper";
 import {
   setUsername,
@@ -59,11 +59,9 @@ export default function CreateSessionScreen({ navigation }) {
         keyboardType="numeric"
         placeholder="How many movies do you want to choose between?"
       />
-      <Button
-        color={Colors.BROWN_RED}
-        title="Start rating"
-        onPress={() => createSession()}
-      />
+      <Pressable style={styles.button} onPress={() => createSession()}>
+        <Text style={styles.buttonText}> Create a session</Text>
+      </Pressable>
     </View>
   );
 }
@@ -75,5 +73,16 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.BEIGE,
     marginLeft: "20px",
     marginRight: "20px",
+  },
+  button: {
+    backgroundColor: Colors.BROWN_RED,
+    margin: 10,
+    padding: 10,
+    maxWidth: 300,
+    borderRadius: 15,
+  },
+  buttonText: {
+    color: Colors.WHITE,
+    textAlign: "center",
   },
 });

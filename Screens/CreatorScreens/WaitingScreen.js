@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Pressable } from "react-native";
 import * as Colors from "../../styles/colors";
 import { getRatings } from "../../firebase";
 import { useSelector } from "react-redux";
@@ -25,12 +25,14 @@ export default function WaitingScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>Wait for other members or end session.</Text>
-      <Button
-        color={Colors.BROWN_RED}
+      <Pressable
         // denne buttonen skal ha businesslogikk som plusser og sorterer ratingsene. ratingsene er da allerede lagret i redux, fra når den kaller getratings
-        title="End session and view results"
+        style={styles.button}
         onPress={() => handlePress()}
-      />
+      >
+        {" "}
+        <Text style={styles.buttonText}> View results</Text>
+      </Pressable>
     </View>
   );
 }
@@ -42,5 +44,16 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.BEIGE,
     marginLeft: "20px",
     marginRight: "20px",
+  },
+  button: {
+    backgroundColor: Colors.BROWN_RED,
+    margin: 10,
+    padding: 10,
+    maxWidth: 300,
+    borderRadius: 15,
+  },
+  buttonText: {
+    color: Colors.WHITE,
+    textAlign: "center",
   },
 });

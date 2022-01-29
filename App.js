@@ -22,9 +22,9 @@ const App = () => (
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: Colors.BROWN_LIGHT,
+            backgroundColor: Colors.BROWN_GREY,
           },
-          headerTintColor: "#fff",
+          headerTintColor: Colors.WHITE,
           headerTitleAlign: "center",
         }}
       >
@@ -32,7 +32,7 @@ const App = () => (
           name="CreateOrJoinScreen"
           component={CreateOrJoinScreen}
           options={{
-            title: "Start page",
+            title: "MOVIE PICKER",
           }}
         />
         <Stack.Screen

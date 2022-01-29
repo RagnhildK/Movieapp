@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import {
   View,
-  Button,
   ScrollView,
   ActivityIndicator,
   StyleSheet,
+  Pressable,
+  Text,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
@@ -55,11 +56,9 @@ const RatingScreen = ({ navigation }) => {
         </ScrollView>
       )}
       <View style={styles.bottom}>
-        <Button
-          color={Colors.BROWN_RED}
-          title="Submit ratings"
-          onPress={() => handleSubmit()}
-        />
+        <Pressable style={styles.button} onPress={() => handleSubmit()}>
+          <Text style={styles.buttonText}> Submit rating</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -80,6 +79,17 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "flex-end",
     marginBottom: 36,
+  },
+  button: {
+    backgroundColor: Colors.BROWN_RED,
+    margin: 10,
+    padding: 10,
+    maxWidth: 300,
+    borderRadius: 15,
+  },
+  buttonText: {
+    color: Colors.WHITE,
+    textAlign: "center",
   },
 });
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Button, StyleSheet } from "react-native";
+import { View, StyleSheet, Pressable, Text } from "react-native";
 import ResultMovie from "../../components/Movie/ResultMovie";
 import { useSelector } from "react-redux";
 import * as Colors from "../../styles/colors";
@@ -17,12 +17,13 @@ export default function ResultScreen({ navigation }) {
           </View>
         </View>
       )}
-      <Button
+      <Pressable
         // denne knappen skal kalle deleteASession fra backend
-        color={Colors.BROWN_RED}
-        title="Go to start screen"
+        style={styles.button}
         onPress={() => navigation.navigate("CreateOrJoinScreen")}
-      />
+      >
+        <Text style={styles.buttonText}> Go to start screen</Text>
+      </Pressable>
     </View>
   );
 }
@@ -34,5 +35,16 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.BEIGE,
     marginLeft: "20px",
     marginRight: "20px",
+  },
+  button: {
+    backgroundColor: Colors.BROWN_RED,
+    margin: 10,
+    padding: 10,
+    maxWidth: 300,
+    borderRadius: 15,
+  },
+  buttonText: {
+    color: Colors.WHITE,
+    textAlign: "center",
   },
 });
