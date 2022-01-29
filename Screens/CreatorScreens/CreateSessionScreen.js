@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { View, Button, StyleSheet } from "react-native";
 import { TextInput } from "react-native-paper";
-import { setUsername, setNmbMovies, setLoading } from "../../redux/movieSlicer";
+import {
+  setUsername,
+  setNmbMovies,
+  setLoading,
+  setSessionI,
+} from "../../redux/movieSlicer";
 //import { registerUser } from "../../server.js";
 
 export default function CreateSessionScreen({ navigation }) {
@@ -14,15 +19,17 @@ export default function CreateSessionScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const createSession = () => {
-    dispatch(setUsername(username));
     dispatch(setNmbMovies(nmbMovies));
-    // TODO
-    //ask backend if the username is free, if free gets true back:
-    // diplay error message if false
-    // ask backend to create a session with the ids of the movies to rate
-    // dispatch(setSessionID(username));
-    navigation.navigate("RatingScreen");
-    dispatch(setLoading(true));
+    // if (registerUser(username)) {
+    if (true) {
+      dispatch(setUsername(username));
+      // createASession(username,)
+      dispatch(setSessionID(username));
+      navigation.navigate("RatingScreen");
+      dispatch(setLoading(true));
+    } else {
+      // TODO: error message that username is not available
+    }
   };
 
   return (
