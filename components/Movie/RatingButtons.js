@@ -5,7 +5,7 @@ import { rateMovie } from "../../redux/movieSlicer";
 import { AirbnbRating } from "react-native-ratings";
 
 function RatingButtons({ id }) {
-  const { movies } = useSelector((state) => state.movieRatings);
+  const { ratings } = useSelector((state) => state.movieRatings);
   const dispatch = useDispatch();
 
   const ratingCompleted = (rating) => {
@@ -16,7 +16,7 @@ function RatingButtons({ id }) {
     <View className="MovieItem">
       <AirbnbRating
         onFinishRating={(rating) => ratingCompleted(rating)}
-        defaultRating={movies[id].rating == null ? 0 : movies[id].rating}
+        defaultRating={ratings[id]}
         reviews={["", "", "", "", ""]}
       />
     </View>
