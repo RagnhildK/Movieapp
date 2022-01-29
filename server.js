@@ -6,12 +6,17 @@ const client = new MongoClient(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-console.log("start");
-await client.connect();
-console.log("connected");
 
-const sessionCollection = client.db("movieApp").collection("session");
-const userCollection = client.db("movieApp").collection("users");
+let sessionCollection;
+let userCollection;
+
+const connect = async () => {
+  await client.connect();
+  console.log("connected");
+  sessionCollection = client.db("movieApp").collection("session");
+  userCollection = client.db("movieApp").collection("users");
+};
+const connectionPromise = connect();
 
 // client.close();
 
@@ -57,6 +62,7 @@ users: [{username: "Ozan"}, {username: "Ragnhild"}, {username: "Hanna"}]
 //returnerer false hvis det ikke går
 //returnerer true hvis det funker å sette ønsket brukernavn
 export const registerUser = async (username) => {
+  await connectionPromise;
   if ((await userCollection.count({ username })) > 0) {
     console.log(username + " username is used");
     return false;
@@ -69,6 +75,7 @@ export const registerUser = async (username) => {
 
 //when users clicks create session
 export const createASession = async (ownerUsername, moviesTBRated) => {
+  await connectionPromise;
   // Insert a document with the owners username
   await deleteASession(ownerUsername);
   await sessionCollection.insertOne({
@@ -80,6 +87,7 @@ export const createASession = async (ownerUsername, moviesTBRated) => {
 };
 
 export const joinASession = async (myUsername, ofUsername) => {
+  await connectionPromise;
   // Check the existance of the session
   // Add a username to the session document ofUsername
   if ((await sessionCollection.count({ ownerUsername: ofUsername })) <= 0) {
@@ -101,6 +109,7 @@ export const joinASession = async (myUsername, ofUsername) => {
 
 //should be called when a user submits their ratings
 export const updateRatings = async (myUsername, ofUsername, ratings) => {
+  await connectionPromise;
   // Save the ratings of the user in the session of the
   const key = `partipicants.${myUsername}`;
   const set = {};
@@ -114,6 +123,7 @@ export const updateRatings = async (myUsername, ofUsername, ratings) => {
 
 //should be called by another business logic. run periodically when owner is done rating
 export const getRatings = async (myUsername, ofUsername) => {
+  await connectionPromise;
   //return an object with all participants and their ratings
   //check that the user that asks for ratings is the owner of the session
   if (myUsername !== ofUsername) {
@@ -129,6 +139,7 @@ export const getRatings = async (myUsername, ofUsername) => {
 
 //should be called when owner of session clickes "end session" on results screen
 export const deleteASession = async (ownerUsername) => {
+  await connectionPromise;
   await sessionCollection.deleteMany({
     ownerUsername,
   });
