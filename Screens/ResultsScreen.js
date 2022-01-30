@@ -1,21 +1,22 @@
 import React from "react";
 import ResultMovie from "../components/Movie/ResultMovie";
-import { View, StyleSheet, Pressable, Text } from "react-native";
 import { Provider } from "react-native-paper";
 import {
   setLoading,
-  setResults,
+  setTotalResults,
   addParticipant,
   resetParticipants,
+  sortTotalResults,
 } from "../redux/movieSlicer";
+import { View, StyleSheet, Pressable, Text } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getRatings } from "../firebase";
 import { useEffect } from "react";
 import * as Colors from "../styles/colors";
 
 export default function ResultScreen({ navigation }) {
-  const { movies, sessionID, participants } = useSelector(
-    (state) => state.movieRatings,
+  const { movies, sessionID, participants, sortedIDs } = useSelector(
+    (state) => state.movieRatings
   );
 
   const dispatch = useDispatch();
@@ -27,14 +28,16 @@ export default function ResultScreen({ navigation }) {
   };
 
   const handleResponse = (response) => {
+    dispatch(resetParticipants());
     for (let user in response) {
       let userRatings = response[user];
       dispatch(addParticipant(user));
       for (let movieId in userRatings) {
         let rating = userRatings[movieId];
-        dispatch(setResults({ movieId: movieId, rating: rating }));
+        dispatch(setTotalResults({ movieId: movieId, rating: rating }));
       }
     }
+    dispatch(sortTotalResults());
     dispatch(setLoading(false));
   };
 
@@ -49,17 +52,16 @@ export default function ResultScreen({ navigation }) {
         <Pressable style={styles.button} onPress={() => handlePress()}>
           <Text style={styles.buttonText}> Refresh results</Text>
         </Pressable>
-        {!!movies && (
+        {sortedIDs.length > 1 && (
           <View className="MoviesListed">
             <View>
-              {Object.entries(movies).map((m) => (
-                <ResultMovie key={m[0]} id={m[0]} />
+              {sortedIDs.map(([id, _]) => (
+                <ResultMovie key={id} id={id} />
               ))}
             </View>
           </View>
         )}
         <Pressable
-          // denne knappen skal kalle deleteASession fra backend
           style={styles.button}
           onPress={() => navigation.navigate("CreateOrJoinScreen")}
         >

@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import * as Colors from "../../styles/colors";
 import { getRatings } from "../../firebase";
 import { useSelector, useDispatch } from "react-redux";
-import { setResults } from "../../redux/movieSlicer";
+import { setTotalResults } from "../../redux/movieSlicer";
 
 // dispatch
 // denne skjer i en loop så lenge personen er på denne siden
@@ -22,7 +22,7 @@ export default function WaitingScreen({ navigation }) {
       let userRatings = response[user];
       for (let movieId in userRatings) {
         let rating = userRatings[movieId];
-        dispatch(setResults({ movieId: movieId, rating: rating}));
+        dispatch(setTotalResults({ movieId: movieId, rating: rating }));
       }
     }
   };
@@ -35,10 +35,7 @@ export default function WaitingScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text>Wait for other members or end session.</Text>
-      <Pressable
-        style={styles.button}
-        onPress={() => handlePress()}
-      >
+      <Pressable style={styles.button} onPress={() => handlePress()}>
         <Text style={styles.buttonText}> View results</Text>
       </Pressable>
     </View>

@@ -1,14 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  creator: false,
   sessionID: "",
   username: "",
   nmbMovies: 0,
   loading: false,
   movies: {},
   ratings: {},
-  results: {},
+  totalResults: {},
+  sortedIDs: [],
   participants: [],
 };
 
@@ -16,11 +16,6 @@ export const movieRatingSlice = createSlice({
   name: "movieRatings",
   initialState,
   reducers: {
-    setCreator: (state, action) => {
-      if (action.payload == "Create") {
-        state.creator = true;
-      } else state.creator = false;
-    },
     setSessionID: (state, action) => {
       state.sessionID = action.payload;
     },
@@ -46,33 +41,42 @@ export const movieRatingSlice = createSlice({
       const id = action.payload.id;
       state.ratings[id] = action.payload.rating;
     },
-    setResults: (state, action) => {
+    setTotalResults: (state, action) => {
       const id = action.payload.movieId;
-      state.results[id] = isNaN(state.results[id])
+      state.totalResults[id] = isNaN(state.totalResults[id])
         ? action.payload.rating
-        : state.results[id] + action.payload.rating;
+        : state.totalResults[id] + action.payload.rating;
+    },
+    sortTotalResults: (state) => {
+      const sortable = Object.entries(state.totalResults);
+      sortable.sort(function (a, b) {
+        return b[1] - a[1];
+      });
+      state.sortedIDs = sortable;
+
+      // state.totalResults = sortable.map(([id, rank]) => [id, rank, state.movies[id]]);
     },
     addParticipant: (state, action) => {
       state.participants.push(action.payload);
     },
     resetParticipants: (state) => {
-      state.participants = 0;
-    }
+      state.participants = [];
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
 export const {
-  setCreator,
   setSessionID,
   setUsername,
   setNmbMovies,
   setLoading,
   addFetchedMovie,
   rateMovie,
-  setResults,
+  setTotalResults,
+  sortTotalResults,
   addParticipant,
-  resetParticipants
+  resetParticipants,
 } = movieRatingSlice.actions;
 
 export default movieRatingSlice.reducer;
