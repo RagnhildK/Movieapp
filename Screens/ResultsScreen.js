@@ -15,8 +15,8 @@ import { useEffect } from "react";
 import * as Colors from "../styles/colors";
 
 export default function ResultScreen({ navigation }) {
-  const { movies, sessionID, participants } = useSelector(
-    (state) => state.movieRatings,
+  const { movies, sessionID, participants, sortedIDs } = useSelector(
+    (state) => state.movieRatings
   );
 
   const dispatch = useDispatch();
@@ -52,17 +52,16 @@ export default function ResultScreen({ navigation }) {
         <Pressable style={styles.button} onPress={() => handlePress()}>
           <Text style={styles.buttonText}> Refresh results</Text>
         </Pressable>
-        {!!movies && (
+        {sortedIDs.length > 1 && (
           <View className="MoviesListed">
             <View>
-              {Object.entries(movies).map((m) => (
-                <ResultMovie key={m[0]} id={m[0]} />
+              {sortedIDs.map(([id, _]) => (
+                <ResultMovie key={id} id={id} />
               ))}
             </View>
           </View>
         )}
         <Pressable
-          // denne knappen skal kalle deleteASession fra backend
           style={styles.button}
           onPress={() => navigation.navigate("CreateOrJoinScreen")}
         >

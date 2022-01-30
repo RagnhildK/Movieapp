@@ -8,6 +8,7 @@ const initialState = {
   movies: {},
   ratings: {},
   totalResults: {},
+  sortedIDs: [],
   participants: [],
 };
 
@@ -51,7 +52,9 @@ export const movieRatingSlice = createSlice({
       sortable.sort(function (a, b) {
         return b[1] - a[1];
       });
-      state.totalResults = sortable.map(([id, rank]) => [id, rank, state.movies[id]]);
+      state.sortedIDs = sortable;
+
+      // state.totalResults = sortable.map(([id, rank]) => [id, rank, state.movies[id]]);
     },
     addParticipant: (state, action) => {
       state.participants.push(action.payload);
