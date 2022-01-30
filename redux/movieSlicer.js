@@ -56,7 +56,7 @@ export const movieRatingSlice = createSlice({
       state.participants.push(action.payload);
     },
     resetParticipants: (state) => {
-      state.participants = 0;
+      state.participants = [];
     }
   },
 });

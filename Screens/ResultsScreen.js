@@ -21,11 +21,11 @@ export default function ResultScreen({ navigation }) {
 
   const handlePress = () => {
     dispatch(setLoading(true));
-    dispatch(resetParticipants);
     getRatings(sessionID, handleResponse)
   };
 
   const handleResponse = (response) => {
+    dispatch(resetParticipants());
     for (let user in response) {
       let userRatings = response[user];
       dispatch(addParticipant(user));
