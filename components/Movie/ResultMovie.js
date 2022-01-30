@@ -6,9 +6,15 @@ import * as Colors from "../../styles/colors";
 import { DetailedCard } from "./DetailedMovieCard";
 
 function ResultMovie(id) {
-  const { movies } = useSelector((state) => state.movieRatings);
-
+  const { movies, totalResults, participants } = useSelector(
+    (state) => state.movieRatings,
+  );
   const [visible, setVisible] = React.useState(false);
+
+  // const avgRank = () => {
+  //   // console.log()
+  //   return totalResults[id] / participants;
+  // };
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -24,8 +30,11 @@ function ResultMovie(id) {
           contentContainerStyle={styles.modal}
         >
           <Card>
+            <Card.Cover source={{ uri: url }} style={styles.image} />
             <Card.Content>
               <Title>{m.title}</Title>
+              <Text>{m.overview}</Text>
+              {/* <Text>{avgRank()}</Text> */}
             </Card.Content>
           </Card>
         </Modal>
