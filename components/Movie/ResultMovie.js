@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { Text } from "react-native";
+import { Card, Title } from "react-native-paper";
 import { useSelector } from "react-redux";
 
 function ResultMovie(id) {
@@ -7,11 +8,25 @@ function ResultMovie(id) {
   const m = movies[id.id];
   let url = "https://image.tmdb.org/t/p/w500/" + m.posterPath;
   return (
-    <View className="MovieItem">
-      <Text>{m.title}</Text>
-      <Image style={{ width: 200, height: 300 }} source={{ uri: url }}></Image>
-    </View>
+    <Card style={styles.container}>
+      <Card.Cover source={{ uri: url }} style={styles.image} />
+      {/* <Image style={styles.image} source={{ uri: url }}></Image> */}
+      <Card.Content>
+        <Title>{m.title}</Title>
+      </Card.Content>
+    </Card>
   );
 }
+
+const styles = {
+  container: {
+    padding: "1rem",
+    margin: 10,
+  },
+  image: { height: 250 },
+  scrollView: {
+    maxHeight: 100,
+  },
+};
 
 export default ResultMovie;

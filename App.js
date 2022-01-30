@@ -31,6 +31,7 @@ const App = () => (
         <Stack.Screen
           name="CreateOrJoinScreen"
           component={CreateOrJoinScreen}
+          //component={RatingScreen}
           options={{
             title: "MOVIE PICKER",
           }}

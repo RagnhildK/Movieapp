@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { Text } from "react-native";
 import RatingButtons from "./RatingButtons";
 import { useSelector } from "react-redux";
 import { Title, Card } from "react-native-paper";

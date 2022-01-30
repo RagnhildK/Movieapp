@@ -3,6 +3,7 @@ import { View, StyleSheet, Pressable, Text } from "react-native";
 import ResultMovie from "../../components/Movie/ResultMovie";
 import { useSelector } from "react-redux";
 import * as Colors from "../../styles/colors";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function ResultScreen({ navigation }) {
   const { movies } = useSelector((state) => state.movieRatings);
@@ -10,11 +11,11 @@ export default function ResultScreen({ navigation }) {
     <View style={styles.container}>
       {!!movies && (
         <View className="MoviesListed">
-          <View>
+          <ScrollView>
             {Object.entries(movies).map((m) => (
               <ResultMovie key={m[0]} id={m[0]} />
             ))}
-          </View>
+          </ScrollView>
         </View>
       )}
       <Pressable

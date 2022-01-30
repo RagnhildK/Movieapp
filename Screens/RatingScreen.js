@@ -29,9 +29,9 @@ const RatingScreen = ({ navigation }) => {
   const handleSubmit = () => {
     updateRatings(username, ratings, sessionID);
     if (creator) {
-      navigation.navigate("WaitingScreen");
+      navigation.navigate("ResultScreen");
     } else {
-      navigation.navigate("FinishedScreen");
+      navigation.navigate("ResultScreen");
     }
   };
 
@@ -49,18 +49,16 @@ const RatingScreen = ({ navigation }) => {
         />
       ) : (
         <ScrollView>
-          <View>
-            {Object.entries(movies).map((m) => (
-              <Movie key={m[0]} id={m[0]} />
-            ))}
-          </View>
+          {Object.entries(movies).map((m) => (
+            <Movie key={m[0]} id={m[0]} />
+          ))}
         </ScrollView>
       )}
-      <View style={styles.bottom}>
-        <Pressable style={styles.button} onPress={() => handleSubmit()}>
-          <Text style={styles.buttonText}> Submit rating</Text>
-        </Pressable>
-      </View>
+      {/* <View style={styles.bottom}> */}
+      <Pressable style={styles.button} onPress={() => handleSubmit()}>
+        <Text style={styles.buttonText}> Submit rating</Text>
+      </Pressable>
+      {/* </View> */}
     </View>
   );
 };
@@ -76,11 +74,11 @@ const styles = StyleSheet.create({
   loading: {
     flex: 8,
   },
-  bottom: {
-    flex: 1,
-    justifyContent: "flex-end",
-    marginBottom: 36,
-  },
+  // bottom: {
+  //   flex: 1,
+  //   justifyContent: "flex-end",
+  //   marginBottom: 36,
+  // },
   button: {
     backgroundColor: Colors.BROWN_RED,
     margin: 10,
