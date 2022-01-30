@@ -2,7 +2,9 @@ import React from "react";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import * as Colors from "../../styles/colors";
 import { getRatings } from "../../firebase";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { setResults } from "../../redux/movieSlicer";
+import { connectFirestoreEmulator } from "@firebase/firestore";
 
 // dispatch
 // denne skjer i en loop så lenge personen er på denne siden
@@ -13,10 +15,24 @@ import { useSelector } from "react-redux";
 
 export default function WaitingScreen({ navigation }) {
   const { sessionID } = useSelector((state) => state.movieRatings);
-  console.log("hei");
+
+  const dispatch = useDispatch();
+
+  const handleResponse = (response) => {
+    for (let user in response) {
+      let userRatings = response[user];
+      for (let movieId in userRatings) {
+        //
+        // console.log('her er ratingen', id)
+        // console.log('her er verdien', userRatings[id])
+        let rating = userRatings[movieId];
+        dispatch(setResults({movieId: movieId, rating: rating}));
+      }
+    }
+  };
 
   const handlePress = () => {
-    getRatings(sessionID);
+    getRatings(sessionID, handleResponse);
     //TODO: store ratings in redux ?
     //lage en funskjon som kalkulerer ratingsene
     navigation.navigate("ResultScreen");
@@ -30,7 +46,6 @@ export default function WaitingScreen({ navigation }) {
         style={styles.button}
         onPress={() => handlePress()}
       >
-        {" "}
         <Text style={styles.buttonText}> View results</Text>
       </Pressable>
     </View>
