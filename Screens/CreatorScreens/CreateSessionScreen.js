@@ -9,8 +9,7 @@ import {
   setSessionID,
 } from "../../redux/movieSlicer";
 import * as Colors from "../../styles/colors";
-import { registerUser } from "../../server.js";
-import { addSession, addUser, checkIfUserExists } from "../../firebase";
+import { addSession } from "../../firebase";
 
 export default function CreateSessionScreen({ navigation }) {
   const [username, setLocalUsername] = useState("");

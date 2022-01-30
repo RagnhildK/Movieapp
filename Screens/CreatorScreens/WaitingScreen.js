@@ -4,7 +4,6 @@ import * as Colors from "../../styles/colors";
 import { getRatings } from "../../firebase";
 import { useSelector, useDispatch } from "react-redux";
 import { setResults } from "../../redux/movieSlicer";
-import { connectFirestoreEmulator } from "@firebase/firestore";
 
 // dispatch
 // denne skjer i en loop så lenge personen er på denne siden
@@ -23,7 +22,7 @@ export default function WaitingScreen({ navigation }) {
       let userRatings = response[user];
       for (let movieId in userRatings) {
         let rating = userRatings[movieId];
-        dispatch(setResults({ movieId: movieId, rating: rating }));
+        dispatch(setResults({ movieId: movieId, rating: rating}));
       }
     }
   };
@@ -37,7 +36,6 @@ export default function WaitingScreen({ navigation }) {
     <View style={styles.container}>
       <Text>Wait for other members or end session.</Text>
       <Pressable
-        // denne buttonen skal ha businesslogikk som plusser og sorterer ratingsene. ratingsene er da allerede lagret i redux, fra når den kaller getratings
         style={styles.button}
         onPress={() => handlePress()}
       >

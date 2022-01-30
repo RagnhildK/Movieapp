@@ -9,6 +9,7 @@ const initialState = {
   movies: {},
   ratings: {},
   results: {},
+  participants: [],
 };
 
 export const movieRatingSlice = createSlice({
@@ -46,13 +47,17 @@ export const movieRatingSlice = createSlice({
       state.ratings[id] = action.payload.rating;
     },
     setResults: (state, action) => {
-      console.log(action.payload.movieId);
-      console.log(isNaN(action.payload.rating));
       const id = action.payload.movieId;
       state.results[id] = isNaN(state.results[id])
         ? action.payload.rating
         : state.results[id] + action.payload.rating;
     },
+    addParticipant: (state, action) => {
+      state.participants.push(action.payload);
+    },
+    resetParticipants: (state) => {
+      state.participants = 0;
+    }
   },
 });
 
@@ -66,6 +71,8 @@ export const {
   addFetchedMovie,
   rateMovie,
   setResults,
+  addParticipant,
+  resetParticipants
 } = movieRatingSlice.actions;
 
 export default movieRatingSlice.reducer;

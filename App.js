@@ -2,7 +2,7 @@ import React from "react";
 import store from "./redux/store";
 import RatingScreen from "./Screens/RatingScreen";
 import CreateOrJoinScreen from "./Screens/CreateOrJoinScreen";
-import ResultScreen from "./Screens/CreatorScreens/ResultsScreen";
+import ResultScreen from "./Screens/ResultsScreen";
 import WaitingScreen from "./Screens/CreatorScreens/WaitingScreen";
 import FinishedScreen from "./Screens/ParticipantScreens/FinishedScreen";
 import CreateSessionScreen from "./Screens/CreatorScreens/CreateSessionScreen";

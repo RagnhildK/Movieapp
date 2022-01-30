@@ -9,14 +9,15 @@ import {
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
-import { addFetchedMovie, setLoading } from "../redux/movieSlicer";
+import { setLoading, addFetchedMovie} from "../redux/movieSlicer";
 import { getMovie } from "../utils/fetch";
 import * as Colors from "../styles/colors";
 import { updateRatings } from "../firebase";
 
 const RatingScreen = ({ navigation }) => {
-  const { movies, creator, loading, username, sessionID, ratings } =
-    useSelector((state) => state.movieRatings);
+  const { movies, loading, username, sessionID, ratings } = useSelector(
+    (state) => state.movieRatings
+  );
 
   const dispatch = useDispatch();
 
@@ -27,11 +28,8 @@ const RatingScreen = ({ navigation }) => {
 
   const handleSubmit = () => {
     updateRatings(username, ratings, sessionID);
-    if (creator) {
-      navigation.navigate("WaitingScreen");
-    } else {
-      navigation.navigate("FinishedScreen");
-    }
+    dispatch(setLoading(true));
+    navigation.navigate("ResultScreen");
   };
 
   useEffect(() => {
