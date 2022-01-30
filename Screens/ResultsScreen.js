@@ -1,6 +1,7 @@
 import React from "react";
 import ResultMovie from "../components/Movie/ResultMovie";
 import { View, StyleSheet, Pressable, Text } from "react-native";
+import { Provider } from "react-native-paper";
 import {
   setLoading,
   setResults,
@@ -14,7 +15,7 @@ import * as Colors from "../styles/colors";
 
 export default function ResultScreen({ navigation }) {
   const { movies, sessionID, participants } = useSelector(
-    (state) => state.movieRatings
+    (state) => state.movieRatings,
   );
 
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ export default function ResultScreen({ navigation }) {
   const handlePress = () => {
     dispatch(setLoading(true));
     dispatch(resetParticipants);
-    getRatings(sessionID, handleResponse)
+    getRatings(sessionID, handleResponse);
   };
 
   const handleResponse = (response) => {
@@ -42,28 +43,30 @@ export default function ResultScreen({ navigation }) {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>{participants} participants in this session</Text>
-      <Pressable style={styles.button} onPress={() => handlePress()}>
-        <Text style={styles.buttonText}> Refresh results</Text>
-      </Pressable>
-      {!!movies && (
-        <View className="MoviesListed">
-          <View>
-            {Object.entries(movies).map((m) => (
-              <ResultMovie key={m[0]} id={m[0]} />
-            ))}
+    <Provider>
+      <View style={styles.container}>
+        <Text>{participants} participants in this session</Text>
+        <Pressable style={styles.button} onPress={() => handlePress()}>
+          <Text style={styles.buttonText}> Refresh results</Text>
+        </Pressable>
+        {!!movies && (
+          <View className="MoviesListed">
+            <View>
+              {Object.entries(movies).map((m) => (
+                <ResultMovie key={m[0]} id={m[0]} />
+              ))}
+            </View>
           </View>
-        </View>
-      )}
-      <Pressable
-        // denne knappen skal kalle deleteASession fra backend
-        style={styles.button}
-        onPress={() => navigation.navigate("CreateOrJoinScreen")}
-      >
-        <Text style={styles.buttonText}> Go to start screen</Text>
-      </Pressable>
-    </View>
+        )}
+        <Pressable
+          // denne knappen skal kalle deleteASession fra backend
+          style={styles.button}
+          onPress={() => navigation.navigate("CreateOrJoinScreen")}
+        >
+          <Text style={styles.buttonText}> Go to start screen</Text>
+        </Pressable>
+      </View>
+    </Provider>
   );
 }
 

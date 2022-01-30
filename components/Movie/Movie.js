@@ -1,9 +1,7 @@
 import React from "react";
-import { Text } from "react-native";
 import RatingButtons from "./RatingButtons";
 import { useSelector } from "react-redux";
 import { Title, Card } from "react-native-paper";
-import { ScrollView } from "react-native-gesture-handler";
 
 function Movie({ id }) {
   // Renders the movie that is passed as function input
@@ -16,9 +14,6 @@ function Movie({ id }) {
       {/* <Image style={styles.image} source={{ uri: url }}></Image> */}
       <Card.Content>
         <Title>{m.title}</Title>
-        <ScrollView style={styles.scrollView}>
-          <Text>{m.overview}</Text>
-        </ScrollView>
       </Card.Content>
       <Card.Actions>
         <RatingButtons id={id} />
@@ -33,9 +28,6 @@ const styles = {
     margin: 10,
   },
   image: { height: 250 },
-  scrollView: {
-    maxHeight: 100,
-  },
 };
 
 export default Movie;
