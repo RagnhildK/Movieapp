@@ -43,13 +43,15 @@ export const movieRatingSlice = createSlice({
     },
     rateMovie: (state, action) => {
       const id = action.payload.id;
-      state.ratings[id] =  action.payload.rating;
+      state.ratings[id] = action.payload.rating;
     },
     setResults: (state, action) => {
-      console.log(action.payload.movieId)
-      console.log(action.payload.rating)
+      console.log(action.payload.movieId);
+      console.log(isNaN(action.payload.rating));
       const id = action.payload.movieId;
-      state.results[id] += action.payload.rating;
+      state.results[id] = isNaN(state.results[id])
+        ? action.payload.rating
+        : state.results[id] + action.payload.rating;
     },
   },
 });

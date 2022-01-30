@@ -22,19 +22,14 @@ export default function WaitingScreen({ navigation }) {
     for (let user in response) {
       let userRatings = response[user];
       for (let movieId in userRatings) {
-        //
-        // console.log('her er ratingen', id)
-        // console.log('her er verdien', userRatings[id])
         let rating = userRatings[movieId];
-        dispatch(setResults({movieId: movieId, rating: rating}));
+        dispatch(setResults({ movieId: movieId, rating: rating }));
       }
     }
   };
 
   const handlePress = () => {
     getRatings(sessionID, handleResponse);
-    //TODO: store ratings in redux ?
-    //lage en funskjon som kalkulerer ratingsene
     navigation.navigate("ResultScreen");
   };
 
