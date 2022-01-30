@@ -16,7 +16,7 @@ import * as Colors from "../styles/colors";
 
 export default function ResultScreen({ navigation }) {
   const { movies, sessionID, participants, sortedIDs } = useSelector(
-    (state) => state.movieRatings
+    (state) => state.movieRatings,
   );
 
   const dispatch = useDispatch();
@@ -29,6 +29,8 @@ export default function ResultScreen({ navigation }) {
 
   const handleResponse = (response) => {
     dispatch(resetParticipants());
+    setTotalResults;
+    //TODO: we need to resetTotalResults
     for (let user in response) {
       let userRatings = response[user];
       dispatch(addParticipant(user));

@@ -11,10 +11,9 @@ function ResultMovie(id) {
   );
   const [visible, setVisible] = React.useState(false);
 
-  // const avgRank = () => {
-  //   // console.log()
-  //   return totalResults[id] / participants;
-  // };
+  const avgRank = () => {
+    return totalResults[id.id] / participants.length;
+  };
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -34,7 +33,7 @@ function ResultMovie(id) {
             <Card.Content>
               <Title>{m.title}</Title>
               <Text>{m.overview}</Text>
-              {/* <Text>{avgRank()}</Text> */}
+              <Text>Average rank: {avgRank()} / 5 stars</Text>
             </Card.Content>
           </Card>
         </Modal>
