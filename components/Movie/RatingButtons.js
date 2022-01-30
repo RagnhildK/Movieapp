@@ -1,8 +1,9 @@
 import React from "react";
-import { View } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { rateMovie } from "../../redux/movieSlicer";
 import { AirbnbRating } from "react-native-ratings";
+import { Colors } from "./../../styles/colors";
 
 function RatingButtons({ id }) {
   const { ratings } = useSelector((state) => state.movieRatings);
@@ -13,7 +14,7 @@ function RatingButtons({ id }) {
   };
 
   return (
-    <View className="MovieItem">
+    <View style={styles.movieRating}>
       <AirbnbRating
         onFinishRating={(rating) => ratingCompleted(rating)}
         defaultRating={ratings[id]}
@@ -22,5 +23,11 @@ function RatingButtons({ id }) {
     </View>
   );
 }
+const styles = StyleSheet.create({
+  movieRating: {
+    flex: 1,
+    justifyContent: "center",
+  },
+});
 
 export default RatingButtons;
