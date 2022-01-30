@@ -53,14 +53,15 @@ export const movieRatingSlice = createSlice({
         return b[1] - a[1];
       });
       state.sortedIDs = sortable;
-
+      // This comment could probably be removed, double check on tuesday
       // state.totalResults = sortable.map(([id, rank]) => [id, rank, state.movies[id]]);
     },
     addParticipant: (state, action) => {
       state.participants.push(action.payload);
     },
-    resetParticipants: (state) => {
+    resetResultScreen: (state) => {
       state.participants = [];
+      state.totalResults = {};
     },
   },
 });
@@ -76,7 +77,7 @@ export const {
   setTotalResults,
   sortTotalResults,
   addParticipant,
-  resetParticipants,
+  resetResultScreen,
 } = movieRatingSlice.actions;
 
 export default movieRatingSlice.reducer;

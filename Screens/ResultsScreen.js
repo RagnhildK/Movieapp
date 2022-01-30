@@ -5,7 +5,7 @@ import {
   setLoading,
   setTotalResults,
   addParticipant,
-  resetParticipants,
+  resetResultScreen,
   sortTotalResults,
 } from "../redux/movieSlicer";
 import { View, StyleSheet, Pressable, Text } from "react-native";
@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import * as Colors from "../styles/colors";
 
 export default function ResultScreen({ navigation }) {
-  const { movies, sessionID, participants, sortedIDs } = useSelector(
+  const { sessionID, participants, sortedIDs, totalResults } = useSelector(
     (state) => state.movieRatings
   );
 
@@ -23,12 +23,11 @@ export default function ResultScreen({ navigation }) {
 
   const handlePress = () => {
     dispatch(setLoading(true));
-    dispatch(resetParticipants);
     getRatings(sessionID, handleResponse);
   };
 
   const handleResponse = (response) => {
-    dispatch(resetParticipants());
+    dispatch(resetResultScreen());
     for (let user in response) {
       let userRatings = response[user];
       dispatch(addParticipant(user));
