@@ -11,6 +11,7 @@ function ResultMovie(id) {
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+
   const m = movies[id.id];
   let url = "https://image.tmdb.org/t/p/w500/" + m.posterPath;
 
