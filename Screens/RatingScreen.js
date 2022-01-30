@@ -10,14 +10,14 @@ import {
 import { Card } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
-import { setLoading, addFetchedMovie} from "../redux/movieSlicer";
+import { setLoading, addFetchedMovie } from "../redux/movieSlicer";
 import { getMovie } from "../utils/fetch";
 import * as Colors from "../styles/colors";
 import { updateRatings } from "../firebase";
 
 const RatingScreen = ({ navigation }) => {
   const { movies, loading, username, sessionID, ratings } = useSelector(
-    (state) => state.movieRatings
+    (state) => state.movieRatings,
   );
 
   const dispatch = useDispatch();
@@ -47,18 +47,16 @@ const RatingScreen = ({ navigation }) => {
         />
       ) : (
         <ScrollView>
-          <View>
-            {Object.entries(movies).map((m) => (
-              <Movie key={m[0]} id={m[0]} />
-            ))}
-          </View>
+          {Object.entries(movies).map((m) => (
+            <Movie key={m[0]} id={m[0]} />
+          ))}
         </ScrollView>
       )}
-      <View style={styles.bottom}>
-        <Pressable style={styles.button} onPress={() => handleSubmit()}>
-          <Text style={styles.buttonText}> Submit rating</Text>
-        </Pressable>
-      </View>
+      {/* <View style={styles.bottom}> */}
+      <Pressable style={styles.button} onPress={() => handleSubmit()}>
+        <Text style={styles.buttonText}> Submit rating</Text>
+      </Pressable>
+      {/* </View> */}
     </View>
   );
 };
@@ -74,11 +72,11 @@ const styles = StyleSheet.create({
   loading: {
     flex: 8,
   },
-  bottom: {
-    flex: 1,
-    justifyContent: "flex-end",
-    marginBottom: 36,
-  },
+  // bottom: {
+  //   flex: 1,
+  //   justifyContent: "flex-end",
+  //   marginBottom: 36,
+  // },
   button: {
     backgroundColor: Colors.BROWN_RED,
     margin: 10,
