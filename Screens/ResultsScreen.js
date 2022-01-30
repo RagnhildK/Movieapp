@@ -14,7 +14,7 @@ import { useEffect } from "react";
 import * as Colors from "../styles/colors";
 
 export default function ResultScreen({ navigation }) {
-  const { movies, sessionID, participants, totalResults, loading } =
+  const { movies, sessionID, participants} =
     useSelector((state) => state.movieRatings);
 
   const dispatch = useDispatch();
