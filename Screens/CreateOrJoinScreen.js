@@ -1,6 +1,5 @@
 import React from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
-import { setCreator } from "../redux/movieSlicer";
 import { useDispatch } from "react-redux";
 import { setSessionID } from "../redux/movieSlicer";
 import * as Colors from "../styles/colors";
@@ -9,7 +8,6 @@ export default function CreateOrJoinScreen({ navigation }) {
   const dispatch = useDispatch();
   const handlePress = (user) => {
     navigation.navigate(user + "SessionScreen");
-    dispatch(setCreator(user));
     dispatch(setSessionID(""));
   };
 

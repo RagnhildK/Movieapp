@@ -1,27 +1,27 @@
 import React from "react";
 import ResultMovie from "../components/Movie/ResultMovie";
-import { View, StyleSheet, Pressable, Text } from "react-native";
 import {
   setLoading,
-  setResults,
+  setTotalResults,
   addParticipant,
   resetParticipants,
+  sortTotalResults,
 } from "../redux/movieSlicer";
+import { View, StyleSheet, Pressable, Text } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getRatings } from "../firebase";
 import { useEffect } from "react";
 import * as Colors from "../styles/colors";
 
 export default function ResultScreen({ navigation }) {
-  const { movies, sessionID, participants } = useSelector(
-    (state) => state.movieRatings
-  );
+  const { movies, sessionID, participants, totalResults, loading } =
+    useSelector((state) => state.movieRatings);
 
   const dispatch = useDispatch();
 
   const handlePress = () => {
     dispatch(setLoading(true));
-    getRatings(sessionID, handleResponse)
+    getRatings(sessionID, handleResponse);
   };
 
   const handleResponse = (response) => {
@@ -31,9 +31,10 @@ export default function ResultScreen({ navigation }) {
       dispatch(addParticipant(user));
       for (let movieId in userRatings) {
         let rating = userRatings[movieId];
-        dispatch(setResults({ movieId: movieId, rating: rating }));
+        dispatch(setTotalResults({ movieId: movieId, rating: rating }));
       }
     }
+    dispatch(sortTotalResults());
     dispatch(setLoading(false));
   };
 

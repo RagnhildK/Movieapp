@@ -10,7 +10,6 @@ import JoinSessionScreen from "./Screens/ParticipantScreens/JoinSessionScreen";
 import { Provider as StoreProvider } from "react-redux";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { StyleSheet, Text } from "react-native";
 import * as Colors from "./styles/colors";
 
 import "react-native-gesture-handler";
