@@ -52,31 +52,16 @@ export async function checkIfUserExists(user) {
   return a.size != 0;
 }
 
-export async function getRatings(owner) {
-  const a = doc(db, "sessions", owner);
-  let ratings = [];
-  await getDoc(a).then((doc) => {
-    ratings.push(doc.data().participants);
-    console.log(ratings[0]);
-  });
-  return ratings[0];
-}
-
 export async function addSession(name, movies) {
   const data = {
-    moviesTBR: movies,
-    participants: {
-      [name]: {},
-    },
+    [name]: {},
   };
   await setDoc(doc(db, "sessions", name), data);
 }
 
 export async function addParticipant(username, owner) {
   const data = {
-    participants: {
-      [username]: {},
-    },
+    [username]: {},
   };
   await setDoc(doc(db, "sessions", owner), data, { merge: true });
   // await db.collection("sessions").doc(owner).update(data);
@@ -84,16 +69,19 @@ export async function addParticipant(username, owner) {
 
 export async function updateRatings(username, ratings, owner) {
   const data = {
-    participants: {
-      [username]: [ratings],
-    },
+    [username]: ratings,
   };
   await setDoc(doc(db, "sessions", owner), data, { merge: true });
 }
 
-// export async function getRatings(owner) {
-//    const a = await getDocs(doc(db, "sessions", owner));
-// }
+export async function getRatings(owner, handleResponse) {
+  const a = doc(db, "sessions", owner);
+  let ratings;
+  await getDoc(a).then((doc) => {
+    ratings = (doc.data());
+  });
+  handleResponse(ratings);
+}
 
 // export async function checkIfUserExists() {
 //   const docRef = doc(db, "Users", "");
