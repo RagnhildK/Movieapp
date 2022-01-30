@@ -13,8 +13,6 @@ import { useSelector } from "react-redux";
 
 export default function WaitingScreen({ navigation }) {
   const { sessionID } = useSelector((state) => state.movieRatings);
-  console.log("hei");
-
   const handlePress = () => {
     getRatings(sessionID);
     //TODO: store ratings in redux ?
