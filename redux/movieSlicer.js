@@ -27,6 +27,7 @@ export const movieRatingSlice = createSlice({
     },
     setLoading: (state, action) => {
       state.loading = action.payload;
+      console.log('loading is', action.payload)
     },
     addFetchedMovie: (state, action) => {
       const id = action.payload.id;

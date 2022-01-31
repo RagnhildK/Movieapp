@@ -7,7 +7,6 @@ import {
   Pressable,
   Text,
 } from "react-native";
-import { Card } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
 import { setLoading, addFetchedMovie } from "../redux/movieSlicer";

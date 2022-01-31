@@ -7,7 +7,6 @@ import { DetailedCard } from "./DetailedMovieCard";
 
 function ResultMovie(id) {
   const { movies } = useSelector((state) => state.movieRatings);
-
   const [visible, setVisible] = React.useState(false);
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
