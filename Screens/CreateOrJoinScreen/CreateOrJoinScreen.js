@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     fontWeight: "normal",
   },
   headline: {
-    color: Colors.WHITE,
+    color: Colors.ORANGE_LIGHT,
     fontSize: 32,
     margin: 30,
     textAlign: "center",

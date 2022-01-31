@@ -67,24 +67,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: Colors.BEIGE,
-    marginLeft: 10,
-    marginRight: 10,
+    backgroundColor: Colors.DARK_PURPLE,
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   loading: {
     flex: 8,
   },
-  // bottom: {
-  //   flex: 1,
-  //   justifyContent: "flex-end",
-  //   marginBottom: 36,
-  // },
   button: {
-    backgroundColor: Colors.BROWN_RED,
+    backgroundColor: Colors.PURPLE,
     margin: 10,
     padding: 10,
     maxWidth: 300,
-    borderRadius: 15,
+    borderRadius: 10,
   },
   buttonText: {
     color: Colors.WHITE,

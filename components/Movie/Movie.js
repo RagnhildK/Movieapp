@@ -8,7 +8,7 @@ import {
   Modal,
   Portal,
   Subheading,
-  List,
+  Chip,
 } from "react-native-paper";
 import { Image, View, Text } from "react-native";
 import * as Colors from "../../styles/colors";
@@ -61,21 +61,23 @@ function Movie({ id }) {
             onDismiss={hideModal}
             contentContainerStyle={styles.modal}
           >
-            <Card>
-              <Card.Cover
-                source={{ uri: backdropUrl }}
-                style={styles.imageModal}
-              />
-              <Card.Content>
-                <Title style={styles.subheading}>{movie.title}</Title>
-                <Subheading style={styles.subheading}>Overview</Subheading>
-                <Text>{movie.overview}</Text>
-                <Subheading style={styles.subheading}>Genres</Subheading>
-                <Text style={styles.col}>{genres.map((i) => `• ${i}\n`)}</Text>
-                <Subheading style={styles.subheading}>Runtime</Subheading>
-                <Text>{movieLength} min</Text>
-              </Card.Content>
-            </Card>
+            <Card.Cover
+              source={{ uri: backdropUrl }}
+              style={styles.imageModal}
+            />
+            <Card.Content style={styles.cardContent}>
+              <Title style={styles.subheading}>{movie.title}</Title>
+              <Subheading style={styles.subheading}>Overview</Subheading>
+              <Text style={styles.col}> {movie.overview}</Text>
+              <Subheading style={styles.subheading}>Genres</Subheading>
+              <Text>
+                {genres.map((i) => (
+                  <Chip style={styles.chip}>{i}</Chip>
+                ))}
+              </Text>
+              <Subheading style={styles.subheading}>Runtime</Subheading>
+              <Text style={styles.col}>{movieLength} min</Text>
+            </Card.Content>
           </Modal>
         </Portal>
       </View>
@@ -88,6 +90,7 @@ const styles = {
     margin: 10,
     overflow: "hidden",
     flexWrap: "wrap",
+    backgroundColor: Colors.PURPLE,
   },
   row: {
     flexDirection: "row",
@@ -95,26 +98,36 @@ const styles = {
   image: { width: 100 },
   imageModal: {
     height: 250,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    padding: 0,
   },
   col: {
-    flexDirection: "col",
-    alignItems: "flex-start",
+    color: Colors.WHITE,
+    fontWeight: 200,
   },
   button: {
     color: Colors.ORANGE_DARK,
     fontWeight: "bold",
   },
   modal: {
-    backgroundColor: Colors.WHITE,
-    justifyContent: "flex-start",
+    backgroundColor: Colors.PURPLE,
+    // justifyContent: "flex-start",
     margin: 10,
-    borderRadius: 20,
+    borderRadius: 5,
+  },
+  cardContent: {
+    padding: 10,
   },
   subheading: {
     fontWeight: "bold",
+    color: Colors.WHITE,
   },
   maxWidth: {
     width: "min-content",
+  },
+  chip: {
+    margin: 4,
   },
 };
 
