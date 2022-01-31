@@ -1,52 +1,83 @@
 import React from "react";
-import RatingButtons from "./RatingButtons";
+import RatingButtons from "../RatingButton/RatingButtons";
 import { useSelector } from "react-redux";
-import { Title, Card, Button, Modal, Portal } from "react-native-paper";
+import {
+  Title,
+  Card,
+  Button,
+  Modal,
+  Portal,
+  Subheading,
+  List,
+} from "react-native-paper";
 import { Image, View, Text } from "react-native";
 import * as Colors from "../../styles/colors";
+import { getDetails } from "../../utils/fetch";
 
 function Movie({ id }) {
   // Renders the movie that is passed as function input
   const { movies } = useSelector((state) => state.movieRatings);
 
   const [visible, setVisible] = React.useState(false);
+  const [genres, setGenres] = React.useState(["Couldn't find any genres"]);
+  const [movieLength, setMovieLength] = React.useState(0);
+  const [backdropUrl, setBackdropUrl] = React.useState();
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
+  const movieId = id;
+  const movie = movies[movieId];
+  let url = "https://image.tmdb.org/t/p/w500/" + movie.posterPath;
 
-  const m = movies[id];
-  let url = "https://image.tmdb.org/t/p/w500/" + m.posterPath;
+  const handleResponse = (response) => {
+    let newGenres = [];
+    for (let i = 0; i < response.genres.length; i++) {
+      newGenres.push(response.genres[i].name);
+    }
+    setGenres(newGenres);
+    setBackdropUrl("https://image.tmdb.org/t/p/w500" + response.backdrop_path);
+    setMovieLength(response.runtime);
+  };
+
+  const handlePress = async (movieId) => {
+    await getDetails(movieId, handleResponse);
+    showModal();
+  };
+
   return (
     <Card style={styles.container}>
       <View style={styles.row}>
         <Card.Cover source={{ uri: url }} style={styles.image} />
-        {/* <Image style={styles.image} source={{ uri: url }}></Image> */}
-        <View>
-          <Title numberOfLines={1} ellipsizeMode="tail">
-            {m.title}
-          </Title>
-          <Card.Actions style={styles.col}>
-            <RatingButtons id={id} />
-            <Button type="text" onPress={showModal}>
-              <Text style={styles.button}>More info</Text>
-            </Button>
-          </Card.Actions>
-          <Portal>
-            <Modal
-              visible={visible}
-              onDismiss={hideModal}
-              contentContainerStyle={styles.modal}
-            >
-              <Card>
-                <Card.Cover source={{ uri: url }} style={styles.imageModal} />
-                <Card.Content>
-                  <Title>{m.title}</Title>
-                  <Text>{m.overview}</Text>
-                </Card.Content>
-              </Card>
-            </Modal>
-          </Portal>
-        </View>
+        <Card.Content style={styles.maxWidth}>
+          <Title>{movie.title}</Title>
+          <RatingButtons id={id} />
+          <Button type="text" onPress={() => handlePress(movieId)}>
+            <Text style={styles.button}>More info</Text>
+          </Button>
+        </Card.Content>
+        <Portal>
+          <Modal
+            visible={visible}
+            onDismiss={hideModal}
+            contentContainerStyle={styles.modal}
+          >
+            <Card>
+              <Card.Cover
+                source={{ uri: backdropUrl }}
+                style={styles.imageModal}
+              />
+              <Card.Content>
+                <Title style={styles.subheading}>{movie.title}</Title>
+                <Subheading style={styles.subheading}>Overview</Subheading>
+                <Text>{movie.overview}</Text>
+                <Subheading style={styles.subheading}>Genres</Subheading>
+                <Text style={styles.col}>{genres.map((i) => `• ${i}\n`)}</Text>
+                <Subheading style={styles.subheading}>Runtime</Subheading>
+                <Text>{movieLength} min</Text>
+              </Card.Content>
+            </Card>
+          </Modal>
+        </Portal>
       </View>
     </Card>
   );
@@ -55,6 +86,8 @@ function Movie({ id }) {
 const styles = {
   container: {
     margin: 10,
+    overflow: "hidden",
+    flexWrap: "wrap",
   },
   row: {
     flexDirection: "row",
@@ -65,10 +98,23 @@ const styles = {
   },
   col: {
     flexDirection: "col",
+    alignItems: "flex-start",
   },
   button: {
     color: Colors.ORANGE_DARK,
     fontWeight: "bold",
+  },
+  modal: {
+    backgroundColor: Colors.WHITE,
+    justifyContent: "flex-start",
+    margin: 10,
+    borderRadius: 20,
+  },
+  subheading: {
+    fontWeight: "bold",
+  },
+  maxWidth: {
+    width: "min-content",
   },
 };
 

@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultScreen snapshot 1`] = `
+<View
+  collapsable={false}
+  pointerEvents="box-none"
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      Object {
+        "backgroundColor": "#F4F1EC",
+        "flex": 1,
+        "justifyContent": "center",
+        "marginLeft": 10,
+        "marginRight": 10,
+      }
+    }
+  >
+    <Text>
+       participants in this session
+    </Text>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#4E1C00",
+          "borderRadius": 15,
+          "margin": 10,
+          "maxWidth": 300,
+          "padding": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#FFFFFF",
+            "textAlign": "center",
+          }
+        }
+      >
+         Refresh results
+      </Text>
+    </View>
+    <View
+      className="MoviesListed"
+    >
+      <View />
+    </View>
+    <View
+      accessible={true}
+      collapsable={false}
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      style={
+        Object {
+          "backgroundColor": "#4E1C00",
+          "borderRadius": 15,
+          "margin": 10,
+          "maxWidth": 300,
+          "padding": 10,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#FFFFFF",
+            "textAlign": "center",
+          }
+        }
+      >
+         Go to start screen
+      </Text>
+    </View>
+  </View>
+</View>
+`;

@@ -1,12 +1,10 @@
 import React from "react";
 import store from "./redux/store";
-import RatingScreen from "./Screens/RatingScreen";
-import CreateOrJoinScreen from "./Screens/CreateOrJoinScreen";
-import ResultScreen from "./Screens/ResultsScreen";
-import WaitingScreen from "./Screens/CreatorScreens/WaitingScreen";
-import FinishedScreen from "./Screens/ParticipantScreens/FinishedScreen";
-import CreateSessionScreen from "./Screens/CreatorScreens/CreateSessionScreen";
-import JoinSessionScreen from "./Screens/ParticipantScreens/JoinSessionScreen";
+import RatingScreen from "./Screens/RatingScreen/RatingScreen";
+import ResultScreen from "./Screens/ResultScreen/ResultsScreen";
+import JoinSessionScreen from "./Screens/JoinSessionScreen/JoinSessionScreen";
+import CreateOrJoinScreen from "./Screens/CreateOrJoinScreen/CreateOrJoinScreen"
+import CreateSessionScreen from "./Screens/CreateSessionScreen/CreateSessionScreen";
 import { Provider as StoreProvider } from "react-redux";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
@@ -54,20 +52,6 @@ const App = () => (
           component={RatingScreen}
           options={{
             title: "Rate movies",
-          }}
-        />
-        <Stack.Screen
-          name="FinishedScreen"
-          component={FinishedScreen}
-          options={{
-            title: "Rating completed",
-          }}
-        />
-        <Stack.Screen
-          name="WaitingScreen"
-          component={WaitingScreen}
-          options={{
-            title: "",
           }}
         />
         <Stack.Screen
