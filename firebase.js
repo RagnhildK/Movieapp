@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+// import { getAnalytics } from "firebase/analytics";
 import {
   getFirestore,
   doc,
@@ -32,12 +32,12 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 
 const db = getFirestore();
 
 const UserColl = collection(db, "Users");
-const SessionColl = collection(db, "sessions");
+// const SessionColl = collection(db, "sessions");
 
 export async function addUser(name) {
   const data = {
@@ -79,8 +79,8 @@ export async function getRatings(owner, handleResponse) {
   let ratings;
   await getDoc(a).then((doc) => {
     ratings = (doc.data());
-  });
-  handleResponse(ratings);
+  }); 
+  await handleResponse(ratings);
 }
 
 // export async function checkIfUserExists() {

@@ -3,7 +3,6 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   sessionID: "",
   username: "",
-  nmbMovies: 0,
   loading: false,
   movies: {},
   ratings: {},
@@ -22,12 +21,8 @@ export const movieRatingSlice = createSlice({
     setUsername: (state, action) => {
       state.username = action.payload;
     },
-    setNmbMovies: (state, action) => {
-      state.nmbMovies = action.payload;
-    },
     setLoading: (state, action) => {
       state.loading = action.payload;
-      console.log('loading is', action.payload)
     },
     addFetchedMovie: (state, action) => {
       const id = action.payload.id;
@@ -71,7 +66,6 @@ export const movieRatingSlice = createSlice({
 export const {
   setSessionID,
   setUsername,
-  setNmbMovies,
   setLoading,
   addFetchedMovie,
   rateMovie,
