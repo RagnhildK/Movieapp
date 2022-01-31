@@ -5,9 +5,8 @@ import { Title, Card } from "react-native-paper";
 
 export function DetailedCard(id) {
   const { movies } = useSelector((state) => state.movieRatings);
+  console.log(movies)
   const m = movies[id.id];
-  //   console.log(movies);
-  console.log(m);
   //let url = "https://image.tmdb.org/t/p/w500/" + m.posterPath;
 
   return (
