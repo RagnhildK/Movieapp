@@ -2,11 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { View, StyleSheet, Pressable, Text } from "react-native";
 import { TextInput } from "react-native-paper";
-import {
-  setUsername,
-  setLoading,
-  setSessionID,
-} from "../../redux/movieSlicer";
+import { setUsername, setLoading, setSessionID } from "../../redux/movieSlicer";
 import * as Colors from "../../styles/colors";
 import { addSession } from "../../firebase";
 
@@ -17,11 +13,9 @@ export default function CreateSessionScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const createSession = () => {
-    const validUsername = username!="" ? true : false;
+    const validUsername = username != "" ? true : false;
     if (validUsername) {
       dispatch(setUsername(username));
-      //addUser(username);
-      //TODO Lagre filmene som skal rates i redux på formatet under
       addSession(username, [1, 2, 3, 4]);
       dispatch(setSessionID(username));
       navigation.navigate("RatingScreen");
@@ -57,8 +51,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: Colors.BEIGE,
-    marginLeft: "20pt",
-    marginRight: "20pt",
+    marginLeft: 20,
+    marginRight: 20,
   },
   button: {
     backgroundColor: Colors.BROWN_RED,
