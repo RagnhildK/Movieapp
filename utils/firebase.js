@@ -54,6 +54,7 @@ export async function checkIfUserExists(user) {
 
 export async function addSession(name, movies) {
   const data = {
+    page: 5,
     [name]: {},
   };
   await setDoc(doc(db, "sessions", name), data);
@@ -78,8 +79,8 @@ export async function getRatings(owner, handleResponse) {
   const a = doc(db, "sessions", owner);
   let ratings;
   await getDoc(a).then((doc) => {
-    ratings = (doc.data());
-  }); 
+    ratings = doc.data();
+  });
   await handleResponse(ratings);
 }
 

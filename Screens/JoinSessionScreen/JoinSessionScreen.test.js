@@ -4,6 +4,7 @@ import JoinSessionScreen from "./JoinSessionScreen";
 import { Provider } from "react-redux";
 import { mockStore } from ".././../utils/movieListFixture";
 
+
 jest.useFakeTimers();
 
 it("JoinSessionScreen snapshot", async () => {
@@ -17,10 +18,31 @@ it("JoinSessionScreen snapshot", async () => {
   await expect(tree).toMatchSnapshot();
 });
 
-// test("Press the button to start rating", () => {
-//   const mockCallback = jest.fn((x) => 42 + x);
-//   enterSession([0, 1], mockCallback);
-// 
-//   // The mock function is called twice
-//   expect(mockCallback.mock.calls.length).toBe(2);
+// jest.mock("react", () => {
+//   const paramArray = [jest.fn(), jest.fn(), jest.fn(), jest.fn()];
+//   let callCount = 0;
+//   return {
+//     useState: (initial) => {
+//       const res = paramArray[callCount % 4];
+//       callCount += 1;
+//       return [initial, res];
+//     },
+//   };
 // });
+
+// test("Checks if enterSession sets userError and sessionError when directly clicks with no input", () => {
+//   const paramArray = [null, null, null, null].map(useState);
+//   const setUserErrorMock = paramArray[2];
+//   const setSessionErrorMock = paramArray[3];
+//   render(
+//     <JoinSessionScreen
+//       navigation={{
+//         navigate: jest.fn(),
+//       }}
+//     />
+//   );
+//   fireEvent.click(screen.getByID("enterJoinedSession"));
+//   expect(setUserErrorMock.mock.calls[0][0]).toBe(true);
+//   expect(setSessionErrorMock.mock.calls[0][0]).toBe(true);
+// });
+// 

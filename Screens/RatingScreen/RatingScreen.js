@@ -13,7 +13,7 @@ import Movie from "../../components/Movie/Movie";
 import { setLoading, addFetchedMovie } from "../../redux/movieSlicer";
 import { getMovie } from "../../utils/fetch";
 import * as Colors from "../../styles/colors";
-import { updateRatings } from "../../firebase";
+import { updateRatings } from "../../utils/firebase";
 
 const RatingScreen = ({ navigation }) => {
   const { movies, loading, username, sessionID, ratings } = useSelector(

@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
 import { TextInput } from "react-native-paper";
 import * as Colors from "../../styles/colors";
-import { addParticipant } from "../../firebase";
+import { addParticipant } from "../../utils/firebase";
 
 export default function JoinSessionScreen({ navigation }) {
   const [owner, setOwner] = useState("");
@@ -57,7 +57,7 @@ export default function JoinSessionScreen({ navigation }) {
         value={owner}
         placeholder="username of session creator..."
       />
-      <Pressable style={styles.button} onPress={() => enterSession()}>
+      <Pressable id="enterJoinedSession" style={styles.button} onPress={() => enterSession()}>
         <Text style={styles.buttonText}> Start rating</Text>
       </Pressable>
     </View>

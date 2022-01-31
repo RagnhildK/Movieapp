@@ -4,7 +4,7 @@ import { View, StyleSheet, Pressable, Text } from "react-native";
 import { TextInput } from "react-native-paper";
 import { setUsername, setLoading, setSessionID } from "../../redux/movieSlicer";
 import * as Colors from "../../styles/colors";
-import { addSession } from "../../firebase";
+import { addSession } from "../../utils/firebase";
 
 export default function CreateSessionScreen({ navigation }) {
   const [username, setLocalUsername] = useState("");

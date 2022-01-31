@@ -16,7 +16,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
-import { getRatings } from "../../firebase";
+import { getRatings } from "../../utils/firebase";
 import { useEffect } from "react";
 import * as Colors from "../../styles/colors";
 
