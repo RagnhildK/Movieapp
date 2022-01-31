@@ -11,3 +11,6 @@ export const BEIGE = "#F4F1EC";
 export const BEIGE_LIGHT = "#FEF9F9";
 export const GREY = "#C4C4C4";
 export const BEIGE_ROSE = "#ede0c3";
+
+export const DARK_PURPLE = "#210538";
+export const PURPLE = "#6b04bf";

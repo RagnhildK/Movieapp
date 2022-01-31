@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
+import { Headline, Title } from "react-native-paper";
 import { useDispatch } from "react-redux";
 import { setSessionID } from "../../redux/movieSlicer";
 import * as Colors from "../../styles/colors";
@@ -13,7 +14,12 @@ export default function CreateOrJoinScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.margin}>
+      <View style={styles.col}>
+        <Headline style={styles.headline}>
+          Find the perfect movie to watch with friends
+        </Headline>
+      </View>
+      <View>
         <Pressable style={styles.button} onPress={() => handlePress("Create")}>
           <Text style={styles.buttonText}> Create a session</Text>
         </Pressable>
@@ -32,15 +38,18 @@ export default function CreateOrJoinScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: Colors.BEIGE_ROSE,
+    justifyContent: "space-evenly",
+    backgroundColor: Colors.DARK_PURPLE,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   margin: {
-    marginLeft: 20,
-    marginRight: 20,
+    //   marginLeft: 20,
+    //   marginRight: 20,
+    //   justifyContent: "space-around",
   },
   button: {
-    backgroundColor: Colors.BROWN_DARK,
+    backgroundColor: Colors.PURPLE,
     margin: 10,
     padding: 10,
     borderRadius: 15,
@@ -50,5 +59,13 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     textAlign: "center",
     fontWeight: "normal",
+  },
+  headline: {
+    color: Colors.WHITE,
+    fontSize: 32,
+  },
+  col: {
+    flexDirection: "col",
+    alignItems: "center",
   },
 });

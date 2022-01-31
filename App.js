@@ -3,7 +3,7 @@ import store from "./redux/store";
 import RatingScreen from "./Screens/RatingScreen/RatingScreen";
 import ResultScreen from "./Screens/ResultScreen/ResultsScreen";
 import JoinSessionScreen from "./Screens/JoinSessionScreen/JoinSessionScreen";
-import CreateOrJoinScreen from "./Screens/CreateOrJoinScreen/CreateOrJoinScreen"
+import CreateOrJoinScreen from "./Screens/CreateOrJoinScreen/CreateOrJoinScreen";
 import CreateSessionScreen from "./Screens/CreateSessionScreen/CreateSessionScreen";
 import { Provider as StoreProvider } from "react-redux";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -19,7 +19,7 @@ const App = () => (
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: Colors.BROWN_GREY,
+            backgroundColor: Colors.DARK_PURPLE,
           },
           headerTintColor: Colors.WHITE,
           headerTitleAlign: "center",
@@ -30,7 +30,7 @@ const App = () => (
           component={CreateOrJoinScreen}
           //component={RatingScreen}
           options={{
-            title: "MOVIE PICKER",
+            title: "Movie Picker",
           }}
         />
         <Stack.Screen
