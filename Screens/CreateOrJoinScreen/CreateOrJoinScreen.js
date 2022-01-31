@@ -14,11 +14,9 @@ export default function CreateOrJoinScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.col}>
-        <Headline style={styles.headline}>
-          Find the perfect movie to watch with friends
-        </Headline>
-      </View>
+      <Headline style={styles.headline}>
+        Find the perfect movie to watch with friends
+      </Headline>
       <View>
         <Pressable style={styles.button} onPress={() => handlePress("Create")}>
           <Text style={styles.buttonText}> Create a session</Text>
@@ -43,16 +41,11 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingRight: 20,
   },
-  margin: {
-    //   marginLeft: 20,
-    //   marginRight: 20,
-    //   justifyContent: "space-around",
-  },
   button: {
     backgroundColor: Colors.PURPLE,
     margin: 10,
     padding: 10,
-    borderRadius: 15,
+    borderRadius: 10,
     alignSelf: "auto",
   },
   buttonText: {
@@ -63,9 +56,7 @@ const styles = StyleSheet.create({
   headline: {
     color: Colors.WHITE,
     fontSize: 32,
-  },
-  col: {
-    flexDirection: "col",
-    alignItems: "center",
+    margin: 30,
+    textAlign: "center",
   },
 });
