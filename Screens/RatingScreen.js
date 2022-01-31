@@ -7,6 +7,7 @@ import {
   Pressable,
   Text,
 } from "react-native";
+import { Provider } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../components/Movie/Movie";
 import { setLoading, addFetchedMovie } from "../redux/movieSlicer";
@@ -37,26 +38,28 @@ const RatingScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      {loading ? (
-        <ActivityIndicator
-          style={styles.loading}
-          size="large"
-          color="#0000ff"
-        />
-      ) : (
-        <ScrollView>
-          {Object.entries(movies).map((m) => (
-            <Movie key={m[0]} id={m[0]} />
-          ))}
-        </ScrollView>
-      )}
-      {/* <View style={styles.bottom}> */}
-      <Pressable style={styles.button} onPress={() => handleSubmit()}>
-        <Text style={styles.buttonText}> Submit rating</Text>
-      </Pressable>
-      {/* </View> */}
-    </View>
+    <Provider>
+      <View style={styles.container}>
+        {loading ? (
+          <ActivityIndicator
+            style={styles.loading}
+            size="large"
+            color="#0000ff"
+          />
+        ) : (
+          <ScrollView>
+            {Object.entries(movies).map((m) => (
+              <Movie key={m[0]} id={m[0]} />
+            ))}
+          </ScrollView>
+        )}
+        {/* <View style={styles.bottom}> */}
+        <Pressable style={styles.button} onPress={() => handleSubmit()}>
+          <Text style={styles.buttonText}> Submit rating</Text>
+        </Pressable>
+        {/* </View> */}
+      </View>
+    </Provider>
   );
 };
 

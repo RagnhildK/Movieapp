@@ -4,13 +4,31 @@ import { Card, Title, Modal, Portal, Button } from "react-native-paper";
 import { useSelector } from "react-redux";
 import * as Colors from "../../styles/colors";
 import { DetailedCard } from "./DetailedMovieCard";
+import { getDetails } from "../../utils/fetch";
 
 function ResultMovie(id) {
-  const { movies } = useSelector((state) => state.movieRatings);
+  const { movies, totalResults, participants } = useSelector(
+    (state) => state.movieRatings,
+  );
   const [visible, setVisible] = React.useState(false);
+
+  const avgRank = () => {
+    return totalResults[id.id] / participants.length;
+  };
+
+  const handleResponse = (response) => {
+    console.log(response);
+  };
+
+  const handlePress = (movieId) => {
+    getDetails(movieId, handleResponse);
+    console.log("getDetails is running");
+    showModal();
+  };
+
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-
+  const movieId = id.id;
   const m = movies[id.id];
   let url = "https://image.tmdb.org/t/p/w500/" + m.posterPath;
 
@@ -23,8 +41,11 @@ function ResultMovie(id) {
           contentContainerStyle={styles.modal}
         >
           <Card>
+            <Card.Cover source={{ uri: url }} style={styles.image} />
             <Card.Content>
               <Title>{m.title}</Title>
+              <Text>{m.overview}</Text>
+              <Text>Average rank: {avgRank()} / 5 stars</Text>
             </Card.Content>
           </Card>
         </Modal>
@@ -36,7 +57,7 @@ function ResultMovie(id) {
           <Title>{m.title}</Title>
         </Card.Content>
         <Card.Actions>
-          <Button type="text" onPress={showModal}>
+          <Button type="text" onPress={() => handlePress(movieId)}>
             Show more
           </Button>
         </Card.Actions>

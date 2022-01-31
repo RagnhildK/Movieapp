@@ -73,7 +73,7 @@ export default function JoinSessionScreen({ navigation }) {
         placeholder="username of session creator..."
       />
       <Pressable style={styles.button} onPress={() => enterSession()}>
-        <Text style={styles.buttonText}> Go to start page</Text>
+        <Text style={styles.buttonText}> Start rating</Text>
       </Pressable>
     </View>
   );
