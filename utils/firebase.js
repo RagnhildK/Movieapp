@@ -54,7 +54,6 @@ export async function checkIfUserExists(user) {
 
 export async function addSession(name, movies) {
   const data = {
-    page: 5,
     [name]: {},
   };
   await setDoc(doc(db, "sessions", name), data);
