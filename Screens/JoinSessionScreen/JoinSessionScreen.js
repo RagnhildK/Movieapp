@@ -15,19 +15,20 @@ export default function JoinSessionScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const enterSession = () => {
-    //TODO deal med å lage sjekk for valid session
-    const validUserName = true;
-    const validSession = true;
-    if (!validUserName) {
+    const validUsername = username != "" ? true : false;
+    const validSession = owner != "" ? true : false;
+    if (!validUsername) {
       if (!validSession) {
         setUserError(true);
         setSessionError(true);
       } else {
         setUserError(true);
+        setSessionError(false);
       }
     } else {
       if (!validSession) {
         setSessionError(true);
+        setUserError(false);
       } else {
         dispatch(setUsername(username));
         dispatch(setSessionID(owner));

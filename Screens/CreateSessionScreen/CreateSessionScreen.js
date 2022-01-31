@@ -17,9 +17,8 @@ export default function CreateSessionScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const createSession = () => {
-    //registeUser(username)
-    //sjekker om brukernavn ikke finnes aka er ledig
-    if (true) {
+    const validUsername = username!="" ? true : false;
+    if (validUsername) {
       dispatch(setUsername(username));
       //addUser(username);
       //TODO Lagre filmene som skal rates i redux på formatet under
@@ -58,8 +57,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: Colors.BEIGE,
-    marginLeft: "20px",
-    marginRight: "20px",
+    marginLeft: "20pt",
+    marginRight: "20pt",
   },
   button: {
     backgroundColor: Colors.BROWN_RED,
