@@ -1,6 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 import movieRatingReducer from "../redux/movieSlicer"
 
+export const initialState = {
+  sessionID: "",
+  username: "",
+  loading: false,
+  movies: {},
+  ratings: {},
+  totalResults: {},
+  sortedIDs: [],
+  participants: [],
+};
+
 const movies = {
     425909: {
       title: "Ghostbusters: Afterlife",
@@ -36,7 +47,6 @@ const movies = {
       movieRatings: {
         sessionID: "",
         username: "",
-        nmbMovies: 0,
         loading: false,
         movies: movies,
         ratings: {},
@@ -46,3 +56,49 @@ const movies = {
       },
     },
   });
+
+  export const oneMoviesResult = {
+    sessionID: "",
+    username: "",
+    loading: false,
+    movies: {
+      634649: {
+        title: "title1",
+        posterPath: "/posterpath1.jpg",
+        overview:
+          "overview1",
+      },
+    },
+    ratings: {
+      634649: 0,
+    },
+    totalResults: {},
+    sortedIDs: [],
+    participants: [],
+  };
+  export const twoMoviesResult = {
+    sessionID: "",
+    username: "",
+    loading: false,
+    movies: {
+      634649: {
+        title: "title1",
+        posterPath: "/posterpath1.jpg",
+        overview:
+          "overview1",
+      },
+      634650: {
+        title: "Title2",
+        posterPath: "/posterpath2.jpg",
+        overview: "overview2",
+      },
+    },
+    ratings: {
+      634649: 0,
+      634650: 0,
+    },
+    totalResults: {},
+    sortedIDs: [],
+    participants: [],
+  };
+  

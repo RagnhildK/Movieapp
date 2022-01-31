@@ -42,11 +42,13 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{js,jsx}",
+      "**/*.{js}",
       "!**/coverage/**",
       "!**/node_modules/**",
       "!**/babel.config.js",
-      "!**/jest.setup.js"
+      "!**/jest.setup.js",
+      "!**/react-router.js",
+      "!**/react-router-native.js"
     ],
     "preset": "jest-expo"
   },
