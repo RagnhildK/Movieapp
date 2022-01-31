@@ -79,8 +79,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: Colors.BEIGE,
-    marginLeft: "20px",
-    marginRight: "20px",
+    marginLeft: 10,
+    marginRight: 10,
   },
   button: {
     backgroundColor: Colors.BROWN_RED,

@@ -8,6 +8,7 @@ import {
   Modal,
   Portal,
   Subheading,
+  List,
 } from "react-native-paper";
 import { Image, View, Text } from "react-native";
 import * as Colors from "../../styles/colors";
@@ -47,44 +48,36 @@ function Movie({ id }) {
     <Card style={styles.container}>
       <View style={styles.row}>
         <Card.Cover source={{ uri: url }} style={styles.image} />
-        <View>
-          <Title numberOfLines={1} ellipsizeMode="tail">
-            {movie.title}
-          </Title>
-          <Card.Actions style={styles.col}>
-            <RatingButtons id={id} />
-            <Button type="text" onPress={() => handlePress(movieId)}>
-              <Text style={styles.button}>More info</Text>
-            </Button>
-          </Card.Actions>
-          <Portal>
-            <Modal
-              visible={visible}
-              onDismiss={hideModal}
-              contentContainerStyle={styles.modal}
-            >
-              <Card>
-                <Card.Cover
-                  source={{ uri: backdropUrl }}
-                  style={styles.imageModal}
-                />
-                <Card.Content>
-                  <Title style={styles.subheading}>{movie.title}</Title>
-                  <Subheading style={styles.subheading}>Overview</Subheading>
-                  <Text>{movie.overview}</Text>
-                  <Subheading style={styles.subheading}>Genres</Subheading>
-                  <Text>
-                    {genres.map((g) => (
-                      <Text key={g}>{g} </Text>
-                    ))}
-                  </Text>
-                  <Subheading style={styles.subheading}>Runtime</Subheading>
-                  <Text>{movieLength} min</Text>
-                </Card.Content>
-              </Card>
-            </Modal>
-          </Portal>
-        </View>
+        <Card.Content style={styles.maxWidth}>
+          <Title>{movie.title}</Title>
+          <RatingButtons id={id} />
+          <Button type="text" onPress={() => handlePress(movieId)}>
+            <Text style={styles.button}>More info</Text>
+          </Button>
+        </Card.Content>
+        <Portal>
+          <Modal
+            visible={visible}
+            onDismiss={hideModal}
+            contentContainerStyle={styles.modal}
+          >
+            <Card>
+              <Card.Cover
+                source={{ uri: backdropUrl }}
+                style={styles.imageModal}
+              />
+              <Card.Content>
+                <Title style={styles.subheading}>{movie.title}</Title>
+                <Subheading style={styles.subheading}>Overview</Subheading>
+                <Text>{movie.overview}</Text>
+                <Subheading style={styles.subheading}>Genres</Subheading>
+                <Text style={styles.col}>{genres.map((i) => `• ${i}\n`)}</Text>
+                <Subheading style={styles.subheading}>Runtime</Subheading>
+                <Text>{movieLength} min</Text>
+              </Card.Content>
+            </Card>
+          </Modal>
+        </Portal>
       </View>
     </Card>
   );
@@ -93,6 +86,8 @@ function Movie({ id }) {
 const styles = {
   container: {
     margin: 10,
+    overflow: "hidden",
+    flexWrap: "wrap",
   },
   row: {
     flexDirection: "row",
@@ -117,6 +112,9 @@ const styles = {
   },
   subheading: {
     fontWeight: "bold",
+  },
+  maxWidth: {
+    width: "min-content",
   },
 };
 
