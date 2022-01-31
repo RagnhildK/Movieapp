@@ -22,7 +22,7 @@ import * as Colors from "../../styles/colors";
 
 export default function ResultScreen({ navigation }) {
   const { sessionID, participants, sortedIDs, loading } = useSelector(
-    (state) => state.movieRatings
+    (state) => state.movieRatings,
   );
 
   const dispatch = useDispatch();
@@ -88,8 +88,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: Colors.BEIGE,
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: 10,
+    marginRight: 10,
   },
   button: {
     backgroundColor: Colors.BROWN_RED,

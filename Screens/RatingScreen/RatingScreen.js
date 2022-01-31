@@ -17,7 +17,7 @@ import { updateRatings } from "../../utils/firebase";
 
 const RatingScreen = ({ navigation }) => {
   const { movies, loading, username, sessionID, ratings } = useSelector(
-    (state) => state.movieRatings
+    (state) => state.movieRatings,
   );
 
   const dispatch = useDispatch();
@@ -68,8 +68,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: Colors.BEIGE,
-    marginLeft: 20,
-    marginRight: 20,
+    marginLeft: 10,
+    marginRight: 10,
   },
   loading: {
     flex: 8,
