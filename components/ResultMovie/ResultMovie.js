@@ -11,6 +11,7 @@ import {
 import { useSelector } from "react-redux";
 import * as Colors from "../../styles/colors";
 import { getDetails } from "../../utils/fetch";
+import { AirbnbRating } from "react-native-ratings";
 
 function ResultMovie(id) {
   const { movies, totalResults, participants } = useSelector(
@@ -61,15 +62,22 @@ function ResultMovie(id) {
               <Subheading style={styles.subheading}>Overview</Subheading>
               <Text>{movie.overview}</Text>
               <Subheading style={styles.subheading}>Genres</Subheading>
-              <Text>
-                {genres.map((g) => (
-                  <Text key={g}>{g} </Text>
-                ))}
-              </Text>
+              <Text style={styles.col}>{genres.map((i) => `• ${i}\n`)}</Text>
               <Subheading style={styles.subheading}>Runtime</Subheading>
               <Text>{movieLength} min</Text>
-              <Subheading style={styles.subheading}>Average rank</Subheading>
-              <Text>{avgRank()} / 5 stars</Text>
+              <Subheading style={styles.subheading}>
+                Average rating in this session:{" "}
+                {avgRank().toLocaleString(undefined, {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                / 5
+              </Subheading>
+              <AirbnbRating
+                defaultRating={Math.round(avgRank())}
+                isDisabled={true}
+                showRating={false}
+              />
             </Card.Content>
           </Card>
         </Modal>

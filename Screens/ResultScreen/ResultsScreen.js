@@ -53,7 +53,8 @@ export default function ResultScreen({ navigation }) {
   return (
     <Provider>
       <View style={styles.container}>
-        <Text>{participants} participants in this session</Text>
+        <Text>Participants in this session: </Text>
+        <Text>{participants.map((i) => `• ${i}\n`)}</Text>
         <Pressable style={styles.button} onPress={() => handlePress()}>
           <Text style={styles.buttonText}> Refresh results</Text>
         </Pressable>
