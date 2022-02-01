@@ -1,5 +1,6 @@
 import React from "react";
 import { View, StyleSheet, Pressable, Text } from "react-native";
+import { Headline, Title } from "react-native-paper";
 import { useDispatch } from "react-redux";
 import { setSessionID } from "../../redux/movieSlicer";
 import * as Colors from "../../styles/colors";
@@ -13,16 +14,19 @@ export default function CreateOrJoinScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <View style={styles.margin}>
+      <Headline style={styles.headline}>
+        Find the perfect movie to watch with friends
+      </Headline>
+      <View>
         <Pressable style={styles.button} onPress={() => handlePress("Create")}>
-          <Text style={styles.buttonText}> Create a session</Text>
+          <Text style={styles.buttonText}> Start a movie party</Text>
         </Pressable>
         <Pressable
           style={styles.button}
           title="Join a session"
           onPress={() => handlePress("Join")}
         >
-          <Text style={styles.buttonText}>Join a session</Text>
+          <Text style={styles.buttonText}>Join a movie party</Text>
         </Pressable>
       </View>
     </View>
@@ -32,23 +36,29 @@ export default function CreateOrJoinScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    backgroundColor: Colors.BEIGE_ROSE,
-  },
-  margin: {
-    marginLeft: 20,
-    marginRight: 20,
+    justifyContent: "space-evenly",
+    backgroundColor: Colors.DARK_PURPLE,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
   button: {
-    backgroundColor: Colors.BROWN_DARK,
-    margin: 10,
+    backgroundColor: Colors.PURPLE,
+    marginTop: 15,
+    marginBottom: 10,
+    margin: 40,
     padding: 10,
-    borderRadius: 15,
-    alignSelf: "auto",
+    borderRadius: 10,
   },
   buttonText: {
     color: Colors.WHITE,
     textAlign: "center",
     fontWeight: "normal",
+  },
+  headline: {
+    color: Colors.ORANGE_LIGHT,
+    fontSize: 32,
+    margin: 30,
+    textAlign: "center",
+    fontStyle: "italic",
   },
 });

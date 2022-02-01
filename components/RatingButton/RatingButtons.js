@@ -18,7 +18,8 @@ function RatingButtons({ id }) {
       <AirbnbRating
         onFinishRating={(rating) => ratingCompleted(rating)}
         defaultRating={ratings[id]}
-        reviews={["", "", "", "", ""]}
+        showRating={false}
+        size={25}
       />
     </View>
   );

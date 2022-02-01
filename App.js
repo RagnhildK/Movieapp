@@ -3,7 +3,7 @@ import store from "./redux/store";
 import RatingScreen from "./Screens/RatingScreen/RatingScreen";
 import ResultScreen from "./Screens/ResultScreen/ResultsScreen";
 import JoinSessionScreen from "./Screens/JoinSessionScreen/JoinSessionScreen";
-import CreateOrJoinScreen from "./Screens/CreateOrJoinScreen/CreateOrJoinScreen"
+import CreateOrJoinScreen from "./Screens/CreateOrJoinScreen/CreateOrJoinScreen";
 import CreateSessionScreen from "./Screens/CreateSessionScreen/CreateSessionScreen";
 import { Provider as StoreProvider } from "react-redux";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -19,10 +19,11 @@ const App = () => (
       <Stack.Navigator
         screenOptions={{
           headerStyle: {
-            backgroundColor: Colors.BROWN_GREY,
+            backgroundColor: Colors.DARK_PURPLE,
           },
-          headerTintColor: Colors.WHITE,
+          headerTintColor: Colors.ORANGE_LIGHT,
           headerTitleAlign: "center",
+          headerShown: false,
         }}
       >
         <Stack.Screen
@@ -30,28 +31,28 @@ const App = () => (
           component={CreateOrJoinScreen}
           //component={RatingScreen}
           options={{
-            title: "MOVIE PICKER",
+            title: "MovieParty",
           }}
         />
         <Stack.Screen
           name="CreateSessionScreen"
           component={CreateSessionScreen}
           options={{
-            title: "Create session",
+            title: "Start party",
           }}
         />
         <Stack.Screen
           name="JoinSessionScreen"
           component={JoinSessionScreen}
           options={{
-            title: "Join session",
+            title: "Join party",
           }}
         />
         <Stack.Screen
           name="RatingScreen"
           component={RatingScreen}
           options={{
-            title: "Rate movies",
+            title: "Vote on movies",
           }}
         />
         <Stack.Screen
