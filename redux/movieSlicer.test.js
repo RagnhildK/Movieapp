@@ -321,7 +321,7 @@ test("Should handle sorting totalResults", () => {
   });
 });
 
-test("Should handle adding a participant", () => {
+test("Should handle adding a participant when creating a session", () => {
   expect(reducer(initialState, addParticipant("Hanna"))).toEqual({
     sessionID: "",
     username: "",
@@ -332,6 +332,9 @@ test("Should handle adding a participant", () => {
     sortedIDs: [],
     participants: ["Hanna"],
   });
+});
+
+test("Should handle adding a participant when joining a session", () => {
   expect(
     reducer(
       {

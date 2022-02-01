@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@babel/runtime": "7.0.0-beta.55",
     "@emotion/react": "^11.7.0",
     "@emotion/styled": "^11.6.0",
     "@react-native-community/masked-view": "^0.1.11",
@@ -42,7 +43,7 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{js}",
+      "**/*.{js, jsx}",
       "!**/coverage/**",
       "!**/node_modules/**",
       "!**/babel.config.js",
@@ -50,7 +51,10 @@
       "!**/react-router.js",
       "!**/react-router-native.js"
     ],
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transform": {
+        "^.+\\.[jt]sx?$": "babel-jest"
+    }
   },
   "private": true
 }

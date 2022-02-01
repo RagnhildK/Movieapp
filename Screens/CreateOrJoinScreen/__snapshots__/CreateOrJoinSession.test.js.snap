@@ -1,23 +1,61 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CreateOrJoinScreen snapshot 1`] = `
-<View
+<RCTSafeAreaView
+  emulateUnlessSupported={true}
   style={
     Object {
-      "backgroundColor": "#ede0c3",
+      "backgroundColor": "#0f0b1c",
       "flex": 1,
-      "justifyContent": "center",
+      "justifyContent": "space-evenly",
+      "paddingLeft": 20,
+      "paddingRight": 20,
     }
   }
 >
-  <View
+  <Text
     style={
-      Object {
-        "marginLeft": 20,
-        "marginRight": 20,
-      }
+      Array [
+        Object {
+          "color": "#000000",
+          "fontFamily": "System",
+          "fontWeight": "400",
+        },
+        Object {
+          "textAlign": "left",
+        },
+        Array [
+          Object {
+            "textAlign": "left",
+          },
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "writingDirection": "ltr",
+          },
+          Array [
+            Object {
+              "fontSize": 24,
+              "letterSpacing": 0,
+              "lineHeight": 32,
+              "marginVertical": 2,
+            },
+            Object {
+              "color": "#FF9C55",
+              "fontSize": 32,
+              "fontStyle": "italic",
+              "margin": 30,
+              "textAlign": "center",
+            },
+          ],
+        ],
+      ]
     }
   >
+    Find the perfect movie to watch with friends
+  </Text>
+  <View>
     <View
       accessible={true}
       collapsable={false}
@@ -33,10 +71,11 @@ exports[`CreateOrJoinScreen snapshot 1`] = `
       onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "alignSelf": "auto",
-          "backgroundColor": "#9d6b53",
-          "borderRadius": 15,
-          "margin": 10,
+          "backgroundColor": "#352761",
+          "borderRadius": 10,
+          "margin": 40,
+          "marginBottom": 10,
+          "marginTop": 15,
           "padding": 10,
         }
       }
@@ -50,7 +89,7 @@ exports[`CreateOrJoinScreen snapshot 1`] = `
           }
         }
       >
-         Create a session
+         Start a movie party
       </Text>
     </View>
     <View
@@ -68,10 +107,11 @@ exports[`CreateOrJoinScreen snapshot 1`] = `
       onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "alignSelf": "auto",
-          "backgroundColor": "#9d6b53",
-          "borderRadius": 15,
-          "margin": 10,
+          "backgroundColor": "#352761",
+          "borderRadius": 10,
+          "margin": 40,
+          "marginBottom": 10,
+          "marginTop": 15,
           "padding": 10,
         }
       }
@@ -86,9 +126,9 @@ exports[`CreateOrJoinScreen snapshot 1`] = `
           }
         }
       >
-        Join a session
+        Join a movie party
       </Text>
     </View>
   </View>
-</View>
+</RCTSafeAreaView>
 `;
