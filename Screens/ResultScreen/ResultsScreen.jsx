@@ -14,18 +14,17 @@ import {
   StyleSheet,
   Pressable,
   Text,
-  ActivityIndicator, SafeAreaView
+  ActivityIndicator,
+  SafeAreaView,
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getRatings } from "../../utils/firebase";
 
-
 import * as Colors from "../../styles/colors";
-
 
 export default function ResultScreen({ navigation }) {
   const { sessionID, participants, sortedIDs, loading } = useSelector(
-    (state) => state.movieRatings,
+    (state) => state.movieRatings
   );
 
   const dispatch = useDispatch();
@@ -56,17 +55,6 @@ export default function ResultScreen({ navigation }) {
   return (
     <Provider>
       <SafeAreaView style={styles.container}>
-        <View style={styles.rowContainer}>
-        <Headline style={styles.heading1}>Participants in this session:           
-        </Headline>        
-        <IconButton style={styles.refreshButton} icon="refresh" color={Colors.WHITE} onPress={() => handlePress()}/>
-        </View>
-        <Text>{participants.map((i) => (
-                <Chip key={i} disabled={true} style={styles.chip}>
-                  <Text style={styles.genresText}>{i}</Text>
-                </Chip>
-              ))}</Text>
-     
         {loading ? (
           <ActivityIndicator
             style={styles.loading}
@@ -75,6 +63,24 @@ export default function ResultScreen({ navigation }) {
           />
         ) : (
           <ScrollView>
+            <View style={styles.rowContainer}>
+              <Headline style={styles.heading1}>
+                Participants in this session:
+              </Headline>
+              <IconButton
+                style={styles.refreshButton}
+                icon="refresh"
+                color={Colors.WHITE}
+                onPress={() => handlePress()}
+              />
+            </View>
+            <Text>
+              {participants.map((i) => (
+                <Chip key={i} disabled={true} style={styles.chip}>
+                  <Text style={styles.genresText}>{i}</Text>
+                </Chip>
+              ))}
+            </Text>
             <View>
               {sortedIDs.map(([id, _]) => (
                 <ResultMovie key={id} id={id} />
@@ -100,7 +106,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.DARK_PURPLE,
     padding: 20,
   },
-  rowContainer:{
+  rowContainer: {
     flexDirection: "row",
   },
   heading1: {
@@ -108,7 +114,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     // margin: 30,
     // textAlign: 'center',
-    fontStyle: 'italic',
+    fontStyle: "italic",
   },
   chip: {
     marginHorizontal: 4,
@@ -124,7 +130,7 @@ const styles = StyleSheet.create({
   },
   refreshButton: {
     backgroundColor: Colors.PURPLE,
-    alignSelf: "center"
+    alignSelf: "center",
   },
   button: {
     alignSelf: "flex-end",
