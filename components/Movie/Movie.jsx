@@ -1,18 +1,18 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React from "react";
+import { useSelector } from "react-redux";
 import {
   Title,
   Card,
-  Button,
   Modal,
   Portal,
   Subheading,
+  Button,
   Chip,
-} from 'react-native-paper';
-import { View, Text } from 'react-native';
-import RatingButtons from '../RatingButton/RatingButtons';
-import * as Colors from '../../styles/colors';
-import { getDetails } from '../../utils/fetch';
+} from "react-native-paper";
+import { View, Text, Pressable } from "react-native";
+import RatingButtons from "../RatingButton/RatingButtons";
+import * as Colors from "../../styles/colors";
+import { getDetails } from "../../utils/fetch";
 
 function Movie({ id }) {
   // Renders the movie that is passed as function input
@@ -48,13 +48,22 @@ function Movie({ id }) {
     <Card style={styles.container}>
       <View style={styles.row}>
         <Card.Cover source={{ uri: url }} style={styles.image} />
-        <Card.Content style={styles.cardWidth}>
-          <Title style={styles.movieTitle}>{movie.title}</Title>
-          {/* ^ her bør det added på number of lines of ellipsizeMode (?) tail - styling for at tittelen ikke får ta for mye plass */}
+        <Card.Content style={styles.shrink}>
+          <Title
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            style={styles.movieTitle}
+          >
+            {movie.title}
+          </Title>
           <RatingButtons id={id} />
-          <Button type="text" onPress={() => handlePress(movieId)}>
-            <Text style={styles.button}>Show more</Text>
-          </Button>
+          <Pressable
+            style={styles.button}
+            type="text"
+            onPress={() => handlePress(movieId)}
+          >
+            <Text style={styles.buttonText}>SHOW MORE</Text>
+          </Pressable>
         </Card.Content>
       </View>
 
@@ -78,11 +87,7 @@ function Movie({ id }) {
               ))}
             </Text>
             <Subheading style={styles.subheading}>Runtime</Subheading>
-            <Text style={styles.col}>
-              {movieLength}
-              {' '}
-              min
-            </Text>
+            <Text style={styles.col}>{movieLength} min</Text>
           </Card.Content>
         </Modal>
       </Portal>
@@ -93,14 +98,18 @@ function Movie({ id }) {
 const styles = {
   container: {
     margin: 10,
-    overflow: 'hidden',
-    flexWrap: 'wrap',
+    // overflow: 'hidden',
+    // flexWrap: 'wrap',
     backgroundColor: Colors.PURPLE,
   },
   row: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
-  image: { width: 100, height: 150 },
+  image: {
+    flex: 1,
+    width: 100,
+    height: 150,
+  },
   imageModal: {
     height: 250,
     borderTopLeftRadius: 5,
@@ -109,10 +118,19 @@ const styles = {
   },
   col: {
     color: Colors.WHITE,
-    fontWeight: '200',
+    fontWeight: "200",
+  },
+  shrink: {
+    flexShrink: 1,
+    flex: 2,
   },
   button: {
+    alignSelf: "flex-end",
+  },
+  buttonText: {
     color: Colors.ORANGE_DARK,
+    fontSize: 12,
+    paddingBottom: 10,
   },
   modal: {
     backgroundColor: Colors.PURPLE,
@@ -123,7 +141,7 @@ const styles = {
     padding: 10,
   },
   subheading: {
-    fontWeight: 'bold',
+    fontWeight: "bold",
     color: Colors.WHITE,
   },
   movieTitle: {

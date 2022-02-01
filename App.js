@@ -17,14 +17,17 @@ const App = () => (
   <StoreProvider store={store}>
     <NavigationContainer>
       <Stack.Navigator
+        // screenOptions={{
+        //   headerStyle: {
+        //     backgroundColor: Colors.DARK_PURPLE,
+        //   },
+        //   headerShadowVisible: false,
+        //   headerTintColor: Colors.ORANGE_LIGHT,
+        //   headerTitleAlign: "center",
+        //   headerBackTitleVisible: false
+        // }}
         screenOptions={{
-          headerStyle: {
-            backgroundColor: Colors.DARK_PURPLE,
-          },
-          headerShadowVisible: false,
-          headerTintColor: Colors.ORANGE_LIGHT,
-          headerTitleAlign: "center",
-          headerBackTitleVisible: false
+          headerShown: false,
         }}
       >
         <Stack.Screen

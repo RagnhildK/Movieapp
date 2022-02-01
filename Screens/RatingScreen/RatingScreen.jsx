@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 import {
   View,
   ScrollView,
@@ -6,20 +6,18 @@ import {
   StyleSheet,
   Pressable,
   Text,
-} from 'react-native';
-import { Headline, Provider } from 'react-native-paper';
-import { useDispatch, useSelector } from 'react-redux';
-import Movie from '../../components/Movie/Movie';
-import { setLoading, addFetchedMovie } from '../../redux/movieSlicer';
-import { getMovie } from '../../utils/fetch';
-import * as Colors from '../../styles/colors';
-import { updateRatings } from '../../utils/firebase';
+} from "react-native";
+import { Headline, Provider } from "react-native-paper";
+import { useDispatch, useSelector } from "react-redux";
+import Movie from "../../components/Movie/Movie";
+import { setLoading, addFetchedMovie } from "../../redux/movieSlicer";
+import { getMovie } from "../../utils/fetch";
+import * as Colors from "../../styles/colors";
+import { updateRatings } from "../../utils/firebase";
 
 function RatingScreen({ navigation }) {
-  const {
-    movies, loading, username, sessionID, ratings,
-  } = useSelector(
-    (state) => state.movieRatings,
+  const { movies, loading, username, sessionID, ratings } = useSelector(
+    (state) => state.movieRatings
   );
 
   const dispatch = useDispatch();
@@ -32,7 +30,7 @@ function RatingScreen({ navigation }) {
   const handleSubmit = () => {
     updateRatings(username, ratings, sessionID);
     dispatch(setLoading(true));
-    navigation.navigate('ResultScreen');
+    navigation.navigate("ResultScreen");
   };
 
   useEffect(() => {
@@ -42,9 +40,6 @@ function RatingScreen({ navigation }) {
   return (
     <Provider>
       <View style={styles.container}>
-        <Headline style={styles.heading}>
-          Vote for the movies you want to watch
-        </Headline>
         {loading ? (
           <ActivityIndicator
             style={styles.loading}
@@ -53,16 +48,17 @@ function RatingScreen({ navigation }) {
           />
         ) : (
           <ScrollView>
+            <Headline style={styles.heading}>
+              Vote for the movies you want to watch
+            </Headline>
             {Object.entries(movies).map((m) => (
               <Movie key={m[0]} id={m[0]} />
             ))}
           </ScrollView>
         )}
-        {/* <View style={styles.bottom}> */}
         <Pressable style={styles.button} onPress={() => handleSubmit()}>
           <Text style={styles.buttonText}> Submit rating</Text>
         </Pressable>
-        {/* </View> */}
       </View>
     </Provider>
   );
@@ -71,7 +67,7 @@ function RatingScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: "center",
     backgroundColor: Colors.DARK_PURPLE,
     padding: 20,
   },
@@ -87,13 +83,13 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: Colors.WHITE,
-    textAlign: 'center',
+    textAlign: "center",
   },
   heading: {
     color: Colors.ORANGE_LIGHT,
     fontSize: 25,
     margin: 30,
-    textAlign: 'center',
+    textAlign: "center",
   },
 });
 
