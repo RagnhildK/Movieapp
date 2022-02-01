@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { View, StyleSheet, Pressable, Text, SafeAreaView } from "react-native";
 import { TextInput, Headline } from "react-native-paper";
-import { setUsername, setLoading, setSessionID } from "../../redux/movieSlicer";
+import {
+  setUsername,
+  setLoading,
+  setSessionID,
+  setNmbMovies,
+} from "../../redux/movieSlicer";
 import * as Colors from "../../styles/colors";
 import { addSession } from "../../utils/firebase";
 
 export default function CreateSessionScreen({ navigation }) {
   const [localUsername, setLocalUsername] = useState("");
   const [localSessionID, setLocalSessionID] = useState("");
+  const [localMovieAmount, setLocalMovieAmount] = useState(20);
   const [userError, setUserError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
 
@@ -31,8 +37,9 @@ export default function CreateSessionScreen({ navigation }) {
     } else {
       dispatch(setUsername(localUsername));
       dispatch(setSessionID(localSessionID));
+      dispatch(setNmbMovies(localMovieAmount));
       dispatch(setLoading(true));
-      addSession(localUsername, localSessionID);
+      addSession(localUsername, localSessionID, localMovieAmount);
       navigation.navigate("RatingScreen");
     }
   };
@@ -57,6 +64,12 @@ export default function CreateSessionScreen({ navigation }) {
           onChangeText={(val) => setLocalSessionID(val)}
           value={localSessionID}
           placeholder="Choose a name for the party"
+        />
+        <TextInput
+          mode="outlined"
+          onChangeText={(val) => setLocalMovieAmount(val)}
+          value={localMovieAmount}
+          placeholder="How many movies do you want to vote on?"
         />
         <Pressable style={styles.button} onPress={() => createSession()}>
           <Text style={styles.buttonText}>Start a party</Text>
