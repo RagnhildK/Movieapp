@@ -21,8 +21,10 @@ const App = () => (
           headerStyle: {
             backgroundColor: Colors.BROWN_GREY,
           },
-          headerTintColor: Colors.WHITE,
+          headerShadowVisible: false,
+          headerTintColor: Colors.ORANGE_LIGHT,
           headerTitleAlign: "center",
+          headerBackTitleVisible: false
         }}
       >
         <Stack.Screen
@@ -30,35 +32,35 @@ const App = () => (
           component={CreateOrJoinScreen}
           //component={RatingScreen}
           options={{
-            title: "MOVIE PICKER",
+            title: "",
           }}
         />
         <Stack.Screen
           name="CreateSessionScreen"
           component={CreateSessionScreen}
           options={{
-            title: "Create session",
+            title: "",
           }}
         />
         <Stack.Screen
           name="JoinSessionScreen"
           component={JoinSessionScreen}
           options={{
-            title: "Join session",
+            title: "",
           }}
         />
         <Stack.Screen
           name="RatingScreen"
           component={RatingScreen}
           options={{
-            title: "Rate movies",
+            title: "",
           }}
         />
         <Stack.Screen
           name="ResultScreen"
           component={ResultScreen}
           options={{
-            title: "Results",
+            title: "",
           }}
         />
       </Stack.Navigator>

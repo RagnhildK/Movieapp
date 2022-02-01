@@ -74,11 +74,6 @@ const styles = StyleSheet.create({
   loading: {
     flex: 8,
   },
-  // bottom: {
-  //   flex: 1,
-  //   justifyContent: "flex-end",
-  //   marginBottom: 36,
-  // },
   button: {
     backgroundColor: Colors.BROWN_RED,
     margin: 10,
