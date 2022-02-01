@@ -81,7 +81,7 @@ function Movie({ id }) {
             <Subheading style={styles.subheading}>Genres</Subheading>
             <Text>
               {genres.map((i) => (
-                <Chip key={i} disableed style={styles.chip}>
+                <Chip key={i} disabled={true} style={styles.chip}>
                   <Text style={styles.genresText}>{i}</Text>
                 </Chip>
               ))}
@@ -101,6 +101,7 @@ const styles = {
     // overflow: 'hidden',
     // flexWrap: 'wrap',
     backgroundColor: Colors.PURPLE,
+    // boxShadow: Colors.BROWN_RED,
   },
   row: {
     flexDirection: "row",
@@ -128,7 +129,7 @@ const styles = {
     alignSelf: "flex-end",
   },
   buttonText: {
-    color: Colors.ORANGE_DARK,
+    color: Colors.ORANGE_LIGHT,
     fontSize: 12,
     paddingBottom: 10,
   },
@@ -151,12 +152,14 @@ const styles = {
   chip: {
     marginHorizontal: 4,
     maxHeight: 48,
-    lineHeight: 10, // usikker på om denne trengs
+    lineHeight: 10, //usikker på om denne trengs
+    backgroundColor: Colors.PURPLE_LIGHT,
   },
   genresText: {
     // usikker på om dette trengs - må se mer på chips og hvorfor de tar så mye plass
     padding: 0,
     margin: 0,
+    color: Colors.BLACK,
   },
 };
 

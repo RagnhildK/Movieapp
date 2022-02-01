@@ -49,6 +49,7 @@ export default function CreateSessionScreen({ navigation }) {
         onChangeText={(val) => setLocalUsername(val)}
         value={localUsername}
         placeholder="Enter your nickname..."
+        style={styles.input}
       />
       <Headline style={styles.heading2}>What's the name of the party?</Headline>
       <TextInput
@@ -60,7 +61,7 @@ export default function CreateSessionScreen({ navigation }) {
         placeholder="Enter a name for the party..."
       />
       <Pressable style={styles.button} onPress={() => createSession()}>
-        <Text style={styles.buttonText}> Create a session</Text>
+        <Text style={styles.buttonText}>Start a party</Text>
       </Pressable>
     </View>
   );
@@ -81,6 +82,7 @@ const styles = StyleSheet.create({
     padding: 10,
     maxWidth: 150,
     borderRadius: 10,
+    alignSelf:"flex-end"
   },
   buttonText: {
     color: Colors.WHITE,
@@ -100,5 +102,10 @@ const styles = StyleSheet.create({
     marginTop: 40,
     textAlign: 'center',
     fontStyle: 'italic',
+  },
+  intput: {
+    //funmker ikke
+    backgroundColor: Colors.PURPLE_LIGHT,
+    fontSize: 30,
   },
 });
