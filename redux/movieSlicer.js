@@ -9,6 +9,7 @@ const initialState = {
   totalResults: {},
   sortedIDs: [],
   participants: [],
+  ranking: 0,
 };
 
 export const movieRatingSlice = createSlice({
@@ -55,9 +56,13 @@ export const movieRatingSlice = createSlice({
     addParticipant: (state, action) => {
       state.participants.push(action.payload);
     },
+    incrementRanking: (state) => {
+      state.ranking += 1;
+    },
     resetResultScreen: (state) => {
       state.participants = [];
       state.totalResults = {};
+      state.ranking = 0;
     },
   },
 });
@@ -72,6 +77,7 @@ export const {
   setTotalResults,
   sortTotalResults,
   addParticipant,
+  incrementRanking,
   resetResultScreen,
 } = movieRatingSlice.actions;
 
