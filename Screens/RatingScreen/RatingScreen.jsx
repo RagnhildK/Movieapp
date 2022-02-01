@@ -46,8 +46,7 @@ function RatingScreen({ navigation }) {
             color="#0000ff"
           />
         ) : (
-      <SafeAreaView style={styles.container}>
-        
+      <SafeAreaView style={styles.container}>      
           <ScrollView>
             <Headline style={styles.heading}>
               Vote for the movies you want to watch in {sessionID}

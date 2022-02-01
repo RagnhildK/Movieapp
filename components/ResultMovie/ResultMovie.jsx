@@ -8,6 +8,7 @@ import {
   Button,
   Subheading,
   Chip,
+  Headline,
 } from "react-native-paper";
 import { useSelector } from "react-redux";
 import * as Colors from "../../styles/colors";
@@ -15,7 +16,7 @@ import { getDetails } from "../../utils/fetch";
 import { AirbnbRating } from "react-native-ratings";
 
 function ResultMovie(id) {
-  const { movies, totalResults, participants, sessionID } = useSelector(
+  const { movies, totalResults, participants, sessionID} = useSelector(
     (state) => state.movieRatings
   );
   const [visible, setVisible] = React.useState(false);
@@ -49,26 +50,29 @@ function ResultMovie(id) {
   };
 
   return (
-    <Card style={styles.container}>
-      <View style={styles.row}>
-        <Card.Cover source={{ uri: url }} style={styles.image} />
-        <Card.Content style={styles.shrink}>
-          <Title
-            numberOfLines={2}
-            ellipsizeMode="tail"
-            style={styles.movieTitle}
-          >
-            {movie.title}
-          </Title>
-          <Pressable
-            style={styles.button}
-            type="text"
-            onPress={() => handlePress(movieId)}
-          >
-            <Text style={styles.buttonText}>SHOW MORE</Text>
-          </Pressable>
-        </Card.Content>
-      </View>
+    <View style={styles.container}>
+     <Headline> 1 </Headline>
+      <Card style={styles.containerCard}>
+        <View style={styles.row}>
+          <Card.Cover source={{ uri: url }} style={styles.image} />
+          <Card.Content style={styles.shrink}>
+            <Title
+              numberOfLines={2}
+              ellipsizeMode="tail"
+              style={styles.movieTitle}
+            >
+              {movie.title}
+            </Title>
+            <Pressable
+              style={styles.button}
+              type="text"
+              onPress={() => handlePress(movieId)}
+            >
+              <Text style={styles.buttonText}>SHOW MORE</Text>
+            </Pressable>
+          </Card.Content>
+        </View>
+      </Card>
 
       <Portal>
         <Modal
@@ -108,15 +112,27 @@ function ResultMovie(id) {
             </Card>
         </Modal>
       </Portal>
-    </Card>
+  </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    // marginLeft: 20,
+    // marginRight: 20,
+    // margin: 10,
+    backgroundColor: Colors.PURPLE_LIGHT,
+    flexDirection: "row",
+  },
+  containerCard: {
     margin: 10,
     backgroundColor: Colors.PURPLE,
+    flexDirection: "row",
+    flexGrow: 1
   },
+    col: {
+      flexDirection: "column",
+    },
   row: {
     flexDirection: "row",
   },
@@ -128,15 +144,17 @@ const styles = StyleSheet.create({
   shrink: {
     flexShrink: 1,
     flex: 2,
-    flexDirection: "column",
-    justifyContent: "space-between"
+    // flexDirection: "column",
+    justifyContent: "space-between",
+    paddingTop: 10
   },
   button: {
     alignSelf: "flex-end",
+    padding: 10
   },
   buttonText: {
     color: Colors.ORANGE_LIGHT,
-    fontSize: 12,
+    fontSize: 16,
     paddingBottom: 10,
   },
   modal: {
