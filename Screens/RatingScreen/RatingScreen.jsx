@@ -41,16 +41,13 @@ function RatingScreen({ navigation }) {
   return (
     <Provider>
       {loading ? (
-        <View>
           <ActivityIndicator
             style={styles.container}
             size="large"
             color="PURPLE_LIGHT"
           />
-          <Text>Finding movies...</Text>
-        </View>
-      ) : (
-        <SafeAreaView style={styles.container}>
+        ) : (
+      <SafeAreaView style={styles.container}>      
           <ScrollView>
             <Headline style={styles.heading}>
               Vote for the movies you want to watch in {sessionID}
