@@ -75,35 +75,37 @@ function ResultMovie(id) {
           visible={visible}
           onDismiss={hideModal}
           contentContainerStyle={styles.modal}>
-            <Card.Cover source={{ uri: backdropUrl }}style={styles.imageModal}/>
-            <Card.Content style={styles.cardContent}>
-              <Title style={styles.movieTitle}>{movie.title}</Title>
-              <Subheading style={styles.subheading}>Overview</Subheading>
-              <Text style={styles.modalText}>{movie.overview}</Text>
-              <Subheading style={styles.subheading}>Genres</Subheading>
-              <Text>
-                {genres.map((i) => (
-                  <Chip key={i} disableed={true} style={styles.chip}>
-                    <Text style={styles.genresText}>{i}</Text>
-                  </Chip>
-                ))}
-              </Text>
-              <Subheading style={styles.subheading}>Runtime</Subheading>
-              <Text style={styles.modalText}>{movieLength} min</Text>
-              <Subheading style={styles.subheading}>
-                Average rating in this {sessionID}:{" "}
-                {avgRank().toLocaleString(undefined, {
-                  minimumFractionDigits: 0,
-                  maximumFractionDigits: 2,
-                })}{" "}
-                / 5
-              </Subheading>
-              <AirbnbRating
-                defaultRating={Math.round(avgRank())}
-                isDisabled={true}
-                showRating={false}
-              />
-            </Card.Content>
+            <Card style={styles.card} onPress={hideModal}>
+              <Card.Cover source={{ uri: backdropUrl }}style={styles.imageModal}/>
+              <Card.Content style={styles.cardContent}>
+                <Title style={styles.movieTitle}>{movie.title}</Title>
+                <Subheading style={styles.subheading}>Overview</Subheading>
+                <Text style={styles.modalText}>{movie.overview}</Text>
+                <Subheading style={styles.subheading}>Genres</Subheading>
+                <View style={styles.chipSpacing}>
+                  {genres.map((i) => (
+                    <Chip key={i} disableed={true} style={styles.chip}>
+                      <Text style={styles.genresText}>{i}</Text>
+                    </Chip>
+                  ))}
+                </View>
+                <Subheading style={styles.subheading}>Runtime</Subheading>
+                <Text style={styles.modalText}>{movieLength} min</Text>
+                <Subheading style={styles.subheading}>
+                  Average rating in this {sessionID}:{" "}
+                  {avgRank().toLocaleString(undefined, {
+                    minimumFractionDigits: 0,
+                    maximumFractionDigits: 2,
+                  })}{" "}
+                  / 5
+                </Subheading>
+                <AirbnbRating
+                  defaultRating={Math.round(avgRank())}
+                  isDisabled={true}
+                  showRating={false}
+                />
+              </Card.Content>
+            </Card>
         </Modal>
       </Portal>
     </Card>
@@ -138,9 +140,11 @@ const styles = StyleSheet.create({
     paddingBottom: 10,
   },
   modal: {
-    backgroundColor: Colors.PURPLE,
     margin: 10,
     borderRadius: 7,
+  },
+  card:{
+    backgroundColor: Colors.PURPLE
   },
   imageModal: {
     height: 250,
@@ -158,11 +162,17 @@ const styles = StyleSheet.create({
   modalText: {
     color: Colors.WHITE,
     fontWeight: "200",
+  },  
+  chipSpacing: {
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
   chip: {
-    marginHorizontal: 4,
-    maxHeight: 48,
-    lineHeight: 10, //usikker på om denne trengs
+    marginBottom: 4,
+    marginRight: 4,
+    maxHeight: 25,
+    backgroundColor: Colors.PURPLE_LIGHT,
+    // lineHeight: 10, //usikker på om denne trengs
   },
 });
 
