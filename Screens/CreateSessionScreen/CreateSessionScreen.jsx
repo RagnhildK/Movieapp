@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { View, StyleSheet, Pressable, Text, SafeAreaView } from "react-native";
 import { TextInput, Headline } from "react-native-paper";
-import { setUsername, setLoading, setSessionID } from "../../redux/movieSlicer";
+import {
+  setUsername,
+  setLoading,
+  setSessionID,
+  setNmbMovies,
+} from "../../redux/movieSlicer";
 import * as Colors from "../../styles/colors";
 import { addSession } from "../../utils/firebase";
 
 export default function CreateSessionScreen({ navigation }) {
   const [localUsername, setLocalUsername] = useState("");
   const [localSessionID, setLocalSessionID] = useState("");
+  const [localMovieAmount, setLocalMovieAmount] = useState(20);
   const [userError, setUserError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
 
@@ -31,8 +37,9 @@ export default function CreateSessionScreen({ navigation }) {
     } else {
       dispatch(setUsername(localUsername));
       dispatch(setSessionID(localSessionID));
+      dispatch(setNmbMovies(localMovieAmount));
       dispatch(setLoading(true));
-      addSession(localUsername, localSessionID);
+      addSession(localUsername, localSessionID, localMovieAmount);
       navigation.navigate("RatingScreen");
     }
   };
@@ -46,8 +53,7 @@ export default function CreateSessionScreen({ navigation }) {
           error={userError}
           onChangeText={(val) => setLocalUsername(val)}
           value={localUsername}
-          placeholder="Enter your nickname..."
-          style={styles.input}
+          placeholder="Your nickname"
         />
         <Headline style={styles.heading2}>
           What's the name of the party?
@@ -57,7 +63,13 @@ export default function CreateSessionScreen({ navigation }) {
           error={sessionError}
           onChangeText={(val) => setLocalSessionID(val)}
           value={localSessionID}
-          placeholder="Enter a name for the party..."
+          placeholder="Choose a name for the party"
+        />
+        <TextInput
+          mode="outlined"
+          onChangeText={(val) => setLocalMovieAmount(val)}
+          value={localMovieAmount}
+          placeholder="How many movies do you want to vote on?"
         />
         <Pressable style={styles.button} onPress={() => createSession()}>
           <Text style={styles.buttonText}>Start a party</Text>
@@ -78,11 +90,12 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.PURPLE,
     marginTop: 20,
-    margin: 10,
-    padding: 10,
-    maxWidth: 150,
-    borderRadius: 10,
-    alignSelf: "flex-end",
+    margin: 30,
+    padding: 15,
+    paddingHorizontal: 50,
+    maxWidth: 250,
+    borderRadius: 20,
+    alignSelf: "center",
   },
   buttonText: {
     color: Colors.WHITE,
@@ -102,10 +115,5 @@ const styles = StyleSheet.create({
     marginTop: 40,
     textAlign: "center",
     fontStyle: "italic",
-  },
-  intput: {
-    //funmker ikke
-    backgroundColor: Colors.PURPLE_LIGHT,
-    fontSize: 30,
   },
 });

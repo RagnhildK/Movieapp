@@ -17,14 +17,18 @@ import * as Colors from "../../styles/colors";
 import { updateRatings } from "../../utils/firebase";
 
 function RatingScreen({ navigation }) {
-  const { movies, loading, username, sessionID, ratings } = useSelector(
-    (state) => state.movieRatings
-  );
+  const { movies, loading, username, sessionID, ratings, nmbMovies } =
+    useSelector((state) => state.movieRatings);
 
   const dispatch = useDispatch();
 
   const handleResponse = (response) => {
-    response.results.map((m) => dispatch(addFetchedMovie(m)));
+    const sliced = response.slice(0, nmbMovies);
+    // sliced.map((m) => dispatch(addFetchedMovie(m)));
+    console.log(sliced.length)
+    for (let i = 0; i < sliced.length; i++) {
+      dispatch(addFetchedMovie(sliced[i]));
+    } 
     dispatch(setLoading(false));
   };
 
@@ -35,7 +39,10 @@ function RatingScreen({ navigation }) {
   };
 
   useEffect(() => {
-    getMovie(handleResponse);
+    var integer = Math.floor(nmbMovies / 20);
+    var remainder = nmbMovies % 20 == 0 ? 0 : 1;
+    var pages = integer + remainder;
+    getMovie(handleResponse, pages);
   }, []);
 
   return (
@@ -78,10 +85,10 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.PURPLE,
     margin: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 50,
     padding: 15,
-    maxWidth: 200,
-    borderRadius: 10,
+    maxWidth: 250,
+    borderRadius: 20,
     alignSelf: "center",
   },
   buttonText: {

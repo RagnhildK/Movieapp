@@ -28,7 +28,7 @@ import { getRatings } from "../../utils/firebase";
 import * as Colors from "../../styles/colors";
 
 export default function ResultScreen({ navigation }) {
-  const { sessionID, participants, sortedIDs, loading } = useSelector(
+  const { sessionID, participants, sortedIDs, loading, movies } = useSelector(
     (state) => state.movieRatings
   );
 
@@ -52,7 +52,7 @@ export default function ResultScreen({ navigation }) {
     dispatch(sortTotalResults());
     dispatch(setLoading(false));
   };
-
+ 
   useEffect(() => {
     getRatings(sessionID, handleResponse);
   }, []);
@@ -165,13 +165,13 @@ const styles = StyleSheet.create({
     color: Colors.BLACK,
   },
   button: {
-    alignSelf: "flex-end",
+    alignSelf: "center",
     backgroundColor: Colors.PURPLE,
     margin: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 50,
     padding: 15,
-    maxWidth: 200,
-    borderRadius: 10,
+    maxWidth: 250,
+    borderRadius: 20,
   },
   buttonText: {
     color: Colors.WHITE,

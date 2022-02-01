@@ -122,13 +122,14 @@ const styles = {
   shrink: {
     flexShrink: 1,
     flex: 2,
+    paddingTop: 10,
   },
   button: {
     alignSelf: "flex-end",
   },
   buttonText: {
     color: Colors.ORANGE_LIGHT,
-    fontSize: 12,
+    fontSize: 16,
     paddingBottom: 10,
   },
   modal: {
