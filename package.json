@@ -43,7 +43,7 @@
   "jest": {
     "collectCoverage": true,
     "collectCoverageFrom": [
-      "**/*.{js}",
+      "**/*.{js, jsx}",
       "!**/coverage/**",
       "!**/node_modules/**",
       "!**/babel.config.js",
@@ -51,7 +51,10 @@
       "!**/react-router.js",
       "!**/react-router-native.js"
     ],
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transform": {
+        "^.+\\.[jt]sx?$": "babel-jest"
+    }
   },
   "private": true
 }

@@ -1,42 +1,55 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ResultMovie component snapshot 1`] = `
-<View>
+<View
+  style={
+    Object {
+      "backgroundColor": "#352761",
+      "borderColor": "rgba(0, 0, 0, 0.12)",
+      "borderRadius": 4,
+      "elevation": 1,
+      "margin": 10,
+      "shadowColor": "#000000",
+      "shadowOffset": Object {
+        "height": 0.5,
+        "width": 0,
+      },
+      "shadowOpacity": 0.24,
+      "shadowRadius": 0.75,
+    }
+  }
+>
   <View
+    accessible={true}
+    focusable={false}
+    onClick={[Function]}
+    onResponderGrant={[Function]}
+    onResponderMove={[Function]}
+    onResponderRelease={[Function]}
+    onResponderTerminate={[Function]}
+    onResponderTerminationRequest={[Function]}
+    onStartShouldSetResponder={[Function]}
     style={
       Object {
-        "backgroundColor": "#ffffff",
-        "borderColor": "rgba(0, 0, 0, 0.12)",
-        "borderRadius": 4,
-        "elevation": 1,
-        "margin": 10,
-        "padding": "1rem",
-        "shadowColor": "#000000",
-        "shadowOffset": Object {
-          "height": 0.5,
-          "width": 0,
-        },
-        "shadowOpacity": 0.24,
-        "shadowRadius": 0.75,
+        "flexGrow": 1,
+        "flexShrink": 1,
       }
     }
   >
     <View
-      accessible={true}
-      focusable={false}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      index={0}
+      siblings={
+        Array [
+          "View",
+          "withTheme(Portal)",
+        ]
+      }
       style={
         Object {
-          "flexGrow": 1,
-          "flexShrink": 1,
+          "flexDirection": "row",
         }
       }
+      total={2}
     >
       <View
         style={
@@ -46,24 +59,15 @@ exports[`ResultMovie component snapshot 1`] = `
               "height": 195,
               "overflow": "hidden",
             },
+            undefined,
             Object {
-              "borderTopLeftRadius": 4,
-              "borderTopRightRadius": 4,
-            },
-            Object {
-              "height": 250,
+              "height": 150,
+              "width": 100,
             },
           ]
         }
       >
         <Image
-          siblings={
-            Array [
-              "withTheme(Card.Cover)",
-              "Card.Content",
-              "Card.Actions",
-            ]
-          }
           source={
             Object {
               "uri": "https://image.tmdb.org/t/p/w500//sg4xJaufDiQl7caFEskBtQXfD4x.jpg",
@@ -78,10 +82,7 @@ exports[`ResultMovie component snapshot 1`] = `
                 "padding": 16,
                 "width": undefined,
               },
-              Object {
-                "borderTopLeftRadius": 4,
-                "borderTopRightRadius": 4,
-              },
+              undefined,
             ]
           }
         />
@@ -93,11 +94,18 @@ exports[`ResultMovie component snapshot 1`] = `
               "paddingHorizontal": 16,
             },
             undefined,
-            undefined,
+            Object {
+              "flex": 2,
+              "flexDirection": "column",
+              "flexShrink": 1,
+              "justifyContent": "space-between",
+            },
           ]
         }
       >
         <Text
+          ellipsizeMode="tail"
+          numberOfLines={2}
           style={
             Array [
               Object {
@@ -125,7 +133,10 @@ exports[`ResultMovie component snapshot 1`] = `
                     "lineHeight": 30,
                     "marginVertical": 2,
                   },
-                  undefined,
+                  Object {
+                    "color": "#FFFFFF",
+                    "fontSize": 20,
+                  },
                 ],
               ],
             ]
@@ -133,126 +144,37 @@ exports[`ResultMovie component snapshot 1`] = `
         >
           Ghostbusters: Afterlife
         </Text>
-      </View>
-      <View
-        index={2}
-        siblings={
-          Array [
-            "withTheme(Card.Cover)",
-            "Card.Content",
-            "Card.Actions",
-          ]
-        }
-        style={
-          Array [
-            Object {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "flex-start",
-              "padding": 8,
-            },
-            undefined,
-          ]
-        }
-        total={3}
-      >
         <View
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onFocus={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             Object {
-              "backgroundColor": "transparent",
-              "borderColor": "transparent",
-              "borderRadius": 4,
-              "borderStyle": "solid",
-              "borderWidth": 0,
-              "elevation": 0,
-              "minWidth": "auto",
+              "alignSelf": "flex-end",
             }
           }
           type="text"
         >
-          <View
-            accessibilityRole="button"
-            accessibilityState={
-              Object {
-                "disabled": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
+          <Text
             style={
-              Array [
-                Object {
-                  "overflow": "hidden",
-                },
-                Object {
-                  "borderRadius": 4,
-                },
-              ]
+              Object {
+                "color": "#FF9C55",
+                "fontSize": 12,
+                "paddingBottom": 10,
+              }
             }
           >
-            <View
-              style={
-                Array [
-                  Object {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                  },
-                  undefined,
-                ]
-              }
-            >
-              <Text
-                numberOfLines={1}
-                selectable={false}
-                style={
-                  Array [
-                    Object {
-                      "color": "#000000",
-                      "fontFamily": "System",
-                      "fontWeight": "400",
-                    },
-                    Object {
-                      "textAlign": "left",
-                    },
-                    Array [
-                      Object {
-                        "letterSpacing": 1,
-                        "marginHorizontal": 16,
-                        "marginVertical": 9,
-                        "textAlign": "center",
-                      },
-                      Object {
-                        "marginHorizontal": 8,
-                      },
-                      Object {
-                        "textTransform": "uppercase",
-                      },
-                      Object {
-                        "color": "#6200ee",
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      Object {
-                        "fontFamily": "System",
-                        "fontWeight": "500",
-                      },
-                      undefined,
-                    ],
-                  ]
-                }
-              >
-                Show more
-              </Text>
-            </View>
-          </View>
+            SHOW MORE
+          </Text>
         </View>
       </View>
     </View>

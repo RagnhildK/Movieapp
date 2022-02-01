@@ -21,22 +21,6 @@ exports[`RatingButtons component snapshot 1`] = `
       ]
     }
   >
-    <Text
-      style={
-        Array [
-          Object {
-            "fontWeight": "bold",
-            "margin": 10,
-          },
-          Object {
-            "color": "rgba(230, 196, 46, 1)",
-            "fontSize": 25,
-          },
-        ]
-      }
-    >
-      
-    </Text>
     <View
       style={
         Array [
@@ -68,7 +52,7 @@ exports[`RatingButtons component snapshot 1`] = `
           source={1}
           style={
             Object {
-              "height": 40,
+              "height": 25,
               "margin": 3,
               "tintColor": "#f1c40f",
               "transform": Array [
@@ -76,7 +60,7 @@ exports[`RatingButtons component snapshot 1`] = `
                   "scale": 1,
                 },
               ],
-              "width": 40,
+              "width": 25,
             }
           }
         />
@@ -101,7 +85,7 @@ exports[`RatingButtons component snapshot 1`] = `
           source={1}
           style={
             Object {
-              "height": 40,
+              "height": 25,
               "margin": 3,
               "tintColor": "#f1c40f",
               "transform": Array [
@@ -109,7 +93,7 @@ exports[`RatingButtons component snapshot 1`] = `
                   "scale": 1,
                 },
               ],
-              "width": 40,
+              "width": 25,
             }
           }
         />
@@ -134,7 +118,7 @@ exports[`RatingButtons component snapshot 1`] = `
           source={1}
           style={
             Object {
-              "height": 40,
+              "height": 25,
               "margin": 3,
               "tintColor": "#f1c40f",
               "transform": Array [
@@ -142,7 +126,7 @@ exports[`RatingButtons component snapshot 1`] = `
                   "scale": 1,
                 },
               ],
-              "width": 40,
+              "width": 25,
             }
           }
         />
@@ -167,7 +151,7 @@ exports[`RatingButtons component snapshot 1`] = `
           source={1}
           style={
             Object {
-              "height": 40,
+              "height": 25,
               "margin": 3,
               "tintColor": "#BDC3C7",
               "transform": Array [
@@ -175,7 +159,7 @@ exports[`RatingButtons component snapshot 1`] = `
                   "scale": 1,
                 },
               ],
-              "width": 40,
+              "width": 25,
             }
           }
         />
@@ -200,7 +184,7 @@ exports[`RatingButtons component snapshot 1`] = `
           source={1}
           style={
             Object {
-              "height": 40,
+              "height": 25,
               "margin": 3,
               "tintColor": "#BDC3C7",
               "transform": Array [
@@ -208,7 +192,7 @@ exports[`RatingButtons component snapshot 1`] = `
                   "scale": 1,
                 },
               ],
-              "width": 40,
+              "width": 25,
             }
           }
         />
