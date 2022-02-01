@@ -74,13 +74,13 @@ export default function ResultScreen({ navigation }) {
                 onPress={() => handlePress()}
               />
             </View>
-            <Text>
+            <View style={styles.chipSpacing}>
               {participants.map((i) => (
                 <Chip key={i} disabled={true} style={styles.chip}>
                   <Text style={styles.genresText}>{i}</Text>
                 </Chip>
               ))}
-            </Text>
+            </View>
             <View>
               {sortedIDs.map(([id, _]) => (
                 <ResultMovie key={id} id={id} />
@@ -117,10 +117,15 @@ const styles = StyleSheet.create({
     // textAlign: 'center',
     fontStyle: "italic",
   },
+  chipSpacing: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
   chip: {
-    marginHorizontal: 4,
-    maxHeight: 48,
-    lineHeight: 10, //usikker på om denne trengs
+    marginBottom: 4,
+    marginRight: 4,
+    maxHeight: 25,
+    // lineHeight: 10, //usikker på om denne trengs
     backgroundColor: Colors.PURPLE_LIGHT,
   },
   genresText: {

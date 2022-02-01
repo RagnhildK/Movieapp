@@ -79,13 +79,13 @@ function Movie({ id }) {
             <Subheading style={styles.subheading}>Overview</Subheading>
             <Text style={styles.modalText}>{movie.overview}</Text>
             <Subheading style={styles.subheading}>Genres</Subheading>
-            <Text>
+            <View style={styles.chipSpacing}>
               {genres.map((i) => (
                 <Chip key={i} disabled={true} style={styles.chip}>
                   <Text style={styles.genresText}>{i}</Text>
                 </Chip>
               ))}
-            </Text>
+            </View>
             <Subheading style={styles.subheading}>Runtime</Subheading>
             <Text style={styles.modalText}>{movieLength} min</Text>
           </Card.Content>
@@ -149,10 +149,16 @@ const styles = {
     fontSize: 20,
     color: Colors.WHITE,
   },
+  chipSpacing: {
+    flexDirection: "row",
+    // justifyContent: "space-evenly"
+    flexWrap: "wrap",
+  },
   chip: {
-    marginHorizontal: 4,
-    maxHeight: 48,
-    lineHeight: 10, //usikker på om denne trengs
+    marginBottom: 4,
+    marginRight: 4,
+    maxHeight: 25,
+    // lineHeight: 10, //usikker på om denne trengs
     backgroundColor: Colors.PURPLE_LIGHT,
   },
   genresText: {
