@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import {
   Card,
@@ -14,9 +14,10 @@ import { useSelector } from "react-redux";
 import * as Colors from "../../styles/colors";
 import { getDetails } from "../../utils/fetch";
 import { AirbnbRating } from "react-native-ratings";
+import {incrementRanking} from "../../redux/movieSlicer";
 
 function ResultMovie(id) {
-  const { movies, totalResults, participants, sessionID} = useSelector(
+  const { movies, totalResults, participants, sessionID, ranking} = useSelector(
     (state) => state.movieRatings
   );
   const [visible, setVisible] = React.useState(false);
@@ -49,9 +50,13 @@ function ResultMovie(id) {
     showModal();
   };
 
+  // useEffect(() => {
+  //   incrementRanking()
+  // }, []);
+
   return (
     <View style={styles.container}>
-     <Headline> 1 </Headline>
+     <Headline style={styles.rank}> {ranking} </Headline>
       <Card style={styles.containerCard}>
         <View style={styles.row}>
           <Card.Cover source={{ uri: url }} style={styles.image} />
@@ -121,11 +126,11 @@ const styles = StyleSheet.create({
     // marginLeft: 20,
     // marginRight: 20,
     // margin: 10,
-    backgroundColor: Colors.PURPLE_LIGHT,
     flexDirection: "row",
   },
   containerCard: {
     margin: 10,
+    marginLeft: 5,
     backgroundColor: Colors.PURPLE,
     flexDirection: "row",
     flexGrow: 1
@@ -135,6 +140,14 @@ const styles = StyleSheet.create({
     },
   row: {
     flexDirection: "row",
+  },
+  rank:{
+    color: Colors.ORANGE_LIGHT,
+    alignSelf: "center",
+    marginLeft: 3,
+    fontSize: 36,
+    fontStyle: "italic",
+    lineHeight: 50,
   },
   image: { width: 100, height: 150 },
   movieTitle: {

@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Pressable, Text, SafeAreaView } from "react-native";
-import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
+import {
+  setSessionID,
+  setUsername,
+  setLoading,
+  setNmbMovies,
+} from "../../redux/movieSlicer";
 import { addParticipant, getNmbOfMovies } from "../../utils/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { TextInput } from "react-native-paper";
@@ -18,13 +23,10 @@ export default function JoinSessionScreen({ navigation }) {
   const dispatch = useDispatch();
 
   const handleResponse = (response) => {
-    // response.results.map((m) => dispatch(addFetchedMovie(m)));
-    // dispatch(setLoading(false));
-
-    console.log(response.amount);
+    dispatch(setNmbMovies(parseInt(response.amount)));
   };
 
-  const enterSession = () => {
+  const enterSession = async () => {
     const validUsername = localUsername != "" ? true : false;
     const validSession = localSessionID != "" ? true : false;
     if (!validUsername) {
@@ -44,7 +46,7 @@ export default function JoinSessionScreen({ navigation }) {
         dispatch(setUsername(localUsername));
         dispatch(setSessionID(localSessionID));
         addParticipant(localUsername, localSessionID);
-        getNmbOfMovies(localSessionID, handleResponse);
+        await getNmbOfMovies(localSessionID, handleResponse);
         navigation.navigate("RatingScreen");
       }
     }

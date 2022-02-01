@@ -25,7 +25,6 @@ import {
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getRatings } from "../../utils/firebase";
-
 import * as Colors from "../../styles/colors";
 
 export default function ResultScreen({ navigation }) {
