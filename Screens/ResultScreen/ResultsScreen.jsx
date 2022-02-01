@@ -10,6 +10,7 @@ import {
 } from "../../redux/movieSlicer";
 import {
   View,
+  ScrollView,
   StyleSheet,
   Pressable,
   Text,
@@ -73,13 +74,13 @@ export default function ResultScreen({ navigation }) {
             color="#0000ff"
           />
         ) : (
-          <View className="MoviesListed">
+          <ScrollView>
             <View>
               {sortedIDs.map(([id, _]) => (
                 <ResultMovie key={id} id={id} />
               ))}
             </View>
-          </View>
+          </ScrollView>
         )}
         <Pressable
           style={styles.button}
