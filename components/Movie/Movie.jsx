@@ -1,6 +1,5 @@
-import React from "react";
-import RatingButtons from "../RatingButton/RatingButtons";
-import { useSelector } from "react-redux";
+import React from 'react';
+import { useSelector } from 'react-redux';
 import {
   Title,
   Card,
@@ -9,10 +8,11 @@ import {
   Portal,
   Subheading,
   Chip,
-} from "react-native-paper";
-import { Image, View, Text } from "react-native";
-import * as Colors from "../../styles/colors";
-import { getDetails } from "../../utils/fetch";
+} from 'react-native-paper';
+import { View, Text } from 'react-native';
+import RatingButtons from '../RatingButton/RatingButtons';
+import * as Colors from '../../styles/colors';
+import { getDetails } from '../../utils/fetch';
 
 function Movie({ id }) {
   // Renders the movie that is passed as function input
@@ -27,15 +27,15 @@ function Movie({ id }) {
   const hideModal = () => setVisible(false);
   const movieId = id;
   const movie = movies[movieId];
-  let url = "https://image.tmdb.org/t/p/w500/" + movie.posterPath;
+  const url = `https://image.tmdb.org/t/p/w500/${movie.posterPath}`;
 
   const handleResponse = (response) => {
-    let newGenres = [];
+    const newGenres = [];
     for (let i = 0; i < response.genres.length; i++) {
       newGenres.push(response.genres[i].name);
     }
     setGenres(newGenres);
-    setBackdropUrl("https://image.tmdb.org/t/p/w500" + response.backdrop_path);
+    setBackdropUrl(`https://image.tmdb.org/t/p/w500${response.backdrop_path}`);
     setMovieLength(response.runtime);
   };
 
@@ -84,7 +84,11 @@ function Movie({ id }) {
               ))}
             </Text>
             <Subheading style={styles.subheading}>Runtime</Subheading>
-            <Text style={styles.col}>{movieLength} min</Text>
+            <Text style={styles.col}>
+              {movieLength}
+              {' '}
+              min
+            </Text>
           </Card.Content>
         </Modal>
       </Portal>
@@ -95,13 +99,13 @@ function Movie({ id }) {
 const styles = {
   container: {
     margin: 10,
-    overflow: "hidden",
-    flexWrap: "wrap",
+    overflow: 'hidden',
+    flexWrap: 'wrap',
     backgroundColor: Colors.PURPLE,
     // boxShadow: Colors.BROWN_RED,
   },
   row: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   image: { width: 100, height: 150 },
   imageModal: {
@@ -112,7 +116,7 @@ const styles = {
   },
   col: {
     color: Colors.WHITE,
-    fontWeight: "200",
+    fontWeight: '200',
   },
   button: {
     color: Colors.ORANGE_LIGHT,
@@ -126,15 +130,12 @@ const styles = {
     padding: 10,
   },
   subheading: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     color: Colors.WHITE,
   },
   movieTitle: {
     fontSize: 20,
     color: Colors.WHITE,
-  },
-  cardWidth: {
-    width: "min-content", //ios talker ikke dette, men har ikke funnet et alt.
   },
   chip: {
     marginHorizontal: 4,
@@ -143,7 +144,7 @@ const styles = {
     backgroundColor: Colors.DARK_PURPLE,
   },
   genresText: {
-    //usikker på om dette trengs - må se mer på chips og hvorfor de tar så mye plass
+    // usikker på om dette trengs - må se mer på chips og hvorfor de tar så mye plass
     padding: 0,
     margin: 0,
     color: Colors.WHITE,

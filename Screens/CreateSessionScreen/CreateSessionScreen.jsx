@@ -1,23 +1,24 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { View, StyleSheet, Pressable, Text } from "react-native";
-import { TextInput } from "react-native-paper";
-import { setUsername, setLoading, setSessionID } from "../../redux/movieSlicer";
-import * as Colors from "../../styles/colors";
-import { addSession } from "../../utils/firebase";
-import { Headline } from "react-native-paper";
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {
+  View, StyleSheet, Pressable, Text,
+} from 'react-native';
+import { TextInput, Headline } from 'react-native-paper';
+import { setUsername, setLoading, setSessionID } from '../../redux/movieSlicer';
+import * as Colors from '../../styles/colors';
+import { addSession } from '../../utils/firebase';
 
 export default function CreateSessionScreen({ navigation }) {
-  const [localUsername, setLocalUsername] = useState("");
-  const [localSessionID, setLocalSessionID] = useState("");
+  const [localUsername, setLocalUsername] = useState('');
+  const [localSessionID, setLocalSessionID] = useState('');
   const [userError, setUserError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
 
   const dispatch = useDispatch();
 
   const createSession = () => {
-    const validUsername = localUsername != "" ? true : false;
-    const validSession = localSessionID != "" ? true : false;
+    const validUsername = localUsername !== '';
+    const validSession = localSessionID !== '';
     if (!validUsername) {
       if (!validSession) {
         setUserError(true);
@@ -26,17 +27,15 @@ export default function CreateSessionScreen({ navigation }) {
         setUserError(true);
         setSessionError(false);
       }
+    } else if (!validSession) {
+      setSessionError(true);
+      setUserError(false);
     } else {
-      if (!validSession) {
-        setSessionError(true);
-        setUserError(false);
-      } else {
-        dispatch(setUsername(localUsername));
-        dispatch(setSessionID(localSessionID));
-        dispatch(setLoading(true));
-        addSession(localUsername, localSessionID);
-        navigation.navigate("RatingScreen");
-      }
+      dispatch(setUsername(localUsername));
+      dispatch(setSessionID(localSessionID));
+      dispatch(setLoading(true));
+      addSession(localUsername, localSessionID);
+      navigation.navigate('RatingScreen');
     }
   };
 
@@ -71,7 +70,7 @@ export default function CreateSessionScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    justifyContent: 'center',
     backgroundColor: Colors.DARK_PURPLE,
     paddingLeft: 20,
     paddingRight: 20,
@@ -86,22 +85,22 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: Colors.WHITE,
-    textAlign: "center",
+    textAlign: 'center',
   },
   heading1: {
     color: Colors.ORANGE_LIGHT,
     fontSize: 24,
     margin: 30,
-    textAlign: "center",
-    fontStyle: "italic",
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
   heading2: {
     color: Colors.ORANGE_LIGHT,
     fontSize: 24,
     margin: 30,
     marginTop: 40,
-    textAlign: "center",
-    fontStyle: "italic",
+    textAlign: 'center',
+    fontStyle: 'italic',
   },
   intput: {
     //funmker ikke
