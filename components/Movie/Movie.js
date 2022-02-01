@@ -130,9 +130,6 @@ const styles = {
     fontSize: 20,
     color: Colors.WHITE,
   },
-  cardWidth: {
-    width: 'min-content', // ios talker ikke dette, men har ikke funnet et alt.
-  },
   chip: {
     marginHorizontal: 4,
     maxHeight: 48,
