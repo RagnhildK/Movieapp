@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
 import { TextInput } from "react-native-paper";
 import * as Colors from "../../styles/colors";
-import { addParticipant } from "../../firebase";
+import { addParticipant } from "../../utils/firebase";
 import { Headline } from "react-native-paper";
 
 export default function JoinSessionScreen({ navigation }) {
@@ -60,7 +60,11 @@ export default function JoinSessionScreen({ navigation }) {
         value={localSessionID}
         placeholder="Enter a name for the party..."
       />
-      <Pressable style={styles.button} onPress={() => enterSession()}>
+      <Pressable
+        id="enterJoinedSession"
+        style={styles.button}
+        onPress={() => enterSession()}
+      >
         <Text style={styles.buttonText}> Start rating</Text>
       </Pressable>
     </View>

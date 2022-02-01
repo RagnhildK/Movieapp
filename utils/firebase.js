@@ -78,8 +78,8 @@ export async function getRatings(owner, handleResponse) {
   const a = doc(db, "sessions", owner);
   let ratings;
   await getDoc(a).then((doc) => {
-    ratings = (doc.data());
-  }); 
+    ratings = doc.data();
+  });
   await handleResponse(ratings);
 }
 
