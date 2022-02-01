@@ -8,7 +8,7 @@ import {
   Modal,
   Portal,
   Subheading,
-  List,
+  Chip,
 } from "react-native-paper";
 import { Image, View, Text } from "react-native";
 import * as Colors from "../../styles/colors";
@@ -48,37 +48,40 @@ function Movie({ id }) {
     <Card style={styles.container}>
       <View style={styles.row}>
         <Card.Cover source={{ uri: url }} style={styles.image} />
-        <Card.Content style={styles.maxWidth}>
-          <Title>{movie.title}</Title>
+        <Card.Content style={styles.cardWidth}>
+          <Title style={styles.movieTitle}>{movie.title}</Title>
+          {/* ^ her bør det added på number of lines of ellipsizeMode (?) tail - styling for at tittelen ikke får ta for mye plass */}
           <RatingButtons id={id} />
           <Button type="text" onPress={() => handlePress(movieId)}>
-            <Text style={styles.button}>More info</Text>
+            <Text style={styles.button}>Show more</Text>
           </Button>
         </Card.Content>
-        <Portal>
-          <Modal
-            visible={visible}
-            onDismiss={hideModal}
-            contentContainerStyle={styles.modal}
-          >
-            <Card>
-              <Card.Cover
-                source={{ uri: backdropUrl }}
-                style={styles.imageModal}
-              />
-              <Card.Content>
-                <Title style={styles.subheading}>{movie.title}</Title>
-                <Subheading style={styles.subheading}>Overview</Subheading>
-                <Text>{movie.overview}</Text>
-                <Subheading style={styles.subheading}>Genres</Subheading>
-                <Text style={styles.col}>{genres.map((i) => `• ${i}\n`)}</Text>
-                <Subheading style={styles.subheading}>Runtime</Subheading>
-                <Text>{movieLength} min</Text>
-              </Card.Content>
-            </Card>
-          </Modal>
-        </Portal>
       </View>
+
+      <Portal>
+        <Modal
+          visible={visible}
+          onDismiss={hideModal}
+          contentContainerStyle={styles.modal}
+        >
+          <Card.Cover source={{ uri: backdropUrl }} style={styles.imageModal} />
+          <Card.Content style={styles.cardContent}>
+            <Title style={styles.movieTitle}>{movie.title}</Title>
+            <Subheading style={styles.subheading}>Overview</Subheading>
+            <Text style={styles.col}>{movie.overview}</Text>
+            <Subheading style={styles.subheading}>Genres</Subheading>
+            <Text>
+              {genres.map((i) => (
+                <Chip key={i} disableed={true} style={styles.chip}>
+                  <Text style={styles.genresText}>{i}</Text>
+                </Chip>
+              ))}
+            </Text>
+            <Subheading style={styles.subheading}>Runtime</Subheading>
+            <Text style={styles.col}>{movieLength} min</Text>
+          </Card.Content>
+        </Modal>
+      </Portal>
     </Card>
   );
 }
@@ -88,33 +91,53 @@ const styles = {
     margin: 10,
     overflow: "hidden",
     flexWrap: "wrap",
+    backgroundColor: Colors.PURPLE,
   },
   row: {
     flexDirection: "row",
   },
-  image: { width: 100 },
+  image: { width: 100, height: 150 },
   imageModal: {
     height: 250,
+    borderTopLeftRadius: 5,
+    borderTopRightRadius: 5,
+    padding: 0,
   },
   col: {
-    flexDirection: "col",
-    alignItems: "flex-start",
+    color: Colors.WHITE,
+    fontWeight: "200",
   },
   button: {
     color: Colors.ORANGE_DARK,
-    fontWeight: "bold",
   },
   modal: {
-    backgroundColor: Colors.WHITE,
-    justifyContent: "flex-start",
-    margin: 10,
-    borderRadius: 20,
+    backgroundColor: Colors.PURPLE,
+    margin: 15,
+    borderRadius: 7,
+  },
+  cardContent: {
+    padding: 10,
   },
   subheading: {
     fontWeight: "bold",
+    color: Colors.WHITE,
   },
-  maxWidth: {
-    width: "min-content",
+  movieTitle: {
+    fontSize: 20,
+    color: Colors.WHITE,
+  },
+  cardWidth: {
+    width: "min-content", //ios talker ikke dette, men har ikke funnet et alt.
+  },
+  chip: {
+    marginHorizontal: 4,
+    maxHeight: 48,
+    lineHeight: 10, //usikker på om denne trengs
+  },
+  genresText: {
+    //usikker på om dette trengs - må se mer på chips og hvorfor de tar så mye plass
+    padding: 0,
+    margin: 0,
   },
 };
 
