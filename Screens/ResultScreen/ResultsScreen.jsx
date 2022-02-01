@@ -54,18 +54,18 @@ export default function ResultScreen({ navigation }) {
 
   return (
     <Provider>
-      <SafeAreaView style={styles.container}>
-        {loading ? (
-          <ActivityIndicator
-            style={styles.loading}
-            size="large"
-            color="#0000ff"
-          />
-        ) : (
+      {loading ? (
+        <ActivityIndicator
+          style={styles.container}
+          size="large"
+          color="#0000ff"
+        />
+      ) : (
+        <SafeAreaView style={styles.container}>
           <ScrollView>
             <View style={styles.rowContainer}>
               <Headline style={styles.heading1}>
-                Participants in this session:
+                Participants in {sessionID}:
               </Headline>
               <IconButton
                 style={styles.refreshButton}
@@ -87,14 +87,14 @@ export default function ResultScreen({ navigation }) {
               ))}
             </View>
           </ScrollView>
-        )}
-        <Pressable
-          style={styles.button}
-          onPress={() => navigation.navigate("CreateOrJoinScreen")}
-        >
-          <Text style={styles.buttonText}> Go to start screen</Text>
-        </Pressable>
-      </SafeAreaView>
+          <Pressable
+            style={styles.button}
+            onPress={() => navigation.navigate("CreateOrJoinScreen")}
+          >
+            <Text style={styles.buttonText}> Go to start screen</Text>
+          </Pressable>
+        </SafeAreaView>
+      )}
     </Provider>
   );
 }
@@ -102,7 +102,7 @@ export default function ResultScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // justifyContent: "center",
+    justifyContent: "center",
     backgroundColor: Colors.DARK_PURPLE,
     padding: 20,
   },

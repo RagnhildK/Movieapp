@@ -39,27 +39,29 @@ function RatingScreen({ navigation }) {
 
   return (
     <Provider>
-      <SafeAreaView style={styles.container}>
-        {loading ? (
+      {loading ? (
           <ActivityIndicator
-            style={styles.loading}
+            style={styles.container}
             size="large"
             color="#0000ff"
           />
         ) : (
+      <SafeAreaView style={styles.container}>
+        
           <ScrollView>
             <Headline style={styles.heading}>
-              Vote for the movies you want to watch
+              Vote for the movies you want to watch in {sessionID}
             </Headline>
             {Object.entries(movies).map((m) => (
               <Movie key={m[0]} id={m[0]} />
             ))}
           </ScrollView>
-        )}
         <Pressable style={styles.button} onPress={() => handleSubmit()}>
           <Text style={styles.buttonText}> Submit rating</Text>
         </Pressable>
       </SafeAreaView>
+      )}
+
     </Provider>
   );
 }
