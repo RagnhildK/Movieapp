@@ -74,17 +74,12 @@ function ResultMovie(id) {
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          contentContainerStyle={styles.modal}
-        >
-          <Card>
-            <Card.Cover
-              source={{ uri: backdropUrl }}
-              style={styles.imageModal}
-            />
-            <Card.Content>
-              <Title style={styles.subheading}>{movie.title}</Title>
+          contentContainerStyle={styles.modal}>
+            <Card.Cover source={{ uri: backdropUrl }}style={styles.imageModal}/>
+            <Card.Content style={styles.cardContent}>
+              <Title style={styles.movieTitle}>{movie.title}</Title>
               <Subheading style={styles.subheading}>Overview</Subheading>
-              <Text>{movie.overview}</Text>
+              <Text style={styles.modalText}>{movie.overview}</Text>
               <Subheading style={styles.subheading}>Genres</Subheading>
               <Text>
                 {genres.map((i) => (
@@ -94,7 +89,7 @@ function ResultMovie(id) {
                 ))}
               </Text>
               <Subheading style={styles.subheading}>Runtime</Subheading>
-              <Text>{movieLength} min</Text>
+              <Text style={styles.modalText}>{movieLength} min</Text>
               <Subheading style={styles.subheading}>
                 Average rating in this session:{" "}
                 {avgRank().toLocaleString(undefined, {
@@ -109,7 +104,6 @@ function ResultMovie(id) {
                 showRating={false}
               />
             </Card.Content>
-          </Card>
         </Modal>
       </Portal>
     </Card>
@@ -145,8 +139,8 @@ const styles = StyleSheet.create({
   },
   modal: {
     backgroundColor: Colors.PURPLE,
-    justifyContent: "flex-start",
     margin: 10,
+    borderRadius: 7,
   },
   imageModal: {
     height: 250,
@@ -154,8 +148,16 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 5,
     padding: 0,
   },
+  cardContent: {
+    padding: 10,
+  },
   subheading: {
-    fontWeight: "bold",
+    // fontWeight: "bold",
+    color: Colors.WHITE
+  },  
+  modalText: {
+    color: Colors.WHITE,
+    fontWeight: "200",
   },
   chip: {
     marginHorizontal: 4,
