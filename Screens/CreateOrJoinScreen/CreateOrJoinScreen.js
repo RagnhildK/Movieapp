@@ -19,14 +19,14 @@ export default function CreateOrJoinScreen({ navigation }) {
       </Headline>
       <View>
         <Pressable style={styles.button} onPress={() => handlePress("Create")}>
-          <Text style={styles.buttonText}> Create a session</Text>
+          <Text style={styles.buttonText}> Start a movie party</Text>
         </Pressable>
         <Pressable
           style={styles.button}
           title="Join a session"
           onPress={() => handlePress("Join")}
         >
-          <Text style={styles.buttonText}>Join a session</Text>
+          <Text style={styles.buttonText}>Join a movie party</Text>
         </Pressable>
       </View>
     </View>
@@ -58,5 +58,6 @@ const styles = StyleSheet.create({
     fontSize: 32,
     margin: 30,
     textAlign: "center",
+    fontStyle: "italic",
   },
 });

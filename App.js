@@ -21,7 +21,7 @@ const App = () => (
           headerStyle: {
             backgroundColor: Colors.DARK_PURPLE,
           },
-          headerTintColor: Colors.WHITE,
+          headerTintColor: Colors.ORANGE_LIGHT,
           headerTitleAlign: "center",
         }}
       >
@@ -30,28 +30,28 @@ const App = () => (
           component={CreateOrJoinScreen}
           //component={RatingScreen}
           options={{
-            title: "Movie Picker",
+            title: "MoviePicker",
           }}
         />
         <Stack.Screen
           name="CreateSessionScreen"
           component={CreateSessionScreen}
           options={{
-            title: "Create session",
+            title: "Start party",
           }}
         />
         <Stack.Screen
           name="JoinSessionScreen"
           component={JoinSessionScreen}
           options={{
-            title: "Join session",
+            title: "Join party",
           }}
         />
         <Stack.Screen
           name="RatingScreen"
           component={RatingScreen}
           options={{
-            title: "Rate movies",
+            title: "Vote on movies",
           }}
         />
         <Stack.Screen

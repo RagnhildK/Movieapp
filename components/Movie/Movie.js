@@ -48,39 +48,40 @@ function Movie({ id }) {
     <Card style={styles.container}>
       <View style={styles.row}>
         <Card.Cover source={{ uri: url }} style={styles.image} />
-        <Card.Content style={styles.maxWidth}>
-          <Title>{movie.title}</Title>
+        <Card.Content style={styles.cardWidth}>
+          <Title style={styles.movieTitle}>{movie.title}</Title>
+          {/* ^ her bør det added på number of lines of ellipsizeMode (?) tail - styling for at tittelen ikke får ta for mye plass */}
           <RatingButtons id={id} />
           <Button type="text" onPress={() => handlePress(movieId)}>
-            <Text style={styles.button}>More info</Text>
+            <Text style={styles.button}>Show more</Text>
           </Button>
         </Card.Content>
-        <Portal>
-          <Modal
-            visible={visible}
-            onDismiss={hideModal}
-            contentContainerStyle={styles.modal}
-          >
-            <Card.Cover
-              source={{ uri: backdropUrl }}
-              style={styles.imageModal}
-            />
-            <Card.Content style={styles.cardContent}>
-              <Title style={styles.subheading}>{movie.title}</Title>
-              <Subheading style={styles.subheading}>Overview</Subheading>
-              <Text style={styles.col}> {movie.overview}</Text>
-              <Subheading style={styles.subheading}>Genres</Subheading>
-              <Text>
-                {genres.map((i) => (
-                  <Chip style={styles.chip}>{i}</Chip>
-                ))}
-              </Text>
-              <Subheading style={styles.subheading}>Runtime</Subheading>
-              <Text style={styles.col}>{movieLength} min</Text>
-            </Card.Content>
-          </Modal>
-        </Portal>
       </View>
+
+      <Portal>
+        <Modal
+          visible={visible}
+          onDismiss={hideModal}
+          contentContainerStyle={styles.modal}
+        >
+          <Card.Cover source={{ uri: backdropUrl }} style={styles.imageModal} />
+          <Card.Content style={styles.cardContent}>
+            <Title style={styles.movieTitle}>{movie.title}</Title>
+            <Subheading style={styles.subheading}>Overview</Subheading>
+            <Text style={styles.col}> {movie.overview}</Text>
+            <Subheading style={styles.subheading}>Genres</Subheading>
+            <Text>
+              {genres.map((i) => (
+                <Chip key={i} disableed={true} style={styles.chip}>
+                  <Text style={styles.genresText}>{i}</Text>
+                </Chip>
+              ))}
+            </Text>
+            <Subheading style={styles.subheading}>Runtime</Subheading>
+            <Text style={styles.col}>{movieLength} min</Text>
+          </Card.Content>
+        </Modal>
+      </Portal>
     </Card>
   );
 }
@@ -95,7 +96,7 @@ const styles = {
   row: {
     flexDirection: "row",
   },
-  image: { width: 100 },
+  image: { width: 100, height: 150 },
   imageModal: {
     height: 250,
     borderTopLeftRadius: 5,
@@ -104,17 +105,15 @@ const styles = {
   },
   col: {
     color: Colors.WHITE,
-    fontWeight: 200,
+    fontWeight: "200",
   },
   button: {
     color: Colors.ORANGE_DARK,
-    fontWeight: "bold",
   },
   modal: {
     backgroundColor: Colors.PURPLE,
-    // justifyContent: "flex-start",
-    margin: 10,
-    borderRadius: 5,
+    margin: 15,
+    borderRadius: 7,
   },
   cardContent: {
     padding: 10,
@@ -123,11 +122,22 @@ const styles = {
     fontWeight: "bold",
     color: Colors.WHITE,
   },
-  maxWidth: {
-    width: "min-content",
+  movieTitle: {
+    fontSize: 20,
+    color: Colors.WHITE,
+  },
+  cardWidth: {
+    width: "min-content", //ios talker ikke dette, men har ikke funnet et alt.
   },
   chip: {
-    margin: 4,
+    marginHorizontal: 4,
+    maxHeight: 48,
+    lineHeight: 10, //usikker på om denne trengs
+  },
+  genresText: {
+    //usikker på om dette trengs - må se mer på chips og hvorfor de tar så mye plass
+    padding: 0,
+    margin: 0,
   },
 };
 

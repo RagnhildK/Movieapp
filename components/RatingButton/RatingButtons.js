@@ -19,6 +19,7 @@ function RatingButtons({ id }) {
         onFinishRating={(rating) => ratingCompleted(rating)}
         defaultRating={ratings[id]}
         showRating={false}
+        size={25}
       />
     </View>
   );

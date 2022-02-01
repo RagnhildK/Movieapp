@@ -7,7 +7,7 @@ import {
   Pressable,
   Text,
 } from "react-native";
-import { Provider } from "react-native-paper";
+import { Headline, Provider, Subheading } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
 import Movie from "../../components/Movie/Movie";
 import { setLoading, addFetchedMovie } from "../../redux/movieSlicer";
@@ -40,6 +40,9 @@ const RatingScreen = ({ navigation }) => {
   return (
     <Provider>
       <View style={styles.container}>
+        <Headline style={styles.heading}>
+          Vote for the movies you want to watch
+        </Headline>
         {loading ? (
           <ActivityIndicator
             style={styles.loading}
@@ -68,8 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: Colors.DARK_PURPLE,
-    paddingLeft: 10,
-    paddingRight: 10,
+    padding: 20,
   },
   loading: {
     flex: 8,
@@ -78,11 +80,17 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.PURPLE,
     margin: 10,
     padding: 10,
-    maxWidth: 300,
+    maxWidth: 150,
     borderRadius: 10,
   },
   buttonText: {
     color: Colors.WHITE,
+    textAlign: "center",
+  },
+  heading: {
+    color: Colors.ORANGE_LIGHT,
+    fontSize: 25,
+    margin: 30,
     textAlign: "center",
   },
 });
