@@ -3,7 +3,7 @@ import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { rateMovie } from "../../redux/movieSlicer";
 import { AirbnbRating } from "react-native-ratings";
-import { Colors } from "./../../styles/colors";
+import { Colors } from "../../styles/colors";
 
 function RatingButtons({ id }) {
   const { ratings } = useSelector((state) => state.movieRatings);
