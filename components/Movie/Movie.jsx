@@ -72,6 +72,7 @@ function Movie({ id }) {
           visible={visible}
           onDismiss={hideModal}
           contentContainerStyle={styles.modal}>
+          <Card style={styles.card} onPress={hideModal}>
           <Card.Cover source={{ uri: backdropUrl }} style={styles.imageModal} />
           <Card.Content style={styles.cardContent}>
             <Title style={styles.movieTitle}>{movie.title}</Title>
@@ -88,6 +89,7 @@ function Movie({ id }) {
             <Subheading style={styles.subheading}>Runtime</Subheading>
             <Text style={styles.modalText}>{movieLength} min</Text>
           </Card.Content>
+          </Card>
         </Modal>
       </Portal>
     </Card>
@@ -130,9 +132,11 @@ const styles = {
     paddingBottom: 10,
   },
   modal: {
-    backgroundColor: Colors.PURPLE,
     margin: 10,
     borderRadius: 7,
+  },
+  card:{
+    backgroundColor: Colors.PURPLE
   },
   cardContent: {
     padding: 10,
