@@ -1,6 +1,12 @@
 import React, { useEffect } from "react";
 import ResultMovie from "../../components/ResultMovie/ResultMovie";
-import { Provider, Headline, Chip, IconButton, Divider } from "react-native-paper";
+import {
+  Provider,
+  Headline,
+  Chip,
+  IconButton,
+  Divider,
+} from "react-native-paper";
 import {
   setLoading,
   setTotalResults,
@@ -54,35 +60,37 @@ export default function ResultScreen({ navigation }) {
   return (
     <Provider>
       {loading ? (
-        <ActivityIndicator
-          style={styles.container}
-          size="large"
-          color="#0000ff"
-        />
+          <ActivityIndicator
+            style={styles.container}
+            size="large"
+            color="PURPLE_LIGHT"
+          />
       ) : (
         <SafeAreaView style={styles.container}>
           <ScrollView>
             <View style={styles.headerContainer}>
-            <View style={styles.rowContainer}>
-              <Headline style={styles.heading1}>
-                Participants in {sessionID}
+              <View style={styles.rowContainer}>
+                <Headline style={styles.heading1}>
+                  Participants in {sessionID}
+                </Headline>
+                <IconButton
+                  style={styles.refreshButton}
+                  icon="refresh"
+                  color={Colors.WHITE}
+                  onPress={() => handlePress()}
+                />
+              </View>
+              <View style={styles.chipSpacing}>
+                {participants.map((i) => (
+                  <Chip key={i} disabled={true} style={styles.chip}>
+                    <Text style={styles.genresText}>{i}</Text>
+                  </Chip>
+                ))}
+              </View>
+              {/* <Divider style={styles.divider}/> */}
+              <Headline style={styles.heading2}>
+                Results from the voting
               </Headline>
-              <IconButton
-                style={styles.refreshButton}
-                icon="refresh"
-                color={Colors.WHITE}
-                onPress={() => handlePress()}
-              />
-            </View>
-            <View style={styles.chipSpacing}>
-              {participants.map((i) => (
-                <Chip key={i} disabled={true} style={styles.chip}>
-                  <Text style={styles.genresText}>{i}</Text>
-                </Chip>
-              ))}
-            </View>
-            {/* <Divider style={styles.divider}/> */}
-            <Headline style={styles.heading2}>Results from the voting</Headline>
             </View>
             <View>
               {sortedIDs.map(([id, _]) => (
@@ -111,7 +119,7 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     justifyContent: "flex-start",
-    marginHorizontal: 10
+    marginHorizontal: 10,
   },
   rowContainer: {
     flexDirection: "row",
@@ -122,7 +130,7 @@ const styles = StyleSheet.create({
     color: Colors.ORANGE_LIGHT,
     fontSize: 26,
     fontStyle: "italic",
-    alignSelf: "center"
+    alignSelf: "center",
   },
   refreshButton: {
     backgroundColor: Colors.PURPLE,
@@ -133,11 +141,11 @@ const styles = StyleSheet.create({
     color: Colors.ORANGE_LIGHT,
     fontSize: 26,
     fontStyle: "italic",
-    marginTop: 10
+    marginTop: 10,
   },
   divider: {
     backgroundColor: Colors.ORANGE_LIGHT,
-    height: 1
+    height: 1,
   },
   chipSpacing: {
     flexDirection: "row",

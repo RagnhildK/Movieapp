@@ -5,7 +5,8 @@ import {
   ActivityIndicator,
   StyleSheet,
   Pressable,
-  Text, SafeAreaView
+  Text,
+  SafeAreaView,
 } from "react-native";
 import { Headline, Provider } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
@@ -43,7 +44,7 @@ function RatingScreen({ navigation }) {
           <ActivityIndicator
             style={styles.container}
             size="large"
-            color="#0000ff"
+            color="PURPLE_LIGHT"
           />
         ) : (
       <SafeAreaView style={styles.container}>      
@@ -55,12 +56,11 @@ function RatingScreen({ navigation }) {
               <Movie key={m[0]} id={m[0]} />
             ))}
           </ScrollView>
-        <Pressable style={styles.button} onPress={() => handleSubmit()}>
-          <Text style={styles.buttonText}> Submit rating</Text>
-        </Pressable>
-      </SafeAreaView>
+          <Pressable style={styles.button} onPress={() => handleSubmit()}>
+            <Text style={styles.buttonText}> Submit rating</Text>
+          </Pressable>
+        </SafeAreaView>
       )}
-
     </Provider>
   );
 }

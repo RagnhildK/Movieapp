@@ -101,9 +101,8 @@ const styles = StyleSheet.create({
     marginTop: 20,
     margin: 10,
     padding: 10,
-    maxWidth: 150,
     borderRadius: 10,
-    alignSelf: "flex-end",
+    alignSelf: "center",
   },
   buttonText: {
     color: Colors.WHITE,
