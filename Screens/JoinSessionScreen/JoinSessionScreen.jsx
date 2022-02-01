@@ -52,6 +52,16 @@ export default function JoinSessionScreen({ navigation }) {
     }
   };
 
+  const handlePressUsername = (val) => {
+    setUSernameError(false);
+    setLocasetLocalUsernamelSessionID(val);
+  };
+
+  const handlePressSessionID = (val) => {
+    setSessionError(false);
+    setLocalSessionID(val);
+  };
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
@@ -59,7 +69,7 @@ export default function JoinSessionScreen({ navigation }) {
         <TextInput
           mode="outlined"
           error={userError}
-          onChangeText={(val) => setLocalUsername(val)}
+          onChangeText={(val) => handlePressUsername(val)}
           value={localUsername}
           placeholder="Your nickname"
         />
@@ -69,7 +79,7 @@ export default function JoinSessionScreen({ navigation }) {
         <TextInput
           mode="outlined"
           error={sessionError}
-          onChangeText={(val) => setLocalSessionID(val)}
+          onChangeText={(val) => handlePressSessionID(val)}
           value={localSessionID}
           placeholder="Enter the name of the party"
         />

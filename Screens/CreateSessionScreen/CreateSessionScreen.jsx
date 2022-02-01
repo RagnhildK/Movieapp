@@ -44,6 +44,16 @@ export default function CreateSessionScreen({ navigation }) {
     }
   };
 
+  const handlePressUsername = (val) => {
+    setUSernameError(false);
+    setLocasetLocalUsernamelSessionID(val);
+  };
+
+  const handlePressSessionID = (val) => {
+    setSessionError(false);
+    setLocalSessionID(val);
+  };
+
   return (
     <View style={styles.container}>
       <SafeAreaView>
@@ -51,7 +61,7 @@ export default function CreateSessionScreen({ navigation }) {
         <TextInput
           mode="outlined"
           error={userError}
-          onChangeText={(val) => setLocalUsername(val)}
+          onChangeText={(val) => handlePressUsername(val)}
           value={localUsername}
           placeholder="Your nickname"
         />
@@ -61,11 +71,11 @@ export default function CreateSessionScreen({ navigation }) {
         <TextInput
           mode="outlined"
           error={sessionError}
-          onChangeText={(val) => setLocalSessionID(val)}
+          onChangeText={(val) => handlePressSessionID(val)}
           value={localSessionID}
           placeholder="Choose a name for the party"
         />
-          <Headline style={styles.heading2}>
+        <Headline style={styles.heading2}>
           How many movies to choose between?
         </Headline>
         <TextInput
