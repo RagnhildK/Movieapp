@@ -7,16 +7,16 @@ import * as Colors from "../../styles/colors";
 import { addParticipant } from "../../firebase";
 
 export default function JoinSessionScreen({ navigation }) {
-  const [owner, setOwner] = useState("");
-  const [username, setLocalUsername] = useState("");
+  const [localSessionID, setLocalSessionID] = useState("");
+  const [localUsername, setLocalUsername] = useState("");
   const [userError, setUserError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
 
   const dispatch = useDispatch();
 
   const enterSession = () => {
-    const validUsername = username != "" ? true : false;
-    const validSession = owner != "" ? true : false;
+    const validUsername = localUsername != "" ? true : false;
+    const validSession = localSessionID != "" ? true : false;
     if (!validUsername) {
       if (!validSession) {
         setUserError(true);
@@ -30,10 +30,10 @@ export default function JoinSessionScreen({ navigation }) {
         setSessionError(true);
         setUserError(false);
       } else {
-        dispatch(setUsername(username));
-        dispatch(setSessionID(owner));
+        dispatch(setUsername(localUsername));
+        dispatch(setSessionID(localSessionID));
         dispatch(setLoading(true));
-        addParticipant(username, owner);
+        addParticipant(localUsername, localSessionID);
         navigation.navigate("RatingScreen");
       }
     }
@@ -46,15 +46,15 @@ export default function JoinSessionScreen({ navigation }) {
         label="Username"
         error={userError}
         onChangeText={(val) => setLocalUsername(val)}
-        value={username}
+        value={localUsername}
         placeholder="Enter a username for the session..."
       />
       <TextInput
         mode="outlined"
         label="Username of session creator"
         error={sessionError}
-        onChangeText={(val) => setOwner(val)}
-        value={owner}
+        onChangeText={(val) => setLocalSessionID(val)}
+        value={localSessionID}
         placeholder="username of session creator..."
       />
       <Pressable style={styles.button} onPress={() => enterSession()}>

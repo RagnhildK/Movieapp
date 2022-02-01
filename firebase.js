@@ -52,11 +52,11 @@ export async function checkIfUserExists(user) {
   return a.size != 0;
 }
 
-export async function addSession(name, movies) {
+export async function addSession(name, sessionID) {
   const data = {
     [name]: {},
   };
-  await setDoc(doc(db, "sessions", name), data);
+  await setDoc(doc(db, "sessions", sessionID), data);
 }
 
 export async function addParticipant(username, owner) {
