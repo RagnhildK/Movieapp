@@ -56,7 +56,7 @@ function ResultMovie(id) {
 
   return (
     <View style={styles.container}>
-     <Headline> {ranking} </Headline>
+     <Headline style={styles.rank}> {ranking} </Headline>
       <Card style={styles.containerCard}>
         <View style={styles.row}>
           <Card.Cover source={{ uri: url }} style={styles.image} />
@@ -126,11 +126,11 @@ const styles = StyleSheet.create({
     // marginLeft: 20,
     // marginRight: 20,
     // margin: 10,
-    backgroundColor: Colors.PURPLE_LIGHT,
     flexDirection: "row",
   },
   containerCard: {
     margin: 10,
+    marginLeft: 5,
     backgroundColor: Colors.PURPLE,
     flexDirection: "row",
     flexGrow: 1
@@ -140,6 +140,14 @@ const styles = StyleSheet.create({
     },
   row: {
     flexDirection: "row",
+  },
+  rank:{
+    color: Colors.ORANGE_LIGHT,
+    alignSelf: "center",
+    marginLeft: 3,
+    fontSize: 36,
+    fontStyle: "italic",
+    lineHeight: 50,
   },
   image: { width: 100, height: 150 },
   movieTitle: {
