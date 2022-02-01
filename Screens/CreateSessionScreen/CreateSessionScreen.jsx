@@ -14,7 +14,7 @@ import { addSession } from "../../utils/firebase";
 export default function CreateSessionScreen({ navigation }) {
   const [localUsername, setLocalUsername] = useState("");
   const [localSessionID, setLocalSessionID] = useState("");
-  const [localMovieAmount, setLocalMovieAmount] = useState(20);
+  const [localMovieAmount, setLocalMovieAmount] = useState();
   const [userError, setUserError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
 
@@ -46,16 +46,8 @@ export default function CreateSessionScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>
-        <Headline style={styles.heading1}>What's your nickname?</Headline>
-        <TextInput
-          mode="outlined"
-          error={userError}
-          onChangeText={(val) => setLocalUsername(val)}
-          value={localUsername}
-          placeholder="Your nickname"
-        />
-        <Headline style={styles.heading2}>
+      <SafeAreaView>  
+        <Headline style={styles.heading}>
           What's the name of the party?
         </Headline>
         <TextInput
@@ -65,7 +57,7 @@ export default function CreateSessionScreen({ navigation }) {
           value={localSessionID}
           placeholder="Choose a name for the party"
         />
-          <Headline style={styles.heading2}>
+          <Headline style={styles.headingBottom}>
           How many movies to choose between?
         </Headline>
         <TextInput
@@ -75,8 +67,16 @@ export default function CreateSessionScreen({ navigation }) {
           value={localMovieAmount}
           placeholder="Number of movies"
         />
+        <Headline style={styles.headingBottom}>What's your nickname?</Headline>
+        <TextInput
+          mode="outlined"
+          error={userError}
+          onChangeText={(val) => setLocalUsername(val)}
+          value={localUsername}
+          placeholder="Your nickname"
+        />
         <Pressable style={styles.button} onPress={() => createSession()}>
-          <Text style={styles.buttonText}>Start a party</Text>
+          <Text style={styles.buttonText}>Start the party</Text>
         </Pressable>
       </SafeAreaView>
     </View>
@@ -105,14 +105,14 @@ const styles = StyleSheet.create({
     color: Colors.WHITE,
     textAlign: "center",
   },
-  heading1: {
+  heading: {
     color: Colors.ORANGE_LIGHT,
     fontSize: 24,
     margin: 30,
     textAlign: "center",
     fontStyle: "italic",
   },
-  heading2: {
+  headingBottom: {
     color: Colors.ORANGE_LIGHT,
     fontSize: 24,
     margin: 30,
