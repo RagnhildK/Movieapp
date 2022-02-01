@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
 import { TextInput } from "react-native-paper";
 import * as Colors from "../../styles/colors";
-import { addParticipant } from "../../firebase";
+import { addParticipant } from "../../utils/firebase";
 import { Headline } from "react-native-paper";
 
 export default function JoinSessionScreen({ navigation }) {
