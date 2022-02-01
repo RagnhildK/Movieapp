@@ -24,3 +24,4 @@ export const DARK_PURPLE = "#0f0b1c";
 
 //export const PURPLE = "#2e0073";
 export const PURPLE = "#352761";
+export const PURPLE_LIGHT = "#a297c4";

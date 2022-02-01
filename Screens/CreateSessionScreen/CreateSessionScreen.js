@@ -50,6 +50,7 @@ export default function CreateSessionScreen({ navigation }) {
         onChangeText={(val) => setLocalUsername(val)}
         value={localUsername}
         placeholder="Enter your nickname..."
+        style={styles.input}
       />
       <Headline style={styles.heading2}>What's the name of the party?</Headline>
       <TextInput
@@ -101,5 +102,10 @@ const styles = StyleSheet.create({
     marginTop: 40,
     textAlign: "center",
     fontStyle: "italic",
+  },
+  intput: {
+    //funmker ikke
+    backgroundColor: Colors.PURPLE_LIGHT,
+    fontSize: 30,
   },
 });
