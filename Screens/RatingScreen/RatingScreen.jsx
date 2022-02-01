@@ -78,10 +78,10 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.PURPLE,
     margin: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 50,
     padding: 15,
-    maxWidth: 200,
-    borderRadius: 10,
+    maxWidth: 250,
+    borderRadius: 20,
     alignSelf: "center",
   },
   buttonText: {

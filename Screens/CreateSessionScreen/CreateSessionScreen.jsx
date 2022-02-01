@@ -46,8 +46,7 @@ export default function CreateSessionScreen({ navigation }) {
           error={userError}
           onChangeText={(val) => setLocalUsername(val)}
           value={localUsername}
-          placeholder="Enter your nickname..."
-          style={styles.input}
+          placeholder="Your nickname"
         />
         <Headline style={styles.heading2}>
           What's the name of the party?
@@ -57,7 +56,7 @@ export default function CreateSessionScreen({ navigation }) {
           error={sessionError}
           onChangeText={(val) => setLocalSessionID(val)}
           value={localSessionID}
-          placeholder="Enter a name for the party..."
+          placeholder="Choose a name for the party"
         />
         <Pressable style={styles.button} onPress={() => createSession()}>
           <Text style={styles.buttonText}>Start a party</Text>
@@ -78,11 +77,12 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.PURPLE,
     marginTop: 20,
-    margin: 10,
-    padding: 10,
-    maxWidth: 150,
-    borderRadius: 10,
-    alignSelf: "flex-end",
+    margin: 30,
+    padding: 15,
+    paddingHorizontal: 50,
+    maxWidth: 250,
+    borderRadius: 20,
+    alignSelf: "center",
   },
   buttonText: {
     color: Colors.WHITE,
@@ -102,10 +102,5 @@ const styles = StyleSheet.create({
     marginTop: 40,
     textAlign: "center",
     fontStyle: "italic",
-  },
-  intput: {
-    //funmker ikke
-    backgroundColor: Colors.PURPLE_LIGHT,
-    fontSize: 30,
   },
 });

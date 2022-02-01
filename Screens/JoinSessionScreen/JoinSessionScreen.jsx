@@ -49,7 +49,7 @@ export default function JoinSessionScreen({ navigation }) {
           error={userError}
           onChangeText={(val) => setLocalUsername(val)}
           value={localUsername}
-          placeholder="Enter a nickname for the session..."
+          placeholder="Your nickname"
         />
         <Headline style={styles.heading2}>
           What's the name of the party?
@@ -59,7 +59,7 @@ export default function JoinSessionScreen({ navigation }) {
           error={sessionError}
           onChangeText={(val) => setLocalSessionID(val)}
           value={localSessionID}
-          placeholder="Enter a name for the party..."
+          placeholder="Enter the name of the party"
         />
         <Pressable
           id="enterJoinedSession"
@@ -99,9 +99,11 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.PURPLE,
     marginTop: 20,
-    margin: 10,
-    padding: 10,
-    borderRadius: 10,
+    margin: 30,
+    padding: 15,
+    paddingHorizontal: 50,
+    maxWidth: 250,
+    borderRadius: 20,
     alignSelf: "center",
   },
   buttonText: {

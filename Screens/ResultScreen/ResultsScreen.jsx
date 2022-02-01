@@ -166,13 +166,13 @@ const styles = StyleSheet.create({
     color: Colors.BLACK,
   },
   button: {
-    alignSelf: "flex-end",
+    alignSelf: "center",
     backgroundColor: Colors.PURPLE,
     margin: 10,
-    paddingHorizontal: 30,
+    paddingHorizontal: 50,
     padding: 15,
-    maxWidth: 200,
-    borderRadius: 10,
+    maxWidth: 250,
+    borderRadius: 20,
   },
   buttonText: {
     color: Colors.WHITE,
