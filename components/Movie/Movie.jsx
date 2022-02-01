@@ -71,13 +71,12 @@ function Movie({ id }) {
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          contentContainerStyle={styles.modal}
-        >
+          contentContainerStyle={styles.modal}>
           <Card.Cover source={{ uri: backdropUrl }} style={styles.imageModal} />
           <Card.Content style={styles.cardContent}>
             <Title style={styles.movieTitle}>{movie.title}</Title>
             <Subheading style={styles.subheading}>Overview</Subheading>
-            <Text style={styles.col}>{movie.overview}</Text>
+            <Text style={styles.modalText}>{movie.overview}</Text>
             <Subheading style={styles.subheading}>Genres</Subheading>
             <Text>
               {genres.map((i) => (
@@ -87,7 +86,7 @@ function Movie({ id }) {
               ))}
             </Text>
             <Subheading style={styles.subheading}>Runtime</Subheading>
-            <Text style={styles.col}>{movieLength} min</Text>
+            <Text style={styles.modalText}>{movieLength} min</Text>
           </Card.Content>
         </Modal>
       </Portal>
@@ -114,7 +113,7 @@ const styles = {
     borderTopRightRadius: 5,
     padding: 0,
   },
-  col: {
+  modalText: {
     color: Colors.WHITE,
     fontWeight: "200",
   },
@@ -132,7 +131,7 @@ const styles = {
   },
   modal: {
     backgroundColor: Colors.PURPLE,
-    margin: 15,
+    margin: 10,
     borderRadius: 7,
   },
   cardContent: {

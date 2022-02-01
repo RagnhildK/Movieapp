@@ -108,6 +108,7 @@ const styles = StyleSheet.create({
   },
   rowContainer: {
     flexDirection: "row",
+    justifyContent: "space-evenly"
   },
   heading1: {
     color: Colors.ORANGE_LIGHT,
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
   },
   refreshButton: {
     backgroundColor: Colors.PURPLE,
-    alignSelf: "center",
+    alignSelf: "flex-end",
   },
   button: {
     alignSelf: "flex-end",
