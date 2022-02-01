@@ -49,7 +49,13 @@ function Movie({ id }) {
       <View style={styles.row}>
         <Card.Cover source={{ uri: url }} style={styles.image} />
         <Card.Content style={styles.cardWidth}>
-          <Title style={styles.movieTitle}>{movie.title}</Title>
+          <Title
+            style={styles.movieTitle}
+            numberOfLines={2}
+            ellipsizeMode="tail"
+          >
+            {movie.title}
+          </Title>
           {/* ^ her bør det added på number of lines of ellipsizeMode (?) tail - styling for at tittelen ikke får ta for mye plass */}
           <RatingButtons id={id} />
           <Button type="text" onPress={() => handlePress(movieId)}>
@@ -72,7 +78,7 @@ function Movie({ id }) {
             <Subheading style={styles.subheading}>Genres</Subheading>
             <Text>
               {genres.map((i) => (
-                <Chip key={i} disableed={true} style={styles.chip}>
+                <Chip key={i} disabled={true} style={styles.chip}>
                   <Text style={styles.genresText}>{i}</Text>
                 </Chip>
               ))}
@@ -92,6 +98,7 @@ const styles = {
     overflow: "hidden",
     flexWrap: "wrap",
     backgroundColor: Colors.PURPLE,
+    // boxShadow: Colors.BROWN_RED,
   },
   row: {
     flexDirection: "row",
@@ -108,7 +115,7 @@ const styles = {
     fontWeight: "200",
   },
   button: {
-    color: Colors.ORANGE_DARK,
+    color: Colors.ORANGE_LIGHT,
   },
   modal: {
     backgroundColor: Colors.PURPLE,
@@ -133,11 +140,13 @@ const styles = {
     marginHorizontal: 4,
     maxHeight: 48,
     lineHeight: 10, //usikker på om denne trengs
+    backgroundColor: Colors.DARK_PURPLE,
   },
   genresText: {
     //usikker på om dette trengs - må se mer på chips og hvorfor de tar så mye plass
     padding: 0,
     margin: 0,
+    color: Colors.WHITE,
   },
 };
 

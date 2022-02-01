@@ -40,9 +40,6 @@ const RatingScreen = ({ navigation }) => {
   return (
     <Provider>
       <View style={styles.container}>
-        <Headline style={styles.heading}>
-          Vote for the movies you want to watch
-        </Headline>
         {loading ? (
           <ActivityIndicator
             style={styles.loading}
@@ -51,6 +48,9 @@ const RatingScreen = ({ navigation }) => {
           />
         ) : (
           <ScrollView>
+            <Headline style={styles.heading}>
+              Vote for the movies you want to watch
+            </Headline>
             {Object.entries(movies).map((m) => (
               <Movie key={m[0]} id={m[0]} />
             ))}
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     backgroundColor: Colors.DARK_PURPLE,
-    padding: 20,
+    paddingBottom: 5,
   },
   loading: {
     flex: 8,
@@ -79,19 +79,23 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.PURPLE,
     margin: 10,
-    padding: 10,
-    maxWidth: 150,
+    paddingHorizontal: 30,
+    padding: 15,
+    maxWidth: 200,
     borderRadius: 10,
+    alignSelf: "center",
   },
   buttonText: {
     color: Colors.WHITE,
     textAlign: "center",
+    fontSize: 18,
   },
   heading: {
     color: Colors.ORANGE_LIGHT,
     fontSize: 25,
     margin: 30,
     textAlign: "center",
+    fontStyle: "italic",
   },
 });
 
