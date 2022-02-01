@@ -98,10 +98,7 @@ function Movie({ id }) {
 const styles = {
   container: {
     margin: 10,
-    // overflow: 'hidden',
-    // flexWrap: 'wrap',
     backgroundColor: Colors.PURPLE,
-    // boxShadow: Colors.BROWN_RED,
   },
   row: {
     flexDirection: "row",

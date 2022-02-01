@@ -10,6 +10,7 @@ import {
 } from "../../redux/movieSlicer";
 import {
   View,
+  ScrollView,
   StyleSheet,
   Pressable,
   Text,
@@ -56,7 +57,7 @@ export default function ResultScreen({ navigation }) {
     <Provider>
       <View style={styles.container}>
           <IconButton style={styles.refreshButton} icon="refresh" color={Colors.WHITE} onPress={() => handlePress()}/>
-        <Headline style={styles.heading1}>Participants in this session: </Headline>
+        <Headline style={styles.heading1}>Participants in {sessionID}: </Headline>
         <Text>{participants.map((i) => (
                 <Chip key={i} disabled={true} style={styles.chip}>
                   <Text style={styles.genresText}>{i}</Text>
@@ -70,13 +71,13 @@ export default function ResultScreen({ navigation }) {
             color="#0000ff"
           />
         ) : (
-          <View className="MoviesListed">
+          <ScrollView>
             <View>
               {sortedIDs.map(([id, _]) => (
                 <ResultMovie key={id} id={id} />
               ))}
             </View>
-          </View>
+          </ScrollView>
         )}
         <Pressable
           style={styles.button}

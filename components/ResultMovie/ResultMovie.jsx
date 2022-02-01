@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, Pressable } from "react-native";
 import {
   Card,
   Title,
@@ -16,7 +16,7 @@ import { AirbnbRating } from "react-native-ratings";
 
 function ResultMovie(id) {
   const { movies, totalResults, participants } = useSelector(
-    (state) => state.movieRatings,
+    (state) => state.movieRatings
   );
   const [visible, setVisible] = React.useState(false);
   const [genres, setGenres] = React.useState(["Couldn't find any genres"]);
@@ -52,11 +52,21 @@ function ResultMovie(id) {
     <Card style={styles.container}>
       <View style={styles.row}>
         <Card.Cover source={{ uri: url }} style={styles.image} />
-        <Card.Content style={styles.cardWidth}>
-          <Title style={styles.movieTitle}>{movie.title}</Title>
-          <Button type="text" onPress={() => handlePress(movieId)}>
-            Show more
-          </Button>
+        <Card.Content style={styles.shrink}>
+          <Title
+            numberOfLines={2}
+            ellipsizeMode="tail"
+            style={styles.movieTitle}
+          >
+            {movie.title}
+          </Title>
+          <Pressable
+            style={styles.button}
+            type="text"
+            onPress={() => handlePress(movieId)}
+          >
+            <Text style={styles.buttonText}>SHOW MORE</Text>
+          </Pressable>
         </Card.Content>
       </View>
 
@@ -109,23 +119,29 @@ function ResultMovie(id) {
 const styles = StyleSheet.create({
   container: {
     margin: 10,
-    overflow: "hidden",
-    flexWrap: "wrap",
     backgroundColor: Colors.PURPLE,
   },
   row: {
     flexDirection: "row",
-  },
-  cardWidth: {
-    width: "min-content", //ios talker ikke dette, men har ikke funnet et alt.
   },
   image: { width: 100, height: 150 },
   movieTitle: {
     fontSize: 20,
     color: Colors.WHITE,
   },
+  shrink: {
+    flexShrink: 1,
+    flex: 2,
+    flexDirection: "column",
+    justifyContent: "space-between"
+  },
   button: {
-    color: Colors.ORANGE_DARK,
+    alignSelf: "flex-end",
+  },
+  buttonText: {
+    color: Colors.ORANGE_LIGHT,
+    fontSize: 12,
+    paddingBottom: 10,
   },
   modal: {
     backgroundColor: Colors.PURPLE,
