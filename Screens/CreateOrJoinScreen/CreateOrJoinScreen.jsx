@@ -1,5 +1,5 @@
 import React from "react";
-import { View, StyleSheet, Pressable, Text } from "react-native";
+import { View, StyleSheet, Pressable, Text, SafeAreaView } from "react-native";
 import { Headline, Title } from "react-native-paper";
 import { useDispatch } from "react-redux";
 import { setSessionID } from "../../redux/movieSlicer";
@@ -13,7 +13,7 @@ export default function CreateOrJoinScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Headline style={styles.headline}>
         Find the perfect movie to watch with friends
       </Headline>
@@ -29,7 +29,7 @@ export default function CreateOrJoinScreen({ navigation }) {
           <Text style={styles.buttonText}>Join a movie party</Text>
         </Pressable>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

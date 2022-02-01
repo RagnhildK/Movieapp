@@ -14,7 +14,7 @@ import {
   StyleSheet,
   Pressable,
   Text,
-  ActivityIndicator,
+  ActivityIndicator, SafeAreaView
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getRatings } from "../../utils/firebase";
@@ -55,9 +55,12 @@ export default function ResultScreen({ navigation }) {
 
   return (
     <Provider>
-      <View style={styles.container}>
-          <IconButton style={styles.refreshButton} icon="refresh" color={Colors.WHITE} onPress={() => handlePress()}/>
-        <Headline style={styles.heading1}>Participants in {sessionID}: </Headline>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.rowContainer}>
+        <Headline style={styles.heading1}>Participants in this session:           
+        </Headline>        
+        <IconButton style={styles.refreshButton} icon="refresh" color={Colors.WHITE} onPress={() => handlePress()}/>
+        </View>
         <Text>{participants.map((i) => (
                 <Chip key={i} disabled={true} style={styles.chip}>
                   <Text style={styles.genresText}>{i}</Text>
@@ -85,7 +88,7 @@ export default function ResultScreen({ navigation }) {
         >
           <Text style={styles.buttonText}> Go to start screen</Text>
         </Pressable>
-      </View>
+      </SafeAreaView>
     </Provider>
   );
 }
@@ -96,6 +99,9 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
     backgroundColor: Colors.DARK_PURPLE,
     padding: 20,
+  },
+  rowContainer:{
+    flexDirection: "row",
   },
   heading1: {
     color: Colors.ORANGE_LIGHT,
@@ -118,7 +124,7 @@ const styles = StyleSheet.create({
   },
   refreshButton: {
     backgroundColor: Colors.PURPLE,
-    alignSelf: "flex-end"
+    alignSelf: "center"
   },
   button: {
     alignSelf: "flex-end",

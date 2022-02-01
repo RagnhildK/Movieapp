@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Pressable, Text } from "react-native";
+import { View, StyleSheet, Pressable, Text, SafeAreaView } from "react-native";
 import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
 import { TextInput } from "react-native-paper";
@@ -41,7 +41,7 @@ export default function JoinSessionScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Headline style={styles.heading1}>What's your nickname?</Headline>
       <TextInput
         mode="outlined"
@@ -67,7 +67,7 @@ export default function JoinSessionScreen({ navigation }) {
       >
         <Text style={styles.buttonText}> Join party</Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 }
 
