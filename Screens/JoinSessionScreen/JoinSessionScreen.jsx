@@ -99,9 +99,11 @@ const styles = StyleSheet.create({
   button: {
     backgroundColor: Colors.PURPLE,
     marginTop: 20,
-    margin: 10,
-    padding: 10,
-    borderRadius: 10,
+    margin: 30,
+    padding: 15,
+    paddingHorizontal: 50,
+    maxWidth: 250,
+    borderRadius: 20,
     alignSelf: "center",
   },
   buttonText: {

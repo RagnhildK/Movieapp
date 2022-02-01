@@ -14,10 +14,11 @@ export default function CreateOrJoinScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
+      <View style={styles.margin}>
       <Headline style={styles.headline}>
         Find the perfect movie to watch with friends
       </Headline>
-      <View>
+      <View style={styles.padding}>
         <Pressable style={styles.button} onPress={() => handlePress("Create")}>
           <Text style={styles.buttonText}> Start a movie party</Text>
         </Pressable>
@@ -29,6 +30,7 @@ export default function CreateOrJoinScreen({ navigation }) {
           <Text style={styles.buttonText}>Join a movie party</Text>
         </Pressable>
       </View>
+      </View>
     </SafeAreaView>
   );
 }
@@ -36,18 +38,18 @@ export default function CreateOrJoinScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "space-evenly",
+    justifyContent: "center",
     backgroundColor: Colors.DARK_PURPLE,
-    paddingLeft: 20,
-    paddingRight: 20,
   },
   button: {
     backgroundColor: Colors.PURPLE,
     marginTop: 15,
     marginBottom: 10,
-    margin: 40,
-    padding: 10,
-    borderRadius: 10,
+    margin: 30,
+    padding: 15,
+    maxWidth: 250,
+    paddingHorizontal: 50,
+    borderRadius: 20
   },
   buttonText: {
     color: Colors.WHITE,
@@ -57,8 +59,15 @@ const styles = StyleSheet.create({
   headline: {
     color: Colors.ORANGE_LIGHT,
     fontSize: 32,
-    margin: 30,
+    margin: 40,
     textAlign: "center",
     fontStyle: "italic",
   },
+  padding: {
+    marginTop: 70,
+    alignSelf: "center"
+  },
+  margin: {
+    margin: 20
+  }
 });
