@@ -65,11 +65,15 @@ export default function CreateSessionScreen({ navigation }) {
           value={localSessionID}
           placeholder="Choose a name for the party"
         />
+          <Headline style={styles.heading2}>
+          How many movies to choose between?
+        </Headline>
         <TextInput
+          keyboardType="numeric"
           mode="outlined"
           onChangeText={(val) => setLocalMovieAmount(val)}
           value={localMovieAmount}
-          placeholder="How many movies do you want to vote on?"
+          placeholder="Number of movies"
         />
         <Pressable style={styles.button} onPress={() => createSession()}>
           <Text style={styles.buttonText}>Start a party</Text>
