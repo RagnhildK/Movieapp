@@ -46,7 +46,7 @@ export default function CreateSessionScreen({ navigation }) {
           error={userError}
           onChangeText={(val) => setLocalUsername(val)}
           value={localUsername}
-          placeholder="Enter your nickname..."
+          placeholder="Your nickname"
         />
         <Headline style={styles.heading2}>
           What's the name of the party?
@@ -56,7 +56,7 @@ export default function CreateSessionScreen({ navigation }) {
           error={sessionError}
           onChangeText={(val) => setLocalSessionID(val)}
           value={localSessionID}
-          placeholder="Enter a name for the party..."
+          placeholder="Choose a name for the party"
         />
         <Pressable style={styles.button} onPress={() => createSession()}>
           <Text style={styles.buttonText}>Start a party</Text>

@@ -49,7 +49,7 @@ export default function JoinSessionScreen({ navigation }) {
           error={userError}
           onChangeText={(val) => setLocalUsername(val)}
           value={localUsername}
-          placeholder="Enter a nickname for the session..."
+          placeholder="Your nickname"
         />
         <Headline style={styles.heading2}>
           What's the name of the party?
@@ -59,7 +59,7 @@ export default function JoinSessionScreen({ navigation }) {
           error={sessionError}
           onChangeText={(val) => setLocalSessionID(val)}
           value={localSessionID}
-          placeholder="Enter a name for the party..."
+          placeholder="Enter the name of the party"
         />
         <Pressable
           id="enterJoinedSession"
