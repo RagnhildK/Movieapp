@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import ResultMovie from "../../components/ResultMovie/ResultMovie";
-import { Provider, Headline, Chip, IconButton } from "react-native-paper";
+import { Provider, Headline, Chip, IconButton, Divider } from "react-native-paper";
 import {
   setLoading,
   setTotalResults,
@@ -63,9 +63,10 @@ export default function ResultScreen({ navigation }) {
       ) : (
         <SafeAreaView style={styles.container}>
           <ScrollView>
+            <View style={styles.headerContainer}>
             <View style={styles.rowContainer}>
               <Headline style={styles.heading1}>
-                Participants in {sessionID}:
+                Participants in {sessionID}
               </Headline>
               <IconButton
                 style={styles.refreshButton}
@@ -80,6 +81,9 @@ export default function ResultScreen({ navigation }) {
                   <Text style={styles.genresText}>{i}</Text>
                 </Chip>
               ))}
+            </View>
+            {/* <Divider style={styles.divider}/> */}
+            <Headline style={styles.heading2}>Results from the voting</Headline>
             </View>
             <View>
               {sortedIDs.map(([id, _]) => (
@@ -106,16 +110,35 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.DARK_PURPLE,
     padding: 20,
   },
+  headerContainer: {
+    justifyContent: "flex-start",
+    marginHorizontal: 10
+  },
   rowContainer: {
     flexDirection: "row",
-    justifyContent: "space-evenly"
+    justifyContent: "space-between",
+    marginBottom: 10,
   },
   heading1: {
     color: Colors.ORANGE_LIGHT,
-    fontSize: 24,
-    // margin: 30,
-    // textAlign: 'center',
+    fontSize: 26,
     fontStyle: "italic",
+    alignSelf: "center"
+  },
+  refreshButton: {
+    backgroundColor: Colors.PURPLE,
+    alignSelf: "flex-end",
+    // marginRight: 20
+  },
+  heading2: {
+    color: Colors.ORANGE_LIGHT,
+    fontSize: 26,
+    fontStyle: "italic",
+    marginTop: 10
+  },
+  divider: {
+    backgroundColor: Colors.ORANGE_LIGHT,
+    height: 1
   },
   chipSpacing: {
     flexDirection: "row",
@@ -133,10 +156,6 @@ const styles = StyleSheet.create({
     padding: 0,
     margin: 0,
     color: Colors.BLACK,
-  },
-  refreshButton: {
-    backgroundColor: Colors.PURPLE,
-    alignSelf: "flex-end",
   },
   button: {
     alignSelf: "flex-end",
