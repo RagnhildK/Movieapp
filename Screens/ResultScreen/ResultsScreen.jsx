@@ -29,7 +29,7 @@ import { getRatings } from "../../utils/firebase";
 import * as Colors from "../../styles/colors";
 
 export default function ResultScreen({ navigation }) {
-  const { sessionID, participants, sortedIDs, loading } = useSelector(
+  const { sessionID, participants, sortedIDs, loading, movies } = useSelector(
     (state) => state.movieRatings
   );
 
@@ -53,7 +53,7 @@ export default function ResultScreen({ navigation }) {
     dispatch(sortTotalResults());
     dispatch(setLoading(false));
   };
-
+ 
   useEffect(() => {
     getRatings(sessionID, handleResponse);
   }, []);

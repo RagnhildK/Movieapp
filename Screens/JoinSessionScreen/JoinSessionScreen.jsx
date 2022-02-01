@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { View, StyleSheet, Pressable, Text, SafeAreaView } from "react-native";
-import { useDispatch } from "react-redux";
 import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
+import { addParticipant, getNmbOfMovies } from "../../utils/firebase";
+import { useDispatch, useSelector } from "react-redux";
 import { TextInput } from "react-native-paper";
-import * as Colors from "../../styles/colors";
-import { addParticipant } from "../../utils/firebase";
 import { Headline } from "react-native-paper";
+import * as Colors from "../../styles/colors";
 
 export default function JoinSessionScreen({ navigation }) {
   const [localSessionID, setLocalSessionID] = useState("");
@@ -13,7 +13,16 @@ export default function JoinSessionScreen({ navigation }) {
   const [userError, setUserError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
 
+  const { sessionID } = useSelector((state) => state.movieRatings);
+
   const dispatch = useDispatch();
+
+  const handleResponse = (response) => {
+    // response.results.map((m) => dispatch(addFetchedMovie(m)));
+    // dispatch(setLoading(false));
+
+    console.log(response.amount);
+  };
 
   const enterSession = () => {
     const validUsername = localUsername != "" ? true : false;
@@ -31,10 +40,11 @@ export default function JoinSessionScreen({ navigation }) {
         setSessionError(true);
         setUserError(false);
       } else {
+        dispatch(setLoading(true));
         dispatch(setUsername(localUsername));
         dispatch(setSessionID(localSessionID));
-        dispatch(setLoading(true));
         addParticipant(localUsername, localSessionID);
+        getNmbOfMovies(localSessionID, handleResponse);
         navigation.navigate("RatingScreen");
       }
     }
@@ -42,7 +52,7 @@ export default function JoinSessionScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView >
+      <SafeAreaView>
         <Headline style={styles.heading1}>What's your nickname?</Headline>
         <TextInput
           mode="outlined"
