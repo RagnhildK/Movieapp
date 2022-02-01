@@ -43,10 +43,11 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: Colors.PURPLE,
-    margin: 10,
+    marginTop: 15,
+    marginBottom: 10,
+    margin: 40,
     padding: 10,
     borderRadius: 10,
-    alignSelf: "auto",
   },
   buttonText: {
     color: Colors.WHITE,

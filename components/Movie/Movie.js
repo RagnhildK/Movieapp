@@ -68,7 +68,7 @@ function Movie({ id }) {
           <Card.Content style={styles.cardContent}>
             <Title style={styles.movieTitle}>{movie.title}</Title>
             <Subheading style={styles.subheading}>Overview</Subheading>
-            <Text style={styles.col}> {movie.overview}</Text>
+            <Text style={styles.col}>{movie.overview}</Text>
             <Subheading style={styles.subheading}>Genres</Subheading>
             <Text>
               {genres.map((i) => (

@@ -23,6 +23,7 @@ const App = () => (
           },
           headerTintColor: Colors.ORANGE_LIGHT,
           headerTitleAlign: "center",
+          headerShown: false,
         }}
       >
         <Stack.Screen
@@ -30,7 +31,7 @@ const App = () => (
           component={CreateOrJoinScreen}
           //component={RatingScreen}
           options={{
-            title: "MoviePicker",
+            title: "MovieParty",
           }}
         />
         <Stack.Screen

@@ -51,17 +51,15 @@ function ResultMovie(id) {
   return (
     <Card style={styles.container}>
       <View style={styles.row}>
+        <Card.Cover source={{ uri: url }} style={styles.image} />
         <Card.Content style={styles.cardWidth}>
-          <Card.Cover source={{ uri: url }} style={styles.image} />
           <Title style={styles.movieTitle}>{movie.title}</Title>
+          <Button type="text" onPress={() => handlePress(movieId)}>
+            Show more
+          </Button>
         </Card.Content>
       </View>
 
-      <Card.Actions style={{ alignSelf: "flex-end" }}>
-        <Button type="text" onPress={() => handlePress(movieId)}>
-          Show more
-        </Button>
-      </Card.Actions>
       <Portal>
         <Modal
           visible={visible}
@@ -142,6 +140,11 @@ const styles = StyleSheet.create({
   },
   subheading: {
     fontWeight: "bold",
+  },
+  chip: {
+    marginHorizontal: 4,
+    maxHeight: 48,
+    lineHeight: 10, //usikker på om denne trengs
   },
 });
 

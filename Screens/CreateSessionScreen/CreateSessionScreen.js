@@ -58,7 +58,7 @@ export default function CreateSessionScreen({ navigation }) {
         error={sessionError}
         onChangeText={(val) => setLocalSessionID(val)}
         value={localSessionID}
-        placeholder="Enter a name for the session..."
+        placeholder="Enter a name for the party..."
       />
       <Pressable style={styles.button} onPress={() => createSession()}>
         <Text style={styles.buttonText}> Create a session</Text>
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     margin: 10,
     padding: 10,
-    maxWidth: 300,
+    maxWidth: 150,
     borderRadius: 10,
   },
   buttonText: {

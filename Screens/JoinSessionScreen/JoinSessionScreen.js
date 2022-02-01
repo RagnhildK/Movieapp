@@ -5,6 +5,7 @@ import { setSessionID, setUsername, setLoading } from "../../redux/movieSlicer";
 import { TextInput } from "react-native-paper";
 import * as Colors from "../../styles/colors";
 import { addParticipant } from "../../firebase";
+import { Headline } from "react-native-paper";
 
 export default function JoinSessionScreen({ navigation }) {
   const [localSessionID, setLocalSessionID] = useState("");
@@ -41,21 +42,23 @@ export default function JoinSessionScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <Headline style={styles.heading1}>What's your nickname?</Headline>
       <TextInput
         mode="outlined"
-        label="Username"
+        label="Nickname"
         error={userError}
         onChangeText={(val) => setLocalUsername(val)}
         value={localUsername}
-        placeholder="Enter a username for the session..."
+        placeholder="Enter a nickname for the session..."
       />
+      <Headline style={styles.heading2}>What's the name of the party?</Headline>
       <TextInput
         mode="outlined"
-        label="Username of session creator"
+        label="Name of movie party"
         error={sessionError}
         onChangeText={(val) => setLocalSessionID(val)}
         value={localSessionID}
-        placeholder="username of session creator..."
+        placeholder="Enter a name for the party..."
       />
       <Pressable style={styles.button} onPress={() => enterSession()}>
         <Text style={styles.buttonText}> Start rating</Text>
@@ -68,14 +71,32 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: Colors.BEIGE,
+    backgroundColor: Colors.DARK_PURPLE,
+    paddingLeft: 20,
+    paddingRight: 20,
+  },
+  heading1: {
+    color: Colors.ORANGE_LIGHT,
+    fontSize: 24,
+    margin: 30,
+    textAlign: "center",
+    fontStyle: "italic",
+  },
+  heading2: {
+    color: Colors.ORANGE_LIGHT,
+    fontSize: 24,
+    margin: 30,
+    marginTop: 40,
+    textAlign: "center",
+    fontStyle: "italic",
   },
   button: {
-    backgroundColor: Colors.BROWN_RED,
+    backgroundColor: Colors.PURPLE,
+    marginTop: 20,
     margin: 10,
     padding: 10,
-    maxWidth: 300,
-    borderRadius: 15,
+    maxWidth: 150,
+    borderRadius: 10,
   },
   buttonText: {
     color: Colors.WHITE,
