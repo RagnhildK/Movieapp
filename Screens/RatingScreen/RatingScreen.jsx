@@ -5,7 +5,7 @@ import {
   ActivityIndicator,
   StyleSheet,
   Pressable,
-  Text,
+  Text, SafeAreaView
 } from "react-native";
 import { Headline, Provider } from "react-native-paper";
 import { useDispatch, useSelector } from "react-redux";
@@ -39,7 +39,7 @@ function RatingScreen({ navigation }) {
 
   return (
     <Provider>
-      <View style={styles.container}>
+      <SafeAreaView style={styles.container}>
         {loading ? (
           <ActivityIndicator
             style={styles.loading}
@@ -59,7 +59,7 @@ function RatingScreen({ navigation }) {
         <Pressable style={styles.button} onPress={() => handleSubmit()}>
           <Text style={styles.buttonText}> Submit rating</Text>
         </Pressable>
-      </View>
+      </SafeAreaView>
     </Provider>
   );
 }

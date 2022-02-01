@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import {
-  View, StyleSheet, Pressable, Text,
+  View, StyleSheet, Pressable, Text, SafeAreaView
 } from 'react-native';
 import { TextInput, Headline } from 'react-native-paper';
 import { setUsername, setLoading, setSessionID } from '../../redux/movieSlicer';
@@ -40,7 +40,7 @@ export default function CreateSessionScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Headline style={styles.heading1}>What's your nickname?</Headline>
       <TextInput
         mode="outlined"
@@ -63,7 +63,7 @@ export default function CreateSessionScreen({ navigation }) {
       <Pressable style={styles.button} onPress={() => createSession()}>
         <Text style={styles.buttonText}>Start a party</Text>
       </Pressable>
-    </View>
+    </SafeAreaView>
   );
 }
 
