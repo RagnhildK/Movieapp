@@ -41,33 +41,35 @@ export default function JoinSessionScreen({ navigation }) {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Headline style={styles.heading1}>What's your nickname?</Headline>
-      <TextInput
-        mode="outlined"
-        label="Nickname"
-        error={userError}
-        onChangeText={(val) => setLocalUsername(val)}
-        value={localUsername}
-        placeholder="Enter a nickname for the session..."
-      />
-      <Headline style={styles.heading2}>What's the name of the party?</Headline>
-      <TextInput
-        mode="outlined"
-        label="Name of movie party"
-        error={sessionError}
-        onChangeText={(val) => setLocalSessionID(val)}
-        value={localSessionID}
-        placeholder="Enter a name for the party..."
-      />
-      <Pressable
-        id="enterJoinedSession"
-        style={styles.button}
-        onPress={() => enterSession()}
-      >
-        <Text style={styles.buttonText}> Join party</Text>
-      </Pressable>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <SafeAreaView >
+        <Headline style={styles.heading1}>What's your nickname?</Headline>
+        <TextInput
+          mode="outlined"
+          error={userError}
+          onChangeText={(val) => setLocalUsername(val)}
+          value={localUsername}
+          placeholder="Enter a nickname for the session..."
+        />
+        <Headline style={styles.heading2}>
+          What's the name of the party?
+        </Headline>
+        <TextInput
+          mode="outlined"
+          error={sessionError}
+          onChangeText={(val) => setLocalSessionID(val)}
+          value={localSessionID}
+          placeholder="Enter a name for the party..."
+        />
+        <Pressable
+          id="enterJoinedSession"
+          style={styles.button}
+          onPress={() => enterSession()}
+        >
+          <Text style={styles.buttonText}> Join party</Text>
+        </Pressable>
+      </SafeAreaView>
+    </View>
   );
 }
 
@@ -101,8 +103,7 @@ const styles = StyleSheet.create({
     padding: 10,
     maxWidth: 150,
     borderRadius: 10,
-    alignSelf:"flex-end"
-
+    alignSelf: "flex-end",
   },
   buttonText: {
     color: Colors.WHITE,

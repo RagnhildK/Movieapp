@@ -15,7 +15,7 @@ import { getDetails } from "../../utils/fetch";
 import { AirbnbRating } from "react-native-ratings";
 
 function ResultMovie(id) {
-  const { movies, totalResults, participants } = useSelector(
+  const { movies, totalResults, participants, sessionID } = useSelector(
     (state) => state.movieRatings
   );
   const [visible, setVisible] = React.useState(false);
@@ -91,7 +91,7 @@ function ResultMovie(id) {
               <Subheading style={styles.subheading}>Runtime</Subheading>
               <Text style={styles.modalText}>{movieLength} min</Text>
               <Subheading style={styles.subheading}>
-                Average rating in this session:{" "}
+                Average rating in this {sessionID}:{" "}
                 {avgRank().toLocaleString(undefined, {
                   minimumFractionDigits: 0,
                   maximumFractionDigits: 2,
