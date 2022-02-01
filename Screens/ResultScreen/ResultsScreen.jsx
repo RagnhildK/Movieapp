@@ -41,6 +41,7 @@ export default function ResultScreen({ navigation }) {
   };
 
   const handleResponse = (response) => {
+    console.log(response)
     dispatch(resetResultScreen());
     for (let user in response) {
       let userRatings = response[user];

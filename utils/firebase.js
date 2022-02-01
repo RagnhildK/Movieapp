@@ -11,8 +11,6 @@ import {
   query,
   getDoc,
   getDocs,
-  updateDoc,
-  onSnapshot,
 } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -37,7 +35,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 
 const UserColl = collection(db, "Users");
-// const SessionColl = collection(db, "sessions");
+// const SessionColl = collection(db, "Participants");
 
 export async function addUser(name) {
   const data = {
@@ -52,30 +50,43 @@ export async function checkIfUserExists(user) {
   return a.size != 0;
 }
 
-export async function addSession(name, sessionID) {
+export async function addSession(name, sessionID, nmbMovies) {
   const data = {
     [name]: {},
   };
-  await setDoc(doc(db, "sessions", sessionID), data);
+  const movies = {
+    amount: nmbMovies,
+  };
+  await setDoc(doc(db, "Participants", sessionID), data);
+  await setDoc(doc(db, "Movies", sessionID), movies);
 }
 
-export async function addParticipant(username, owner) {
+export async function addParticipant(username, sessionID) {
   const data = {
     [username]: {},
   };
-  await setDoc(doc(db, "sessions", owner), data, { merge: true });
-  // await db.collection("sessions").doc(owner).update(data);
+  await setDoc(doc(db, "Participants", sessionID), data, { merge: true });
 }
 
-export async function updateRatings(username, ratings, owner) {
+export async function getNmbOfMovies(sessionID, handleResponse) {
+  const a = doc(db, "Movies", sessionID);
+
+  let movies;
+  await getDoc(a).then((doc) => {
+    movies = doc.data();
+  });
+  await handleResponse(movies);
+}
+
+export async function updateRatings(username, ratings, sessionID) {
   const data = {
     [username]: ratings,
   };
-  await setDoc(doc(db, "sessions", owner), data, { merge: true });
+  await setDoc(doc(db, "Participants", sessionID), data, { merge: true });
 }
 
-export async function getRatings(owner, handleResponse) {
-  const a = doc(db, "sessions", owner);
+export async function getRatings(sessionID, handleResponse) {
+  const a = doc(db, "Participants", sessionID);
   let ratings;
   await getDoc(a).then((doc) => {
     ratings = doc.data();

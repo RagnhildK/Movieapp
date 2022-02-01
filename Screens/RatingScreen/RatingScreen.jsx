@@ -17,14 +17,15 @@ import * as Colors from "../../styles/colors";
 import { updateRatings } from "../../utils/firebase";
 
 function RatingScreen({ navigation }) {
-  const { movies, loading, username, sessionID, ratings } = useSelector(
+  const { movies, loading, username, sessionID, ratings, nmbMovies } = useSelector(
     (state) => state.movieRatings
   );
-
+  
   const dispatch = useDispatch();
 
   const handleResponse = (response) => {
-    response.results.map((m) => dispatch(addFetchedMovie(m)));
+    const sliced = response.results.slice(0, nmbMovies);
+    sliced.map((m) => dispatch(addFetchedMovie(m)));
     dispatch(setLoading(false));
   };
 
@@ -41,12 +42,8 @@ function RatingScreen({ navigation }) {
   return (
     <Provider>
       {loading ? (
-        <View>
-          <ActivityIndicator
-            style={styles.container}
-            size="large"
-            color="PURPLE_LIGHT"
-          />
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color="PURPLE_LIGHT" />
           <Text>Finding movies...</Text>
         </View>
       ) : (
