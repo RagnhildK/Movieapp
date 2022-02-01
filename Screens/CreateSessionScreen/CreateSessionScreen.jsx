@@ -61,7 +61,7 @@ export default function CreateSessionScreen({ navigation }) {
         placeholder="Enter a name for the party..."
       />
       <Pressable style={styles.button} onPress={() => createSession()}>
-        <Text style={styles.buttonText}> Create a session</Text>
+        <Text style={styles.buttonText}>Start a party</Text>
       </Pressable>
     </View>
   );
@@ -82,6 +82,7 @@ const styles = StyleSheet.create({
     padding: 10,
     maxWidth: 150,
     borderRadius: 10,
+    alignSelf:"flex-end"
   },
   buttonText: {
     color: Colors.WHITE,

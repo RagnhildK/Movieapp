@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import ResultMovie from "../../components/ResultMovie/ResultMovie";
-import { Provider } from "react-native-paper";
+import { Provider, Headline, Chip, IconButton } from "react-native-paper";
 import {
   setLoading,
   setTotalResults,
@@ -17,8 +17,10 @@ import {
 } from "react-native";
 import { useSelector, useDispatch } from "react-redux";
 import { getRatings } from "../../utils/firebase";
-import { useEffect } from "react";
+
+
 import * as Colors from "../../styles/colors";
+
 
 export default function ResultScreen({ navigation }) {
   const { sessionID, participants, sortedIDs, loading } = useSelector(
@@ -53,11 +55,14 @@ export default function ResultScreen({ navigation }) {
   return (
     <Provider>
       <View style={styles.container}>
-        <Text>Participants in this session: </Text>
-        <Text>{participants.map((i) => `• ${i}\n`)}</Text>
-        <Pressable style={styles.button} onPress={() => handlePress()}>
-          <Text style={styles.buttonText}> Refresh results</Text>
-        </Pressable>
+          <IconButton style={styles.refreshButton} icon="refresh" color={Colors.WHITE} onPress={() => handlePress()}/>
+        <Headline style={styles.heading1}>Participants in this session: </Headline>
+        <Text>{participants.map((i) => (
+                <Chip key={i} disabled={true} style={styles.chip}>
+                  <Text style={styles.genresText}>{i}</Text>
+                </Chip>
+              ))}</Text>
+     
         {loading ? (
           <ActivityIndicator
             style={styles.loading}
@@ -87,15 +92,40 @@ export default function ResultScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
+    // justifyContent: "center",
     backgroundColor: Colors.DARK_PURPLE,
     padding: 20,
   },
+  heading1: {
+    color: Colors.ORANGE_LIGHT,
+    fontSize: 24,
+    // margin: 30,
+    // textAlign: 'center',
+    fontStyle: 'italic',
+  },
+  chip: {
+    marginHorizontal: 4,
+    maxHeight: 48,
+    lineHeight: 10, //usikker på om denne trengs
+    backgroundColor: Colors.PURPLE_LIGHT,
+  },
+  genresText: {
+    // usikker på om dette trengs - må se mer på chips og hvorfor de tar så mye plass
+    padding: 0,
+    margin: 0,
+    color: Colors.BLACK,
+  },
+  refreshButton: {
+    backgroundColor: Colors.PURPLE,
+    alignSelf: "flex-end"
+  },
   button: {
+    alignSelf: "flex-end",
     backgroundColor: Colors.PURPLE,
     margin: 10,
-    padding: 10,
-    maxWidth: 150,
+    paddingHorizontal: 30,
+    padding: 15,
+    maxWidth: 200,
     borderRadius: 10,
   },
   buttonText: {

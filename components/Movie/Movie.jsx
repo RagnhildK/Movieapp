@@ -141,13 +141,13 @@ const styles = {
     marginHorizontal: 4,
     maxHeight: 48,
     lineHeight: 10, //usikker på om denne trengs
-    backgroundColor: Colors.DARK_PURPLE,
+    backgroundColor: Colors.PURPLE_LIGHT,
   },
   genresText: {
     // usikker på om dette trengs - må se mer på chips og hvorfor de tar så mye plass
     padding: 0,
     margin: 0,
-    color: Colors.WHITE,
+    color: Colors.BLACK,
   },
 };
 

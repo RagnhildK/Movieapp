@@ -65,7 +65,7 @@ export default function JoinSessionScreen({ navigation }) {
         style={styles.button}
         onPress={() => enterSession()}
       >
-        <Text style={styles.buttonText}> Start rating</Text>
+        <Text style={styles.buttonText}> Join party</Text>
       </Pressable>
     </View>
   );
@@ -101,6 +101,8 @@ const styles = StyleSheet.create({
     padding: 10,
     maxWidth: 150,
     borderRadius: 10,
+    alignSelf:"flex-end"
+
   },
   buttonText: {
     color: Colors.WHITE,
