@@ -61,14 +61,11 @@ export default function ResultScreen({ navigation }) {
   return (
     <Provider>
       {loading ? (
-        <View>
           <ActivityIndicator
             style={styles.container}
             size="large"
             color="PURPLE_LIGHT"
           />
-          <Text>Calculating yout top movies...</Text>
-        </View>
       ) : (
         <SafeAreaView style={styles.container}>
           <ScrollView>
