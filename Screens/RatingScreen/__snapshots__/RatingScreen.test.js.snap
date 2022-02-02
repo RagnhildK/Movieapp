@@ -1614,7 +1614,7 @@ exports[`RatingScreen snapshot 1`] = `
           }
         }
       >
-         Submit rating
+         Submit votes
       </Text>
     </View>
   </RCTSafeAreaView>
