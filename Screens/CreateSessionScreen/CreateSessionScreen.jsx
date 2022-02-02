@@ -82,7 +82,7 @@ export default function CreateSessionScreen({ navigation }) {
         <Headline style={styles.headingBottom}>What's your nickname?</Headline>
         <TextInput
           mode="outlined"
-          error={userError}
+          error={usernameError}
           onChangeText={(val) => setLocalUsername(val)}
           value={localUsername}
           placeholder="Your nickname"

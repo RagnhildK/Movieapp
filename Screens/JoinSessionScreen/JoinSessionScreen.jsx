@@ -68,7 +68,7 @@ export default function JoinSessionScreen({ navigation }) {
         <Headline style={styles.heading2}>What's your nickname?</Headline>
         <TextInput
           mode="outlined"
-          error={userError}
+          error={usernameError}
           onChangeText={(val) => setLocalUsername(val)}
           value={localUsername}
           placeholder="Your nickname"
