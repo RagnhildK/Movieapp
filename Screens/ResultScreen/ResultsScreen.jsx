@@ -102,7 +102,7 @@ export default function ResultScreen({ navigation }) {
             style={styles.button}
             onPress={() => navigation.navigate("CreateOrJoinScreen")}
           >
-            <Text style={styles.buttonText}> Go to start screen</Text>
+            <Text style={styles.buttonText}> End party</Text>
           </Pressable>
         </SafeAreaView>
       )}
