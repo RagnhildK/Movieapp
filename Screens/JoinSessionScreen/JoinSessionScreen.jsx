@@ -55,15 +55,7 @@ export default function JoinSessionScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <SafeAreaView>
-        <Headline style={styles.heading1}>What's your nickname?</Headline>
-        <TextInput
-          mode="outlined"
-          error={usernameError}
-          onChangeText={(val) => handleUsername(val)}
-          value={localUsername}
-          placeholder="Your nickname"
-        />
-        <Headline style={styles.heading2}>
+      <Headline style={styles.heading1}>
           What's the name of the party?
         </Headline>
         <TextInput
@@ -73,12 +65,20 @@ export default function JoinSessionScreen({ navigation }) {
           value={localSessionID}
           placeholder="Enter the name of the party"
         />
+        <Headline style={styles.heading2}>What's your nickname?</Headline>
+        <TextInput
+          mode="outlined"
+          error={userError}
+          onChangeText={(val) => setLocalUsername(val)}
+          value={localUsername}
+          placeholder="Your nickname"
+        />     
         <Pressable
           id="enterJoinedSession"
           style={styles.button}
           onPress={() => enterSession()}
         >
-          <Text style={styles.buttonText}> Join party</Text>
+          <Text style={styles.buttonText}> Join the party</Text>
         </Pressable>
       </SafeAreaView>
     </View>
