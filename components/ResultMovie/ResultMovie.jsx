@@ -98,7 +98,7 @@ function ResultMovie({id, rank}) {
               <Subheading style={styles.subheading}>Runtime</Subheading>
               <Text style={styles.modalText}>{movieLength} min</Text>
               <Subheading style={styles.subheading}>
-                Average rating in this {sessionID}:{" "}
+                Average rating in {sessionID}:{" "}
                 {avgRank().toLocaleString(undefined, {
                   minimumFractionDigits: 0,
                   maximumFractionDigits: 2,
