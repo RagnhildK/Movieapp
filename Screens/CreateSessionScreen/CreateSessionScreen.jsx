@@ -54,7 +54,6 @@ export default function CreateSessionScreen({ navigation }) {
     setAmountError(false);
     setLocalMovieAmount(val);
   };
-  debugger;
 
   return (
     <View style={styles.container}>
