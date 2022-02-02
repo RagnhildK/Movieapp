@@ -4,7 +4,6 @@ import JoinSessionScreen from "./JoinSessionScreen";
 import { Provider } from "react-redux";
 import { mockStore } from ".././../utils/movieListFixture";
 
-
 jest.useFakeTimers();
 
 it("JoinSessionScreen snapshot", async () => {
@@ -30,9 +29,9 @@ it("JoinSessionScreen snapshot", async () => {
 //   };
 // });
 
-// test("Checks if enterSession sets userError and sessionError when directly clicks with no input", () => {
+// test("Checks if enterSession sets usernameError and sessionError when directly clicks with no input", () => {
 //   const paramArray = [null, null, null, null].map(useState);
-//   const setUserErrorMock = paramArray[2];
+//   const setusernameErrorMock = paramArray[2];
 //   const setSessionErrorMock = paramArray[3];
 //   render(
 //     <JoinSessionScreen
@@ -42,7 +41,7 @@ it("JoinSessionScreen snapshot", async () => {
 //     />
 //   );
 //   fireEvent.click(screen.getByID("enterJoinedSession"));
-//   expect(setUserErrorMock.mock.calls[0][0]).toBe(true);
+//   expect(setusernameErrorMock.mock.calls[0][0]).toBe(true);
 //   expect(setSessionErrorMock.mock.calls[0][0]).toBe(true);
 // });
-// 
+//

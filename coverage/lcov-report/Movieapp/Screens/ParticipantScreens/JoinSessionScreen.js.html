@@ -1,68 +1,68 @@
-
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>Code coverage report for Movieapp/Screens/ParticipantScreens/JoinSessionScreen.js</title>
+  <head>
+    <title>
+      Code coverage report for
+      Movieapp/Screens/ParticipantScreens/JoinSessionScreen.js
+    </title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../prettify.css" />
     <link rel="stylesheet" href="../../../base.css" />
     <link rel="shortcut icon" type="image/x-icon" href="../../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style type='text/css'>
-        .coverage-summary .sorter {
-            background-image: url(../../../sort-arrow-sprite.png);
-        }
+    <style type="text/css">
+      .coverage-summary .sorter {
+        background-image: url(../../../sort-arrow-sprite.png);
+      }
     </style>
-</head>
-    
-<body>
-<div class='wrapper'>
-    <div class='pad1'>
-        <h1><a href="../../../index.html">All files</a> / <a href="index.html">Movieapp/Screens/ParticipantScreens</a> JoinSessionScreen.js</h1>
-        <div class='clearfix'>
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Statements</span>
-                <span class='fraction'>0/25</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Functions</span>
-                <span class='fraction'>0/5</span>
-            </div>
-        
-            
-            <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
-                <span class="quiet">Lines</span>
-                <span class='fraction'>0/25</span>
-            </div>
-        
-            
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <div class="pad1">
+        <h1>
+          <a href="../../../index.html">All files</a> /
+          <a href="index.html">Movieapp/Screens/ParticipantScreens</a>
+          JoinSessionScreen.js
+        </h1>
+        <div class="clearfix">
+          <div class="fl pad1y space-right2">
+            <span class="strong">0% </span>
+            <span class="quiet">Statements</span>
+            <span class="fraction">0/25</span>
+          </div>
+
+          <div class="fl pad1y space-right2">
+            <span class="strong">0% </span>
+            <span class="quiet">Branches</span>
+            <span class="fraction">0/6</span>
+          </div>
+
+          <div class="fl pad1y space-right2">
+            <span class="strong">0% </span>
+            <span class="quiet">Functions</span>
+            <span class="fraction">0/5</span>
+          </div>
+
+          <div class="fl pad1y space-right2">
+            <span class="strong">0% </span>
+            <span class="quiet">Lines</span>
+            <span class="fraction">0/25</span>
+          </div>
         </div>
         <p class="quiet">
-            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+          Press <em>n</em> or <em>j</em> to go to the next uncovered block,
+          <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
         <template id="filterTemplate">
-            <div class="quiet">
-                Filter:
-                <input oninput="onInput()" type="search" id="fileSearch">
-            </div>
+          <div class="quiet">
+            Filter:
+            <input oninput="onInput()" type="search" id="fileSearch" />
+          </div>
         </template>
-    </div>
-    <div class='status-line low'></div>
-    <pre><table class="coverage">
+      </div>
+      <div class="status-line low"></div>
+      <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
 <a name='L3'></a><a href='#L3'>3</a>
@@ -272,7 +272,7 @@ import { addParticipant } from "../../firebase";
 export default function <span class="fstat-no" title="function not covered" >JoinSessionScreen(</span>{ navigation }) {
   const [owner, setOwner] = <span class="cstat-no" title="statement not covered" >useState("");</span>
   const [username, setLocalUsername] = <span class="cstat-no" title="statement not covered" >useState("");</span>
-  const [userError, setUserError] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
+  const [usernameError, setusernameError] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
   const [sessionError, setSessionError] = <span class="cstat-no" title="statement not covered" >useState(false);</span>
 &nbsp;
   const dispatch = <span class="cstat-no" title="statement not covered" >useDispatch();</span>
@@ -283,10 +283,10 @@ export default function <span class="fstat-no" title="function not covered" >Joi
     const validSession = <span class="cstat-no" title="statement not covered" >true;</span>
 <span class="cstat-no" title="statement not covered" >    if (!validUserName) {</span>
 <span class="cstat-no" title="statement not covered" >      if (!validSession) {</span>
-<span class="cstat-no" title="statement not covered" >        setUserError(true);</span>
+<span class="cstat-no" title="statement not covered" >        setusernameError(true);</span>
 <span class="cstat-no" title="statement not covered" >        setSessionError(true);</span>
       } else {
-<span class="cstat-no" title="statement not covered" >        setUserError(true);</span>
+<span class="cstat-no" title="statement not covered" >        setusernameError(true);</span>
       }
     } else {
 <span class="cstat-no" title="statement not covered" >      if (!validSession) {</span>
@@ -322,7 +322,7 @@ export default function <span class="fstat-no" title="function not covered" >Joi
       &lt;TextInput
         mode="outlined"
         label="Username"
-        error={userError}
+        error={usernameError}
         onChangeText={<span class="fstat-no" title="function not covered" >(v</span>al) =&gt; <span class="cstat-no" title="statement not covered" >setLocalUsername(val)}</span>
         value={username}
         placeholder="Enter a username for the session..."
@@ -362,21 +362,27 @@ const styles = <span class="cstat-no" title="statement not covered" >StyleSheet.
 });
 &nbsp;</pre></td></tr></table></pre>
 
-                <div class='push'></div><!-- for sticky footer -->
-            </div><!-- /wrapper -->
-            <div class='footer quiet pad2 space-top1 center small'>
-                Code coverage generated by
-                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Mon Jan 31 2022 10:30:13 GMT+0100 (sentraleuropeisk normaltid)
-            </div>
-        <script src="../../../prettify.js"></script>
-        <script>
-            window.onload = function () {
-                prettyPrint();
-            };
-        </script>
-        <script src="../../../sorter.js"></script>
-        <script src="../../../block-navigation.js"></script>
-    </body>
+      <div class="push"></div>
+      <!-- for sticky footer -->
+    </div>
+    <!-- /wrapper -->
+    <div class="footer quiet pad2 space-top1 center small">
+      Code coverage generated by
+      <a
+        href="https://istanbul.js.org/"
+        target="_blank"
+        rel="noopener noreferrer"
+        >istanbul</a
+      >
+      at Mon Jan 31 2022 10:30:13 GMT+0100 (sentraleuropeisk normaltid)
+    </div>
+    <script src="../../../prettify.js"></script>
+    <script>
+      window.onload = function () {
+        prettyPrint();
+      };
+    </script>
+    <script src="../../../sorter.js"></script>
+    <script src="../../../block-navigation.js"></script>
+  </body>
 </html>
-    

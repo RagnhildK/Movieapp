@@ -58,7 +58,7 @@ export default function CreateSessionScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <SafeAreaView>  
+      <SafeAreaView>
         <Headline style={styles.heading}>
           What's the name of the party?
         </Headline>
@@ -69,12 +69,13 @@ export default function CreateSessionScreen({ navigation }) {
           value={localSessionID}
           placeholder="Choose a name for the party"
         />
-          <Headline style={styles.headingBottom}>
+        <Headline style={styles.headingBottom}>
           How many movies to choose between?
         </Headline>
         <TextInput
           keyboardType="numeric"
           mode="outlined"
+          error={amountError}
           onChangeText={(val) => handleAmount(val)}
           value={localMovieAmount}
           placeholder="Number of movies"
@@ -82,7 +83,7 @@ export default function CreateSessionScreen({ navigation }) {
         <Headline style={styles.headingBottom}>What's your nickname?</Headline>
         <TextInput
           mode="outlined"
-          error={userError}
+          error={usernameError}
           onChangeText={(val) => setLocalUsername(val)}
           value={localUsername}
           placeholder="Your nickname"
