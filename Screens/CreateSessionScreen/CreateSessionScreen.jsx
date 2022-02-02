@@ -14,7 +14,7 @@ import { addSession } from "../../utils/firebase";
 export default function CreateSessionScreen({ navigation }) {
   const [localUsername, setLocalUsername] = useState("");
   const [localSessionID, setLocalSessionID] = useState("");
-  const [localMovieAmount, setLocalMovieAmount] = useState(20);
+  const [localMovieAmount, setLocalMovieAmount] = useState("");
   const [usernameError, setUsernameError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
   const [amountError, setAmountError] = useState(false);
@@ -54,6 +54,7 @@ export default function CreateSessionScreen({ navigation }) {
     setAmountError(false);
     setLocalMovieAmount(val);
   };
+  debugger;
 
   return (
     <View style={styles.container}>
