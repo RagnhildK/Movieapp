@@ -54,7 +54,7 @@ export default function CreateSessionScreen({ navigation }) {
     setAmountError(false);
     setLocalMovieAmount(val);
   };
-  debugger;
+
 
   return (
     <View style={styles.container}>
@@ -84,7 +84,7 @@ export default function CreateSessionScreen({ navigation }) {
         <TextInput
           mode="outlined"
           error={usernameError}
-          onChangeText={(val) => setLocalUsername(val)}
+          onChangeText={(val) => handleUsername(val)}
           value={localUsername}
           placeholder="Your nickname"
         />
