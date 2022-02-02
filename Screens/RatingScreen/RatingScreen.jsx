@@ -60,7 +60,7 @@ function RatingScreen({ navigation }) {
             ))}
           </ScrollView>
           <Pressable style={styles.button} onPress={() => handleSubmit()}>
-            <Text style={styles.buttonText}> Submit rating</Text>
+            <Text style={styles.buttonText}> Submit votes</Text>
           </Pressable>
         </SafeAreaView>
       )}

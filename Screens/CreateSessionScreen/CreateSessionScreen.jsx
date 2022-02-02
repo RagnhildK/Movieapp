@@ -83,7 +83,7 @@ export default function CreateSessionScreen({ navigation }) {
         <TextInput
           mode="outlined"
           error={usernameError}
-          onChangeText={(val) => setLocalUsername(val)}
+          onChangeText={(val) => handleUsername(val)}
           value={localUsername}
           placeholder="Your nickname"
         />
