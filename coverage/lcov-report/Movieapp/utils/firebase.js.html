@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>4/19</span>
+                <span class='fraction'>4/25</span>
             </div>
         
             
@@ -39,14 +39,14 @@
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/7</span>
+                <span class='fraction'>0/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">21.05% </span>
+                <span class="strong">16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>4/19</span>
+                <span class='fraction'>4/25</span>
             </div>
         
             
@@ -157,9 +157,18 @@
 <a name='L92'></a><a href='#L92'>92</a>
 <a name='L93'></a><a href='#L93'>93</a>
 <a name='L94'></a><a href='#L94'>94</a>
-<a name='L95'></a><a href='#L95'>95</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L95'></a><a href='#L95'>95</a>
+<a name='L96'></a><a href='#L96'>96</a>
+<a name='L97'></a><a href='#L97'>97</a>
+<a name='L98'></a><a href='#L98'>98</a>
+<a name='L99'></a><a href='#L99'>99</a>
+<a name='L100'></a><a href='#L100'>100</a>
+<a name='L101'></a><a href='#L101'>101</a>
+<a name='L102'></a><a href='#L102'>102</a>
+<a name='L103'></a><a href='#L103'>103</a>
+<a name='L104'></a><a href='#L104'>104</a>
+<a name='L105'></a><a href='#L105'>105</a>
+<a name='L106'></a><a href='#L106'>106</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -218,12 +227,25 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -264,8 +286,6 @@ import {
   query,
   getDoc,
   getDocs,
-  updateDoc,
-  onSnapshot,
 } from "firebase/firestore";
 &nbsp;
 // TODO: Add SDKs for Firebase products that you want to use
@@ -290,7 +310,7 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore();
 &nbsp;
 const UserColl = collection(db, "Users");
-// const SessionColl = collection(db, "sessions");
+// const SessionColl = collection(db, "Participants");
 &nbsp;
 export async function <span class="fstat-no" title="function not covered" >addUser(</span>name) {
   const data = <span class="cstat-no" title="statement not covered" >{</span>
@@ -305,30 +325,43 @@ export async function <span class="fstat-no" title="function not covered" >check
 <span class="cstat-no" title="statement not covered" >  return a.size != 0;</span>
 }
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >addSession(</span>name, sessionID) {
+export async function <span class="fstat-no" title="function not covered" >addSession(</span>name, sessionID, nmbMovies) {
   const data = <span class="cstat-no" title="statement not covered" >{</span>
     [name]: {},
   };
-<span class="cstat-no" title="statement not covered" >  await setDoc(doc(db, "sessions", sessionID), data);</span>
+  const movies = <span class="cstat-no" title="statement not covered" >{</span>
+    amount: nmbMovies,
+  };
+<span class="cstat-no" title="statement not covered" >  await setDoc(doc(db, "Participants", sessionID), data);</span>
+<span class="cstat-no" title="statement not covered" >  await setDoc(doc(db, "Movies", sessionID), movies);</span>
 }
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >addParticipant(</span>username, owner) {
+export async function <span class="fstat-no" title="function not covered" >addParticipant(</span>username, sessionID) {
   const data = <span class="cstat-no" title="statement not covered" >{</span>
     [username]: {},
   };
-<span class="cstat-no" title="statement not covered" >  await setDoc(doc(db, "sessions", owner), data, { merge: true });</span>
-  // await db.collection("sessions").doc(owner).update(data);
+<span class="cstat-no" title="statement not covered" >  await setDoc(doc(db, "Participants", sessionID), data, { merge: true });</span>
 }
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >updateRatings(</span>username, ratings, owner) {
+export async function <span class="fstat-no" title="function not covered" >getNmbOfMovies(</span>sessionID, handleResponse) {
+  const a = <span class="cstat-no" title="statement not covered" >doc(db, "Movies", sessionID);</span>
+&nbsp;
+  let movies;
+<span class="cstat-no" title="statement not covered" >  await getDoc(a).then(<span class="fstat-no" title="function not covered" >(d</span>oc) =&gt; {</span>
+<span class="cstat-no" title="statement not covered" >    movies = doc.data();</span>
+  });
+<span class="cstat-no" title="statement not covered" >  await handleResponse(movies);</span>
+}
+&nbsp;
+export async function <span class="fstat-no" title="function not covered" >updateRatings(</span>username, ratings, sessionID) {
   const data = <span class="cstat-no" title="statement not covered" >{</span>
     [username]: ratings,
   };
-<span class="cstat-no" title="statement not covered" >  await setDoc(doc(db, "sessions", owner), data, { merge: true });</span>
+<span class="cstat-no" title="statement not covered" >  await setDoc(doc(db, "Participants", sessionID), data, { merge: true });</span>
 }
 &nbsp;
-export async function <span class="fstat-no" title="function not covered" >getRatings(</span>owner, handleResponse) {
-  const a = <span class="cstat-no" title="statement not covered" >doc(db, "sessions", owner);</span>
+export async function <span class="fstat-no" title="function not covered" >getRatings(</span>sessionID, handleResponse) {
+  const a = <span class="cstat-no" title="statement not covered" >doc(db, "Participants", sessionID);</span>
   let ratings;
 <span class="cstat-no" title="statement not covered" >  await getDoc(a).then(<span class="fstat-no" title="function not covered" >(d</span>oc) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >    ratings = doc.data();</span>
@@ -352,7 +385,7 @@ export async function <span class="fstat-no" title="function not covered" >getRa
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Feb 01 2022 20:59:38 GMT+0100 (sentraleuropeisk normaltid)
+                at Wed Feb 02 2022 02:23:26 GMT+0100 (sentraleuropeisk normaltid)
             </div>
         <script src="../../prettify.js"></script>
         <script>

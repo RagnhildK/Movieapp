@@ -25,9 +25,6 @@ function RatingScreen({ navigation }) {
   const handleResponse = (response) => {
     const sliced = response.slice(0, nmbMovies);
     sliced.map((m) => dispatch(addFetchedMovie(m)));
-    // for (let i = 0; i < sliced.length; i++) {
-    //   dispatch(addFetchedMovie(sliced[i]));
-    // } 
     dispatch(setLoading(false));
   };
 

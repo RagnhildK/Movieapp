@@ -1,6 +1,7 @@
 import reducer, {
   setSessionID,
   setUsername,
+  setNmbMovies,
   setLoading,
   addFetchedMovie,
   rateMovie,
@@ -25,6 +26,7 @@ test("Should handle setting the sessionID", () => {
   expect(reducer(initialState, setSessionID("Hanna"))).toEqual({
     sessionID: "Hanna",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {},
     ratings: {},
@@ -38,6 +40,7 @@ test("Should handle setting the username", () => {
   expect(reducer(initialState, setUsername("Hanna"))).toEqual({
     sessionID: "",
     username: "Hanna",
+    nmbMovies: "",
     loading: false,
     movies: {},
     ratings: {},
@@ -47,10 +50,26 @@ test("Should handle setting the username", () => {
   });
 });
 
+test("Should handle setting the number of movies to be rated", () => {
+  expect(reducer(initialState, setNmbMovies("45"))).toEqual({
+    sessionID: "",
+    username: "",
+    nmbMovies: "45",
+    loading: false,
+    movies: {},
+    ratings: {},
+    totalResults: {},
+    sortedIDs: [],
+    participants: [],
+  });
+});
+
+
 test("Should handle setting the loading to true", () => {
   expect(reducer(initialState, setLoading(true))).toEqual({
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: true,
     movies: {},
     ratings: {},
@@ -66,6 +85,7 @@ test("Should handle setting the loading to false", () => {
       {
         sessionID: "",
         username: "",
+        nmbMovies: "",
         loading: true,
         movies: {},
         ratings: {},
@@ -78,6 +98,7 @@ test("Should handle setting the loading to false", () => {
   ).toEqual({
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {},
     ratings: {},
@@ -141,6 +162,7 @@ test("Should handle rating a movie", () => {
   ).toEqual({
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {
       634649: {
@@ -170,6 +192,7 @@ test("Should handle setting totalResults when there are no results", () => {
   ).toEqual({
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {
       634649: {
@@ -199,6 +222,7 @@ test("Should handle setting totalResults", () => {
       {
         sessionID: "",
         username: "",
+        nmbMovies: "",
         loading: false,
         movies: {
           634649: {
@@ -225,6 +249,7 @@ test("Should handle setting totalResults", () => {
   ).toEqual({
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {
       634649: {
@@ -254,6 +279,7 @@ test("Should handle sorting totalResults", () => {
       {
         sessionID: "",
         username: "",
+        nmbMovies: "",
         loading: false,
         movies: {
           634649: {
@@ -287,6 +313,7 @@ test("Should handle sorting totalResults", () => {
   ).toEqual({
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {
       634649: {
@@ -325,6 +352,7 @@ test("Should handle adding a participant when creating a session", () => {
   expect(reducer(initialState, addParticipant("Hanna"))).toEqual({
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {},
     ratings: {},
@@ -340,6 +368,7 @@ test("Should handle adding a participant when joining a session", () => {
       {
         sessionID: "",
         username: "",
+        nmbMovies: "",
         loading: false,
         movies: {},
         ratings: {},
@@ -352,6 +381,7 @@ test("Should handle adding a participant when joining a session", () => {
   ).toEqual({
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {},
     ratings: {},
@@ -367,6 +397,7 @@ test("Should handle resetting participants and total results", () => {
       {
         sessionID: "",
         username: "",
+        nmbMovies: "",
         loading: false,
         movies: {},
         ratings: {},

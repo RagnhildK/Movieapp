@@ -163,6 +163,7 @@ exports[`RatingScreen snapshot 1`] = `
                     Object {
                       "flex": 2,
                       "flexShrink": 1,
+                      "paddingTop": 10,
                     },
                   ]
                 }
@@ -431,7 +432,7 @@ exports[`RatingScreen snapshot 1`] = `
                     style={
                       Object {
                         "color": "#FF9C55",
-                        "fontSize": 12,
+                        "fontSize": 16,
                         "paddingBottom": 10,
                       }
                     }
@@ -540,6 +541,7 @@ exports[`RatingScreen snapshot 1`] = `
                     Object {
                       "flex": 2,
                       "flexShrink": 1,
+                      "paddingTop": 10,
                     },
                   ]
                 }
@@ -808,7 +810,7 @@ exports[`RatingScreen snapshot 1`] = `
                     style={
                       Object {
                         "color": "#FF9C55",
-                        "fontSize": 12,
+                        "fontSize": 16,
                         "paddingBottom": 10,
                       }
                     }
@@ -917,6 +919,7 @@ exports[`RatingScreen snapshot 1`] = `
                     Object {
                       "flex": 2,
                       "flexShrink": 1,
+                      "paddingTop": 10,
                     },
                   ]
                 }
@@ -1185,7 +1188,7 @@ exports[`RatingScreen snapshot 1`] = `
                     style={
                       Object {
                         "color": "#FF9C55",
-                        "fontSize": 12,
+                        "fontSize": 16,
                         "paddingBottom": 10,
                       }
                     }
@@ -1294,6 +1297,7 @@ exports[`RatingScreen snapshot 1`] = `
                     Object {
                       "flex": 2,
                       "flexShrink": 1,
+                      "paddingTop": 10,
                     },
                   ]
                 }
@@ -1562,7 +1566,7 @@ exports[`RatingScreen snapshot 1`] = `
                     style={
                       Object {
                         "color": "#FF9C55",
-                        "fontSize": 12,
+                        "fontSize": 16,
                         "paddingBottom": 10,
                       }
                     }
@@ -1593,11 +1597,11 @@ exports[`RatingScreen snapshot 1`] = `
         Object {
           "alignSelf": "center",
           "backgroundColor": "#352761",
-          "borderRadius": 10,
+          "borderRadius": 20,
           "margin": 10,
-          "maxWidth": 200,
+          "maxWidth": 250,
           "padding": 15,
-          "paddingHorizontal": 30,
+          "paddingHorizontal": 50,
         }
       }
     >

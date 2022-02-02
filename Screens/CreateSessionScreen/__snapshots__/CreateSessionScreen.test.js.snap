@@ -102,7 +102,7 @@ exports[`CreateSessionScreen snapshot 1`] = `
             onBlur={[Function]}
             onChangeText={[Function]}
             onFocus={[Function]}
-            placeholder="Enter your nickname..."
+            placeholder="Your nickname"
             placeholderTextColor="rgba(0, 0, 0, 0.54)"
             rejectResponderTermination={true}
             selectionColor="#6200ee"
@@ -230,7 +230,7 @@ exports[`CreateSessionScreen snapshot 1`] = `
             onBlur={[Function]}
             onChangeText={[Function]}
             onFocus={[Function]}
-            placeholder="Enter a name for the party..."
+            placeholder="Choose a name for the party"
             placeholderTextColor="rgba(0, 0, 0, 0.54)"
             rejectResponderTermination={true}
             selectionColor="#6200ee"
@@ -270,6 +270,135 @@ exports[`CreateSessionScreen snapshot 1`] = `
         </View>
       </View>
     </View>
+    <Text
+      style={
+        Array [
+          Object {
+            "color": "#000000",
+            "fontFamily": "System",
+            "fontWeight": "400",
+          },
+          Object {
+            "textAlign": "left",
+          },
+          Array [
+            Object {
+              "textAlign": "left",
+            },
+            Object {
+              "color": "rgba(0, 0, 0, 0.87)",
+              "fontFamily": "System",
+              "fontWeight": "400",
+              "writingDirection": "ltr",
+            },
+            Array [
+              Object {
+                "fontSize": 24,
+                "letterSpacing": 0,
+                "lineHeight": 32,
+                "marginVertical": 2,
+              },
+              Object {
+                "color": "#FF9C55",
+                "fontSize": 24,
+                "fontStyle": "italic",
+                "margin": 30,
+                "marginTop": 40,
+                "textAlign": "center",
+              },
+            ],
+          ],
+        ]
+      }
+    >
+      How many movies to choose between?
+    </Text>
+    <View
+      style={Object {}}
+    >
+      <View
+        pointerEvents="none"
+        style={
+          Array [
+            Object {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 6,
+            },
+            Object {
+              "backgroundColor": "#f6f6f6",
+              "borderColor": "rgba(0, 0, 0, 0.54)",
+              "borderRadius": 4,
+              "borderWidth": 1,
+            },
+          ]
+        }
+        testID="text-input-outline"
+      />
+      <View>
+        <View
+          style={
+            Array [
+              Object {
+                "paddingBottom": 0,
+              },
+              Object {
+                "minHeight": 64,
+                "paddingTop": 8,
+              },
+            ]
+          }
+        >
+          <TextInput
+            allowFontScaling={true}
+            editable={true}
+            keyboardType="numeric"
+            multiline={false}
+            onBlur={[Function]}
+            onChangeText={[Function]}
+            onFocus={[Function]}
+            placeholder="Number of movies"
+            placeholderTextColor="rgba(0, 0, 0, 0.54)"
+            rejectResponderTermination={true}
+            selectionColor="#6200ee"
+            style={
+              Array [
+                Object {
+                  "flexGrow": 1,
+                  "margin": 0,
+                  "paddingHorizontal": 14,
+                  "zIndex": 1,
+                },
+                Object {
+                  "height": 56,
+                },
+                Object {
+                  "paddingBottom": 0,
+                  "paddingTop": 0,
+                },
+                Object {
+                  "color": "#000000",
+                  "fontFamily": "System",
+                  "fontSize": 16,
+                  "fontWeight": undefined,
+                  "textAlign": "left",
+                  "textAlignVertical": "center",
+                },
+                false,
+                Array [
+                  Object {},
+                ],
+              ]
+            }
+            testID="text-input-outlined"
+            underlineColorAndroid="transparent"
+            value={20}
+          />
+        </View>
+      </View>
+    </View>
     <View
       accessible={true}
       collapsable={false}
@@ -285,13 +414,14 @@ exports[`CreateSessionScreen snapshot 1`] = `
       onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "alignSelf": "flex-end",
+          "alignSelf": "center",
           "backgroundColor": "#352761",
-          "borderRadius": 10,
-          "margin": 10,
+          "borderRadius": 20,
+          "margin": 30,
           "marginTop": 20,
-          "maxWidth": 150,
-          "padding": 10,
+          "maxWidth": 250,
+          "padding": 15,
+          "paddingHorizontal": 50,
         }
       }
     >

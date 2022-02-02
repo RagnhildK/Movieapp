@@ -93,8 +93,8 @@ export default function ResultScreen({ navigation }) {
               </Headline>
             </View>
             <View>
-              {sortedIDs.map(([id, _]) => (
-                <ResultMovie key={id} id={id} />
+              {sortedIDs.map(([id, _], index) => (
+                <ResultMovie key={id} id={id} rank={index}/>
               ))}
             </View>
           </ScrollView>

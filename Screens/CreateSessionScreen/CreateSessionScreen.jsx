@@ -15,26 +15,22 @@ export default function CreateSessionScreen({ navigation }) {
   const [localUsername, setLocalUsername] = useState("");
   const [localSessionID, setLocalSessionID] = useState("");
   const [localMovieAmount, setLocalMovieAmount] = useState(20);
-  const [userError, setUserError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
+  const [amountError, setAmountError] = useState(false);
 
   const dispatch = useDispatch();
 
   const createSession = () => {
-    const validUsername = localUsername !== "";
-    const validSession = localSessionID !== "";
-    if (!validUsername) {
-      if (!validSession) {
-        setUserError(true);
-        setSessionError(true);
-      } else {
-        setUserError(true);
-        setSessionError(false);
-      }
-    } else if (!validSession) {
-      setSessionError(true);
-      setUserError(false);
-    } else {
+    const unvalidUsername = localUsername == "";
+    const unvalidSession = localSessionID == "";
+    const unvalidAmount = isNaN(localMovieAmount);
+
+    setUsernameError(unvalidUsername);
+    setSessionError(unvalidSession);
+    setAmountError(unvalidAmount);
+
+    if (!unvalidUsername && !unvalidSession && !unvalidAmount) {
       dispatch(setUsername(localUsername));
       dispatch(setSessionID(localSessionID));
       dispatch(setNmbMovies(localMovieAmount));
@@ -44,14 +40,19 @@ export default function CreateSessionScreen({ navigation }) {
     }
   };
 
-  const handlePressUsername = (val) => {
-    setUSernameError(false);
-    setLocasetLocalUsernamelSessionID(val);
+  const handleUsername = (val) => {
+    setUsernameError(false);
+    setLocalUsername(val);
   };
 
-  const handlePressSessionID = (val) => {
+  const handleSessionID = (val) => {
     setSessionError(false);
     setLocalSessionID(val);
+  };
+
+  const handleAmount = (val) => {
+    setAmountError(false);
+    setLocalMovieAmount(val);
   };
 
   return (
@@ -60,8 +61,8 @@ export default function CreateSessionScreen({ navigation }) {
         <Headline style={styles.heading1}>What's your nickname?</Headline>
         <TextInput
           mode="outlined"
-          error={userError}
-          onChangeText={(val) => handlePressUsername(val)}
+          error={usernameError}
+          onChangeText={(val) => handleUsername(val)}
           value={localUsername}
           placeholder="Your nickname"
         />
@@ -71,7 +72,7 @@ export default function CreateSessionScreen({ navigation }) {
         <TextInput
           mode="outlined"
           error={sessionError}
-          onChangeText={(val) => handlePressSessionID(val)}
+          onChangeText={(val) => handleSessionID(val)}
           value={localSessionID}
           placeholder="Choose a name for the party"
         />
@@ -81,7 +82,7 @@ export default function CreateSessionScreen({ navigation }) {
         <TextInput
           keyboardType="numeric"
           mode="outlined"
-          onChangeText={(val) => setLocalMovieAmount(val)}
+          onChangeText={(val) => handleAmount(val)}
           value={localMovieAmount}
           placeholder="Number of movies"
         />

@@ -102,7 +102,7 @@ exports[`JoinSessionScreen snapshot 1`] = `
             onBlur={[Function]}
             onChangeText={[Function]}
             onFocus={[Function]}
-            placeholder="Enter a nickname for the session..."
+            placeholder="Your nickname"
             placeholderTextColor="rgba(0, 0, 0, 0.54)"
             rejectResponderTermination={true}
             selectionColor="#6200ee"
@@ -230,7 +230,7 @@ exports[`JoinSessionScreen snapshot 1`] = `
             onBlur={[Function]}
             onChangeText={[Function]}
             onFocus={[Function]}
-            placeholder="Enter a name for the party..."
+            placeholder="Enter the name of the party"
             placeholderTextColor="rgba(0, 0, 0, 0.54)"
             rejectResponderTermination={true}
             selectionColor="#6200ee"
@@ -288,10 +288,12 @@ exports[`JoinSessionScreen snapshot 1`] = `
         Object {
           "alignSelf": "center",
           "backgroundColor": "#352761",
-          "borderRadius": 10,
-          "margin": 10,
+          "borderRadius": 20,
+          "margin": 30,
           "marginTop": 20,
-          "padding": 10,
+          "maxWidth": 250,
+          "padding": 15,
+          "paddingHorizontal": 50,
         }
       }
     >

@@ -1,25 +1,23 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { Text, View, StyleSheet, Pressable } from "react-native";
 import {
   Card,
   Title,
   Modal,
   Portal,
-  Button,
   Subheading,
   Chip,
   Headline,
 } from "react-native-paper";
-import { useSelector } from "react-redux";
-import * as Colors from "../../styles/colors";
-import { getDetails } from "../../utils/fetch";
 import { AirbnbRating } from "react-native-ratings";
-import {incrementRanking} from "../../redux/movieSlicer";
+import { useSelector } from "react-redux";
+import { getDetails } from "../../utils/fetch";
+import * as Colors from "../../styles/colors";
 
-function ResultMovie(id) {
-  const { movies, totalResults, participants, sessionID, ranking} = useSelector(
-    (state) => state.movieRatings
-  );
+function ResultMovie({id, rank}) {
+  const { movies, totalResults, participants, sessionID } =
+    useSelector((state) => state.movieRatings);
+
   const [visible, setVisible] = React.useState(false);
   const [genres, setGenres] = React.useState(["Couldn't find any genres"]);
   const [movieLength, setMovieLength] = React.useState(0);
@@ -27,12 +25,11 @@ function ResultMovie(id) {
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-  const movieId = id.id;
-  const movie = movies[movieId];
+  const movie = movies[id];
   let url = "https://image.tmdb.org/t/p/w500/" + movie.posterPath;
 
   const avgRank = () => {
-    return totalResults[id.id] / participants.length;
+    return totalResults[id] / participants.length;
   };
 
   const handleResponse = (response) => {
@@ -45,18 +42,14 @@ function ResultMovie(id) {
     setMovieLength(response.runtime);
   };
 
-  const handlePress = async (movieId) => {
-    await getDetails(movieId, handleResponse);
+  const handlePress = async (id) => {
+    await getDetails(id, handleResponse);
     showModal();
   };
 
-  // useEffect(() => {
-  //   incrementRanking()
-  // }, []);
-
   return (
     <View style={styles.container}>
-     <Headline style={styles.rank}> {ranking} </Headline>
+      <Headline style={styles.rank}> {rank+1} </Headline>
       <Card style={styles.containerCard}>
         <View style={styles.row}>
           <Card.Cover source={{ uri: url }} style={styles.image} />
@@ -71,7 +64,7 @@ function ResultMovie(id) {
             <Pressable
               style={styles.button}
               type="text"
-              onPress={() => handlePress(movieId)}
+              onPress={() => handlePress(id)}
             >
               <Text style={styles.buttonText}>SHOW MORE</Text>
             </Pressable>
@@ -83,41 +76,45 @@ function ResultMovie(id) {
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          contentContainerStyle={styles.modal}>
-            <Card style={styles.card} onPress={hideModal}>
-              <Card.Cover source={{ uri: backdropUrl }}style={styles.imageModal}/>
-              <Card.Content style={styles.cardContent}>
-                <Title style={styles.movieTitle}>{movie.title}</Title>
-                <Subheading style={styles.subheading}>Overview</Subheading>
-                <Text style={styles.modalText}>{movie.overview}</Text>
-                <Subheading style={styles.subheading}>Genres</Subheading>
-                <View style={styles.chipSpacing}>
-                  {genres.map((i) => (
-                    <Chip key={i} disableed={true} style={styles.chip}>
-                      <Text style={styles.genresText}>{i}</Text>
-                    </Chip>
-                  ))}
-                </View>
-                <Subheading style={styles.subheading}>Runtime</Subheading>
-                <Text style={styles.modalText}>{movieLength} min</Text>
-                <Subheading style={styles.subheading}>
-                  Average rating in this {sessionID}:{" "}
-                  {avgRank().toLocaleString(undefined, {
-                    minimumFractionDigits: 0,
-                    maximumFractionDigits: 2,
-                  })}{" "}
-                  / 5
-                </Subheading>
-                <AirbnbRating
-                  defaultRating={Math.round(avgRank())}
-                  isDisabled={true}
-                  showRating={false}
-                />
-              </Card.Content>
-            </Card>
+          contentContainerStyle={styles.modal}
+        >
+          <Card style={styles.card} onPress={hideModal}>
+            <Card.Cover
+              source={{ uri: backdropUrl }}
+              style={styles.imageModal}
+            />
+            <Card.Content style={styles.cardContent}>
+              <Title style={styles.movieTitle}>{movie.title}</Title>
+              <Subheading style={styles.subheading}>Overview</Subheading>
+              <Text style={styles.modalText}>{movie.overview}</Text>
+              <Subheading style={styles.subheading}>Genres</Subheading>
+              <View style={styles.chipSpacing}>
+                {genres.map((i) => (
+                  <Chip key={i} disableed={true} style={styles.chip}>
+                    <Text style={styles.genresText}>{i}</Text>
+                  </Chip>
+                ))}
+              </View>
+              <Subheading style={styles.subheading}>Runtime</Subheading>
+              <Text style={styles.modalText}>{movieLength} min</Text>
+              <Subheading style={styles.subheading}>
+                Average rating in this {sessionID}:{" "}
+                {avgRank().toLocaleString(undefined, {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                / 5
+              </Subheading>
+              <AirbnbRating
+                defaultRating={Math.round(avgRank())}
+                isDisabled={true}
+                showRating={false}
+              />
+            </Card.Content>
+          </Card>
         </Modal>
       </Portal>
-  </View>
+    </View>
   );
 }
 
@@ -133,15 +130,15 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     backgroundColor: Colors.PURPLE,
     flexDirection: "row",
-    flexGrow: 1
+    flexGrow: 1,
   },
-    col: {
-      flexDirection: "column",
-    },
+  col: {
+    flexDirection: "column",
+  },
   row: {
     flexDirection: "row",
   },
-  rank:{
+  rank: {
     color: Colors.ORANGE_LIGHT,
     alignSelf: "center",
     marginLeft: 3,
@@ -159,11 +156,11 @@ const styles = StyleSheet.create({
     flex: 2,
     // flexDirection: "column",
     justifyContent: "space-between",
-    paddingTop: 10
+    paddingTop: 10,
   },
   button: {
     alignSelf: "flex-end",
-    padding: 10
+    padding: 10,
   },
   buttonText: {
     color: Colors.ORANGE_LIGHT,
@@ -174,8 +171,8 @@ const styles = StyleSheet.create({
     margin: 10,
     borderRadius: 7,
   },
-  card:{
-    backgroundColor: Colors.PURPLE
+  card: {
+    backgroundColor: Colors.PURPLE,
   },
   imageModal: {
     height: 250,
@@ -188,12 +185,12 @@ const styles = StyleSheet.create({
   },
   subheading: {
     // fontWeight: "bold",
-    color: Colors.WHITE
-  },  
+    color: Colors.WHITE,
+  },
   modalText: {
     color: Colors.WHITE,
     fontWeight: "200",
-  },  
+  },
   chipSpacing: {
     flexDirection: "row",
     flexWrap: "wrap",

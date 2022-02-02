@@ -4,6 +4,7 @@ import movieRatingReducer from "../redux/movieSlicer"
 export const initialState = {
   sessionID: "",
   username: "",
+  nmbMovies: "",
   loading: false,
   movies: {},
   ratings: {},
@@ -47,6 +48,7 @@ const movies = {
       movieRatings: {
         sessionID: "",
         username: "",
+        nmbMovies: "",
         loading: false,
         movies: movies,
         ratings: {},
@@ -60,6 +62,7 @@ const movies = {
   export const oneMoviesResult = {
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {
       634649: {
@@ -79,6 +82,7 @@ const movies = {
   export const twoMoviesResult = {
     sessionID: "",
     username: "",
+    nmbMovies: "",
     loading: false,
     movies: {
       634649: {

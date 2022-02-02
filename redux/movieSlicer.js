@@ -10,7 +10,6 @@ const initialState = {
   totalResults: {},
   sortedIDs: [],
   participants: [],
-  ranking: 0,
 };
 
 export const movieRatingSlice = createSlice({
@@ -54,19 +53,13 @@ export const movieRatingSlice = createSlice({
         return b[1] - a[1];
       });
       state.sortedIDs = sortable;
-      // This comment could probably be removed, double check on tuesday
-      // state.totalResults = sortable.map(([id, rank]) => [id, rank, state.movies[id]]);
     },
     addParticipant: (state, action) => {
       state.participants.push(action.payload);
     },
-    incrementRanking: (state) => {
-      state.ranking += 1;
-    },
     resetResultScreen: (state) => {
       state.participants = [];
       state.totalResults = {};
-      state.ranking = 0;
     },
   },
 });
@@ -82,7 +75,6 @@ export const {
   setTotalResults,
   sortTotalResults,
   addParticipant,
-  incrementRanking,
   resetResultScreen,
 } = movieRatingSlice.actions;
 

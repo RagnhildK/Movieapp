@@ -7,7 +7,7 @@ import {
   setNmbMovies,
 } from "../../redux/movieSlicer";
 import { addParticipant, getNmbOfMovies } from "../../utils/firebase";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { TextInput } from "react-native-paper";
 import { Headline } from "react-native-paper";
 import * as Colors from "../../styles/colors";
@@ -15,10 +15,9 @@ import * as Colors from "../../styles/colors";
 export default function JoinSessionScreen({ navigation }) {
   const [localSessionID, setLocalSessionID] = useState("");
   const [localUsername, setLocalUsername] = useState("");
-  const [userError, setUserError] = useState(false);
+  const [usernameError, setUsernameError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
 
-  const { sessionID } = useSelector((state) => state.movieRatings);
 
   const dispatch = useDispatch();
 
@@ -27,37 +26,28 @@ export default function JoinSessionScreen({ navigation }) {
   };
 
   const enterSession = async () => {
-    const validUsername = localUsername != "" ? true : false;
-    const validSession = localSessionID != "" ? true : false;
-    if (!validUsername) {
-      if (!validSession) {
-        setUserError(true);
-        setSessionError(true);
-      } else {
-        setUserError(true);
-        setSessionError(false);
-      }
-    } else {
-      if (!validSession) {
-        setSessionError(true);
-        setUserError(false);
-      } else {
-        dispatch(setLoading(true));
-        dispatch(setUsername(localUsername));
-        dispatch(setSessionID(localSessionID));
-        addParticipant(localUsername, localSessionID);
-        await getNmbOfMovies(localSessionID, handleResponse);
-        navigation.navigate("RatingScreen");
-      }
+    const unvalidUsername = (localUsername == "" ? true : false);
+    const unvalidSession = (localSessionID == "" ? true : false);
+
+    setUsernameError(unvalidUsername);
+    setSessionError(unvalidSession);
+
+    if (!unvalidUsername && !unvalidSession) {
+      dispatch(setLoading(true));
+      dispatch(setUsername(localUsername));
+      dispatch(setSessionID(localSessionID));
+      addParticipant(localUsername, localSessionID);
+      await getNmbOfMovies(localSessionID, handleResponse);
+      navigation.navigate("RatingScreen");
     }
   };
 
-  const handlePressUsername = (val) => {
-    setUSernameError(false);
-    setLocasetLocalUsernamelSessionID(val);
+  const handleUsername = (val) => {
+    setUsernameError(false);
+    setLocalUsername(val);
   };
 
-  const handlePressSessionID = (val) => {
+  const handleSessionID = (val) => {
     setSessionError(false);
     setLocalSessionID(val);
   };
@@ -68,8 +58,8 @@ export default function JoinSessionScreen({ navigation }) {
         <Headline style={styles.heading1}>What's your nickname?</Headline>
         <TextInput
           mode="outlined"
-          error={userError}
-          onChangeText={(val) => handlePressUsername(val)}
+          error={usernameError}
+          onChangeText={(val) => handleUsername(val)}
           value={localUsername}
           placeholder="Your nickname"
         />
@@ -79,7 +69,7 @@ export default function JoinSessionScreen({ navigation }) {
         <TextInput
           mode="outlined"
           error={sessionError}
-          onChangeText={(val) => handlePressSessionID(val)}
+          onChangeText={(val) => handleSessionID(val)}
           value={localSessionID}
           placeholder="Enter the name of the party"
         />

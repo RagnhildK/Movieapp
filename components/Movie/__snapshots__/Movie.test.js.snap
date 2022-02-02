@@ -98,6 +98,7 @@ exports[`Movie component snapshot 1`] = `
             Object {
               "flex": 2,
               "flexShrink": 1,
+              "paddingTop": 10,
             },
           ]
         }
@@ -366,7 +367,7 @@ exports[`Movie component snapshot 1`] = `
             style={
               Object {
                 "color": "#FF9C55",
-                "fontSize": 12,
+                "fontSize": 16,
                 "paddingBottom": 10,
               }
             }

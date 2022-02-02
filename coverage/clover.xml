@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1643745578795" clover="3.2.0">
-  <project timestamp="1643745578795" name="All files">
-    <metrics statements="70" coveredstatements="40" conditionals="2" coveredconditionals="2" methods="20" coveredmethods="10" elements="92" coveredelements="52" complexity="0" loc="70" ncloc="70" packages="4" files="9" classes="9"/>
+<coverage generated="1643765006542" clover="3.2.0">
+  <project timestamp="1643765006542" name="All files">
+    <metrics statements="83" coveredstatements="41" conditionals="2" coveredconditionals="2" methods="24" coveredmethods="11" elements="109" coveredelements="54" complexity="0" loc="83" ncloc="83" packages="4" files="9" classes="9"/>
     <package name="Movieapp">
       <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
       <file name="App.js" path="C:\Users\hanna\Desktop\Movieapp\App.js">
@@ -19,29 +19,30 @@
       </file>
     </package>
     <package name="Movieapp.redux">
-      <metrics statements="21" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
+      <metrics statements="22" coveredstatements="21" conditionals="2" coveredconditionals="2" methods="11" coveredmethods="11"/>
       <file name="movieSlicer.js" path="C:\Users\hanna\Desktop\Movieapp\redux\movieSlicer.js">
-        <metrics statements="20" coveredstatements="20" conditionals="2" coveredconditionals="2" methods="10" coveredmethods="10"/>
+        <metrics statements="21" coveredstatements="21" conditionals="2" coveredconditionals="2" methods="11" coveredmethods="11"/>
         <line num="3" count="10" type="stmt"/>
-        <line num="14" count="10" type="stmt"/>
-        <line num="19" count="1" type="stmt"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="25" count="2" type="stmt"/>
-        <line num="28" count="2" type="stmt"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="29" count="2" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
-        <line num="37" count="1" type="stmt"/>
-        <line num="38" count="1" type="stmt"/>
-        <line num="41" count="2" type="stmt"/>
-        <line num="42" count="2" type="cond" truecount="2" falsecount="0"/>
-        <line num="47" count="1" type="stmt"/>
-        <line num="48" count="1" type="stmt"/>
-        <line num="49" count="4" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="46" count="2" type="cond" truecount="2" falsecount="0"/>
         <line num="51" count="1" type="stmt"/>
-        <line num="56" count="2" type="stmt"/>
-        <line num="59" count="1" type="stmt"/>
-        <line num="60" count="1" type="stmt"/>
-        <line num="76" count="10" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="4" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="58" count="2" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="79" count="10" type="stmt"/>
       </file>
       <file name="store.js" path="C:\Users\hanna\Desktop\Movieapp\redux\store.js">
         <metrics statements="1" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
@@ -62,9 +63,9 @@
       </file>
     </package>
     <package name="Movieapp.utils">
-      <metrics statements="38" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <metrics statements="50" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="0"/>
       <file name="fetch.js" path="C:\Users\hanna\Desktop\Movieapp\utils\fetch.js">
-        <metrics statements="14" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <metrics statements="20" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
         <line num="2" count="5" type="stmt"/>
         <line num="5" count="5" type="stmt"/>
         <line num="7" count="5" type="stmt"/>
@@ -72,43 +73,55 @@
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
         <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
         <line num="13" count="0" type="stmt"/>
-        <line num="17" count="5" type="stmt"/>
-        <line num="18" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
         <line num="19" count="0" type="stmt"/>
-        <line num="22" count="0" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
       </file>
       <file name="firebase.js" path="C:\Users\hanna\Desktop\Movieapp\utils\firebase.js">
-        <metrics statements="19" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="7" coveredmethods="0"/>
-        <line num="23" count="4" type="stmt"/>
-        <line num="34" count="4" type="stmt"/>
+        <metrics statements="25" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
         <line num="37" count="4" type="stmt"/>
-        <line num="39" count="4" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="46" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
-        <line num="51" count="0" type="stmt"/>
-        <line num="52" count="0" type="stmt"/>
-        <line num="56" count="0" type="stmt"/>
-        <line num="59" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="66" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="74" count="0" type="stmt"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
         <line num="78" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="81" count="0" type="stmt"/>
-        <line num="83" count="0" type="stmt"/>
+        <line num="82" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+        <line num="89" count="0" type="stmt"/>
+        <line num="91" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
       </file>
       <file name="movieListFixture.js" path="C:\Users\hanna\Desktop\Movieapp\utils\movieListFixture.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="4" count="10" type="stmt"/>
-        <line num="15" count="10" type="stmt"/>
-        <line num="42" count="10" type="stmt"/>
-        <line num="60" count="10" type="stmt"/>
-        <line num="79" count="10" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="43" count="10" type="stmt"/>
+        <line num="62" count="10" type="stmt"/>
+        <line num="82" count="10" type="stmt"/>
       </file>
     </package>
   </project>

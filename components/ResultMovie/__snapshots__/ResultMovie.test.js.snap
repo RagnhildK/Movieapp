@@ -4,177 +4,233 @@ exports[`ResultMovie component snapshot 1`] = `
 <View
   style={
     Object {
-      "backgroundColor": "#352761",
-      "borderColor": "rgba(0, 0, 0, 0.12)",
-      "borderRadius": 4,
-      "elevation": 1,
-      "margin": 10,
-      "shadowColor": "#000000",
-      "shadowOffset": Object {
-        "height": 0.5,
-        "width": 0,
-      },
-      "shadowOpacity": 0.24,
-      "shadowRadius": 0.75,
+      "flexDirection": "row",
     }
   }
 >
+  <Text
+    style={
+      Array [
+        Object {
+          "color": "#000000",
+          "fontFamily": "System",
+          "fontWeight": "400",
+        },
+        Object {
+          "textAlign": "left",
+        },
+        Array [
+          Object {
+            "textAlign": "left",
+          },
+          Object {
+            "color": "rgba(0, 0, 0, 0.87)",
+            "fontFamily": "System",
+            "fontWeight": "400",
+            "writingDirection": "ltr",
+          },
+          Array [
+            Object {
+              "fontSize": 24,
+              "letterSpacing": 0,
+              "lineHeight": 32,
+              "marginVertical": 2,
+            },
+            Object {
+              "alignSelf": "center",
+              "color": "#FF9C55",
+              "fontSize": 36,
+              "fontStyle": "italic",
+              "lineHeight": 50,
+              "marginLeft": 3,
+            },
+          ],
+        ],
+      ]
+    }
+  >
+     
+    NaN
+     
+  </Text>
   <View
-    accessible={true}
-    focusable={false}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
     style={
       Object {
+        "backgroundColor": "#352761",
+        "borderColor": "rgba(0, 0, 0, 0.12)",
+        "borderRadius": 4,
+        "elevation": 1,
+        "flexDirection": "row",
         "flexGrow": 1,
-        "flexShrink": 1,
+        "margin": 10,
+        "marginLeft": 5,
+        "shadowColor": "#000000",
+        "shadowOffset": Object {
+          "height": 0.5,
+          "width": 0,
+        },
+        "shadowOpacity": 0.24,
+        "shadowRadius": 0.75,
       }
     }
   >
     <View
-      index={0}
-      siblings={
-        Array [
-          "View",
-          "withTheme(Portal)",
-        ]
-      }
+      accessible={true}
+      focusable={false}
+      onClick={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
       style={
         Object {
-          "flexDirection": "row",
+          "flexGrow": 1,
+          "flexShrink": 1,
         }
       }
-      total={2}
     >
       <View
-        style={
+        index={0}
+        siblings={
           Array [
-            Object {
-              "backgroundColor": "#eeeeee",
-              "height": 195,
-              "overflow": "hidden",
-            },
-            undefined,
-            Object {
-              "height": 150,
-              "width": 100,
-            },
+            "View",
           ]
         }
-      >
-        <Image
-          source={
-            Object {
-              "uri": "https://image.tmdb.org/t/p/w500//sg4xJaufDiQl7caFEskBtQXfD4x.jpg",
-            }
+        style={
+          Object {
+            "flexDirection": "row",
           }
+        }
+        total={1}
+      >
+        <View
           style={
             Array [
               Object {
-                "flex": 1,
-                "height": undefined,
-                "justifyContent": "flex-end",
-                "padding": 16,
-                "width": undefined,
+                "backgroundColor": "#eeeeee",
+                "height": 195,
+                "overflow": "hidden",
               },
               undefined,
+              Object {
+                "height": 150,
+                "width": 100,
+              },
             ]
           }
-        />
-      </View>
-      <View
-        style={
-          Array [
-            Object {
-              "paddingHorizontal": 16,
-            },
-            undefined,
-            Object {
-              "flex": 2,
-              "flexDirection": "column",
-              "flexShrink": 1,
-              "justifyContent": "space-between",
-            },
-          ]
-        }
-      >
-        <Text
-          ellipsizeMode="tail"
-          numberOfLines={2}
+        >
+          <Image
+            source={
+              Object {
+                "uri": "https://image.tmdb.org/t/p/w500//sg4xJaufDiQl7caFEskBtQXfD4x.jpg",
+              }
+            }
+            style={
+              Array [
+                Object {
+                  "flex": 1,
+                  "height": undefined,
+                  "justifyContent": "flex-end",
+                  "padding": 16,
+                  "width": undefined,
+                },
+                undefined,
+              ]
+            }
+          />
+        </View>
+        <View
           style={
             Array [
               Object {
-                "color": "#000000",
-                "fontFamily": "System",
-                "fontWeight": "400",
+                "paddingHorizontal": 16,
               },
+              undefined,
               Object {
-                "textAlign": "left",
+                "flex": 2,
+                "flexShrink": 1,
+                "justifyContent": "space-between",
+                "paddingTop": 10,
               },
+            ]
+          }
+        >
+          <Text
+            ellipsizeMode="tail"
+            numberOfLines={2}
+            style={
               Array [
+                Object {
+                  "color": "#000000",
+                  "fontFamily": "System",
+                  "fontWeight": "400",
+                },
                 Object {
                   "textAlign": "left",
                 },
-                Object {
-                  "color": "rgba(0, 0, 0, 0.87)",
-                  "fontFamily": "System",
-                  "fontWeight": "500",
-                  "writingDirection": "ltr",
-                },
                 Array [
                   Object {
-                    "fontSize": 20,
-                    "letterSpacing": 0.15,
-                    "lineHeight": 30,
-                    "marginVertical": 2,
+                    "textAlign": "left",
                   },
                   Object {
-                    "color": "#FFFFFF",
-                    "fontSize": 20,
+                    "color": "rgba(0, 0, 0, 0.87)",
+                    "fontFamily": "System",
+                    "fontWeight": "500",
+                    "writingDirection": "ltr",
                   },
+                  Array [
+                    Object {
+                      "fontSize": 20,
+                      "letterSpacing": 0.15,
+                      "lineHeight": 30,
+                      "marginVertical": 2,
+                    },
+                    Object {
+                      "color": "#FFFFFF",
+                      "fontSize": 20,
+                    },
+                  ],
                 ],
-              ],
-            ]
-          }
-        >
-          Ghostbusters: Afterlife
-        </Text>
-        <View
-          accessible={true}
-          collapsable={false}
-          focusable={true}
-          onBlur={[Function]}
-          onClick={[Function]}
-          onFocus={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            Object {
-              "alignSelf": "flex-end",
-            }
-          }
-          type="text"
-        >
-          <Text
-            style={
-              Object {
-                "color": "#FF9C55",
-                "fontSize": 12,
-                "paddingBottom": 10,
-              }
+              ]
             }
           >
-            SHOW MORE
+            Ghostbusters: Afterlife
           </Text>
+          <View
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onBlur={[Function]}
+            onClick={[Function]}
+            onFocus={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              Object {
+                "alignSelf": "flex-end",
+                "padding": 10,
+              }
+            }
+            type="text"
+          >
+            <Text
+              style={
+                Object {
+                  "color": "#FF9C55",
+                  "fontSize": 16,
+                  "paddingBottom": 10,
+                }
+              }
+            >
+              SHOW MORE
+            </Text>
+          </View>
         </View>
       </View>
     </View>
