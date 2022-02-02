@@ -18,7 +18,6 @@ export default function JoinSessionScreen({ navigation }) {
   const [usernameError, setUsernameError] = useState(false);
   const [sessionError, setSessionError] = useState(false);
 
-
   const dispatch = useDispatch();
 
   const handleResponse = (response) => {
@@ -26,8 +25,8 @@ export default function JoinSessionScreen({ navigation }) {
   };
 
   const enterSession = async () => {
-    const unvalidUsername = (localUsername == "" ? true : false);
-    const unvalidSession = (localSessionID == "" ? true : false);
+    const unvalidUsername = localUsername == "" ? true : false;
+    const unvalidSession = localSessionID == "" ? true : false;
 
     setUsernameError(unvalidUsername);
     setSessionError(unvalidSession);
@@ -55,7 +54,7 @@ export default function JoinSessionScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <SafeAreaView>
-      <Headline style={styles.heading1}>
+        <Headline style={styles.heading1}>
           What's the name of the party?
         </Headline>
         <TextInput
@@ -72,7 +71,7 @@ export default function JoinSessionScreen({ navigation }) {
           onChangeText={(val) => setLocalUsername(val)}
           value={localUsername}
           placeholder="Your nickname"
-        />     
+        />
         <Pressable
           id="enterJoinedSession"
           style={styles.button}
