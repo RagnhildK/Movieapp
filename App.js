@@ -8,24 +8,18 @@ import CreateSessionScreen from "./Screens/CreateSessionScreen/CreateSessionScre
 import { Provider as StoreProvider } from "react-redux";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from "@react-navigation/native";
-import * as Colors from "./styles/colors";
 
 import "react-native-gesture-handler";
+
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Setting a timer']);
 
 const Stack = createStackNavigator();
 const App = () => (
   <StoreProvider store={store}>
     <NavigationContainer>
       <Stack.Navigator
-        // screenOptions={{
-        //   headerStyle: {
-        //     backgroundColor: Colors.DARK_PURPLE,
-        //   },
-        //   headerShadowVisible: false,
-        //   headerTintColor: Colors.ORANGE_LIGHT,
-        //   headerTitleAlign: "center",
-        //   headerBackTitleVisible: false
-        // }}
         screenOptions={{
           headerShown: false,
         }}
@@ -33,7 +27,6 @@ const App = () => (
         <Stack.Screen
           name="CreateOrJoinScreen"
           component={CreateOrJoinScreen}
-          //component={RatingScreen}
           options={{
             title: "",
           }}
