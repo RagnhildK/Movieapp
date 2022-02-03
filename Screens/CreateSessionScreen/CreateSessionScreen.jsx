@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import {StyleSheet, Pressable, Text, SafeAreaView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from "react-native";
+import {StyleSheet, Pressable, Text, SafeAreaView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, Dimensions, ScrollView } from "react-native";
 import { TextInput, Headline } from "react-native-paper";
 import {
   setUsername,
@@ -55,6 +55,12 @@ export default function CreateSessionScreen({ navigation }) {
     setLocalMovieAmount(val);
   };
 
+  const {
+    width,
+    height
+} = Dimensions.get('window');
+
+
   return (
       <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
@@ -62,6 +68,7 @@ export default function CreateSessionScreen({ navigation }) {
       >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <SafeAreaView>
+        <ScrollView style={styles.scroll}>
         <Headline style={styles.heading}>
           What's the name of the party?
         </Headline>
@@ -94,6 +101,7 @@ export default function CreateSessionScreen({ navigation }) {
         <Pressable style={styles.button} onPress={() => createSession()}>
           <Text style={styles.buttonText}>Start the party</Text>
         </Pressable>
+        </ScrollView>
       </SafeAreaView>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
@@ -107,6 +115,9 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.DARK_PURPLE,
     paddingLeft: 20,
     paddingRight: 20,
+  },
+  scroll: {
+    alignSelf: "center"
   },
   button: {
     backgroundColor: Colors.PURPLE,

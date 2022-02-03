@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, View, StyleSheet, Pressable } from "react-native";
+import { Text, View, StyleSheet, Pressable, SafeAreaView, Dimensions, ScrollView } from "react-native";
 import {
   Card,
   Title,
@@ -22,6 +22,11 @@ function ResultMovie({id, rank}) {
   const [genres, setGenres] = React.useState(["Couldn't find any genres"]);
   const [movieLength, setMovieLength] = React.useState(0);
   const [backdropUrl, setBackdropUrl] = React.useState();
+
+  const {
+    width,
+    height
+} = Dimensions.get('window');
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -48,10 +53,10 @@ function ResultMovie({id, rank}) {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Headline style={styles.rank}> {rank+1} </Headline>
       <Card style={styles.containerCard}>
-        <View style={styles.row}>
+          <View style={styles.row}>
           <Card.Cover source={{ uri: url }} style={styles.image} />
           <Card.Content style={styles.shrink}>
             <Title
@@ -76,9 +81,11 @@ function ResultMovie({id, rank}) {
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          contentContainerStyle={styles.modal}
+          contentContainerStyle={width > 500 ? styles.smallModal : styles.modal }
         >
-          <Card style={styles.card} onPress={hideModal}>
+          {height > 500 ? 
+          <Card style={styles.card} > 
+          <ScrollView>
             <Card.Cover
               source={{ uri: backdropUrl }}
               style={styles.imageModal}
@@ -111,18 +118,50 @@ function ResultMovie({id, rank}) {
                 showRating={false}
               />
             </Card.Content>
+            </ScrollView>
           </Card>
+        : 
+        <Card style={styles.card} > 
+          <ScrollView>
+            <Card.Content style={styles.cardContent}>
+              <Title style={styles.movieTitle}>{movie.title}</Title>
+              <Subheading style={styles.subheading}>Overview</Subheading>
+              <Text style={styles.modalText}>{movie.overview}</Text>
+              <Subheading style={styles.subheading}>Genres</Subheading>
+              <View style={styles.chipSpacing}>
+                {genres.map((i) => (
+                  <Chip key={i} disableed={true} style={styles.chip}>
+                    <Text style={styles.genresText}>{i}</Text>
+                  </Chip>
+                ))}
+              </View>
+              <Subheading style={styles.subheading}>Runtime</Subheading>
+              <Text style={styles.modalText}>{movieLength} min</Text>
+              <Subheading style={styles.subheading}>
+                Average rating in {sessionID}:{" "}
+                {avgRank().toLocaleString(undefined, {
+                  minimumFractionDigits: 0,
+                  maximumFractionDigits: 2,
+                })}{" "}
+                / 5
+              </Subheading>
+              <AirbnbRating
+                defaultRating={Math.round(avgRank())}
+                isDisabled={true}
+                showRating={false}
+              />
+            </Card.Content>
+            </ScrollView>
+          </Card>
+        }          
         </Modal>
       </Portal>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    // marginLeft: 20,
-    // marginRight: 20,
-    // margin: 10,
     flexDirection: "row",
   },
   containerCard: {
@@ -154,7 +193,6 @@ const styles = StyleSheet.create({
   shrink: {
     flexShrink: 1,
     flex: 2,
-    // flexDirection: "column",
     justifyContent: "space-between",
     paddingTop: 10,
   },
@@ -170,9 +208,17 @@ const styles = StyleSheet.create({
   modal: {
     margin: 10,
     borderRadius: 7,
+    alignSelf: "center"
+  },
+  smallModal: {
+    margin: 10,
+    marginHorizontal: 70,
+    borderRadius: 7,
+    alignSelf: "center", 
   },
   card: {
     backgroundColor: Colors.PURPLE,
+    maxHeight: 500
   },
   imageModal: {
     height: 250,
@@ -184,7 +230,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   subheading: {
-    // fontWeight: "bold",
     color: Colors.WHITE,
   },
   modalText: {
@@ -200,7 +245,6 @@ const styles = StyleSheet.create({
     marginRight: 4,
     maxHeight: 25,
     backgroundColor: Colors.PURPLE_LIGHT,
-    // lineHeight: 10, //usikker på om denne trengs
   },
 });
 

@@ -6,10 +6,10 @@ import {
   Modal,
   Portal,
   Subheading,
-  Button,
   Chip,
 } from "react-native-paper";
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, Dimensions, ScrollView
+} from "react-native";
 import RatingButtons from "../RatingButton/RatingButtons";
 import * as Colors from "../../styles/colors";
 import { getDetails } from "../../utils/fetch";
@@ -22,6 +22,11 @@ function Movie({ id }) {
   const [genres, setGenres] = React.useState(["Couldn't find any genres"]);
   const [movieLength, setMovieLength] = React.useState(0);
   const [backdropUrl, setBackdropUrl] = React.useState();
+
+  const {
+    width,
+    height
+} = Dimensions.get('window');
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
@@ -71,25 +76,48 @@ function Movie({ id }) {
         <Modal
           visible={visible}
           onDismiss={hideModal}
-          contentContainerStyle={styles.modal}>
-          <Card style={styles.card} onPress={hideModal}>
-          <Card.Cover source={{ uri: backdropUrl }} style={styles.imageModal} />
-          <Card.Content style={styles.cardContent}>
-            <Title style={styles.movieTitle}>{movie.title}</Title>
-            <Subheading style={styles.subheading}>Overview</Subheading>
-            <Text style={styles.modalText}>{movie.overview}</Text>
-            <Subheading style={styles.subheading}>Genres</Subheading>
-            <View style={styles.chipSpacing}>
-              {genres.map((i) => (
-                <Chip key={i} disabled={true} style={styles.chip}>
-                  <Text style={styles.genresText}>{i}</Text>
-                </Chip>
-              ))}
-            </View>
-            <Subheading style={styles.subheading}>Runtime</Subheading>
-            <Text style={styles.modalText}>{movieLength} min</Text>
-          </Card.Content>
+          contentContainerStyle={width > 500 ? styles.smallModal : styles.modal}>
+          {height > 500 ?  
+          <Card style={styles.card}>
+            <ScrollView>
+              <Card.Cover source={{ uri: backdropUrl }} style={styles.imageModal} />
+              <Card.Content style={styles.cardContent}>
+                <Title style={styles.movieTitle}>{movie.title}</Title>
+                <Subheading style={styles.subheading}>Overview</Subheading>
+                <Text style={styles.modalText}>{movie.overview}</Text>
+                <Subheading style={styles.subheading}>Genres</Subheading>
+                <View style={styles.chipSpacing}>
+                  {genres.map((i) => (
+                    <Chip key={i} disabled={true} style={styles.chip}>
+                      <Text style={styles.genresText}>{i}</Text>
+                    </Chip>
+                  ))}
+                </View>
+                <Subheading style={styles.subheading}>Runtime</Subheading>
+                <Text style={styles.modalText}>{movieLength} min</Text>
+              </Card.Content>
+            </ScrollView>
           </Card>
+          : 
+          <Card style={styles.card}>
+            <ScrollView>
+              <Card.Content style={styles.cardContent}>
+                <Title style={styles.movieTitle}>{movie.title}</Title>
+                <Subheading style={styles.subheading}>Overview</Subheading>
+                <Text style={styles.modalText}>{movie.overview}</Text>
+                <Subheading style={styles.subheading}>Genres</Subheading>
+                <View style={styles.chipSpacing}>
+                  {genres.map((i) => (
+                    <Chip key={i} disabled={true} style={styles.chip}>
+                      <Text style={styles.genresText}>{i}</Text>
+                    </Chip>
+                  ))}
+                </View>
+                <Subheading style={styles.subheading}>Runtime</Subheading>
+                <Text style={styles.modalText}>{movieLength} min</Text>
+              </Card.Content>
+            </ScrollView>
+          </Card>}
         </Modal>
       </Portal>
     </Card>
@@ -126,6 +154,7 @@ const styles = {
   },
   button: {
     alignSelf: "flex-end",
+    padding: 10,
   },
   buttonText: {
     color: Colors.ORANGE_LIGHT,
@@ -135,9 +164,17 @@ const styles = {
   modal: {
     margin: 10,
     borderRadius: 7,
+    alignSelf: "center", 
+  },
+  smallModal: {
+    margin: 10,
+    marginHorizontal: 70,
+    borderRadius: 7,
+    alignSelf: "center", 
   },
   card:{
-    backgroundColor: Colors.PURPLE
+    backgroundColor: Colors.PURPLE,
+    maxHeight: 500
   },
   cardContent: {
     padding: 10,
@@ -152,18 +189,15 @@ const styles = {
   },
   chipSpacing: {
     flexDirection: "row",
-    // justifyContent: "space-evenly"
     flexWrap: "wrap",
   },
   chip: {
     marginBottom: 4,
     marginRight: 4,
     maxHeight: 25,
-    // lineHeight: 10, //usikker på om denne trengs
     backgroundColor: Colors.PURPLE_LIGHT,
   },
   genresText: {
-    // usikker på om dette trengs - må se mer på chips og hvorfor de tar så mye plass
     padding: 0,
     margin: 0,
     color: Colors.BLACK,

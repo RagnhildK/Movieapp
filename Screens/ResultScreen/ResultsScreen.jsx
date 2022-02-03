@@ -5,7 +5,6 @@ import {
   Headline,
   Chip,
   IconButton,
-  Divider,
 } from "react-native-paper";
 import {
   setLoading,

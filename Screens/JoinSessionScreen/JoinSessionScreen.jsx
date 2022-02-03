@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Pressable, Text, SafeAreaView , KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform} from "react-native";
+import { View, StyleSheet, Pressable, Text, SafeAreaView, ScrollView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform} from "react-native";
 import {
   setSessionID,
   setUsername,
@@ -56,36 +56,39 @@ export default function JoinSessionScreen({ navigation }) {
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
       >
-      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <SafeAreaView>
-        <Headline style={styles.heading1}>
-          What's the name of the party?
-        </Headline>
-        <TextInput
-          mode="outlined"
-          error={sessionError}
-          onChangeText={(val) => handleSessionID(val)}
-          value={localSessionID}
-          placeholder="Enter the name of the party"
-        />
-        <Headline style={styles.heading2}>What's your nickname?</Headline>
-        <TextInput
-          mode="outlined"
-          error={usernameError}
-          onChangeText={(val) => setLocalUsername(val)}
-          value={localUsername}
-          placeholder="Your nickname"
-        />
-        <Pressable
-          id="enterJoinedSession"
-          style={styles.button}
-          onPress={() => enterSession()}
-        >
-          <Text style={styles.buttonText}> Join the party</Text>
-        </Pressable>
-      </SafeAreaView>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <SafeAreaView>
+        <ScrollView style={styles.scroll}>      
+          <Headline style={styles.heading1}>
+            What's the name of the party?
+          </Headline>
+          <TextInput
+            mode="outlined"
+            error={sessionError}
+            onChangeText={(val) => handleSessionID(val)}
+            value={localSessionID}
+            placeholder="Enter the name of the party"
+          />
+          <Headline style={styles.heading2}>What's your nickname?</Headline>
+          <TextInput
+            mode="outlined"
+            error={usernameError}
+            onChangeText={(val) => setLocalUsername(val)}
+            value={localUsername}
+            placeholder="Your nickname"
+          />
+          <Pressable
+            id="enterJoinedSession"
+            style={styles.button}
+            onPress={() => enterSession()}
+          >
+            <Text style={styles.buttonText}> Join the party</Text>
+          </Pressable>
+          </ScrollView>
+
+        </SafeAreaView>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
   );
 }
 
@@ -95,7 +98,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: Colors.DARK_PURPLE,
     paddingLeft: 20,
-    paddingRight: 20,
+    paddingRight: 20,    
+  },
+  scroll: {
+    alignSelf: "center"
   },
   heading1: {
     color: Colors.ORANGE_LIGHT,
