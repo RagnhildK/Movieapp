@@ -11,9 +11,9 @@ import { NavigationContainer } from "@react-navigation/native";
 
 import "react-native-gesture-handler";
 
-import { LogBox } from 'react-native';
+import { LogBox } from "react-native";
 
-LogBox.ignoreLogs(['Setting a timer']);
+LogBox.ignoreLogs(["Setting a timer"]);
 
 const Stack = createStackNavigator();
 const App = () => (
