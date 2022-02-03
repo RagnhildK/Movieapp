@@ -60,9 +60,6 @@ export default function CreateSessionScreen({ navigation }) {
     height
 } = Dimensions.get('window');
 
-console.log(height)
-console.log(width)
-
 
   return (
       <KeyboardAvoidingView
