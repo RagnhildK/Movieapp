@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, Pressable, Text, SafeAreaView } from "react-native";
+import { View, StyleSheet, Pressable, Text, SafeAreaView , KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform} from "react-native";
 import {
   setSessionID,
   setUsername,
@@ -52,7 +52,11 @@ export default function JoinSessionScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
+      <KeyboardAvoidingView
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      style={styles.container}
+      >
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
       <SafeAreaView>
         <Headline style={styles.heading1}>
           What's the name of the party?
@@ -80,7 +84,8 @@ export default function JoinSessionScreen({ navigation }) {
           <Text style={styles.buttonText}> Join the party</Text>
         </Pressable>
       </SafeAreaView>
-    </View>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
   );
 }
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { View, StyleSheet, Pressable, Text, SafeAreaView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, Button } from "react-native";
+import {StyleSheet, Pressable, Text, SafeAreaView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from "react-native";
 import { TextInput, Headline } from "react-native-paper";
 import {
   setUsername,
