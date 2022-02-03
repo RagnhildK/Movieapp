@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { View, StyleSheet, Pressable, Text, SafeAreaView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform } from "react-native";
+import { View, StyleSheet, Pressable, Text, SafeAreaView, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Platform, Button } from "react-native";
 import { TextInput, Headline } from "react-native-paper";
 import {
   setUsername,
@@ -56,22 +56,12 @@ export default function CreateSessionScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-          <KeyboardAvoidingView
+      <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
       style={styles.container}
-    >
+      >
       <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-        <View style={styles.inner}>
-          <Text style={styles.header}>Header</Text>
-          <TextInput placeholder="Username" style={styles.textInput} />
-          <View style={styles.btnContainer}>
-            <Button title="Submit" onPress={() => null} />
-          </View>
-        </View>
-      </TouchableWithoutFeedback>
-    </KeyboardAvoidingView>
-      {/* <SafeAreaView>
+      <SafeAreaView>
         <Headline style={styles.heading}>
           What's the name of the party?
         </Headline>
@@ -104,9 +94,10 @@ export default function CreateSessionScreen({ navigation }) {
         <Pressable style={styles.button} onPress={() => createSession()}>
           <Text style={styles.buttonText}>Start the party</Text>
         </Pressable>
-      </SafeAreaView> */}
-    </View>
-  );
+      </SafeAreaView>
+      </TouchableWithoutFeedback>
+    </KeyboardAvoidingView>
+    );
 }
 
 const styles = StyleSheet.create({
